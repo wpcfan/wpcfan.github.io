@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Think Smarter, Code Smarter | Angular 2.x 从0到1（一）</title>
+  <meta name="description" content="Angular 2 教程第一篇，介绍Angular 2和Angular-CLI">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="Angular 2.x 从0到1（一）">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="http://gogeek.me/posts/angular-2-0-%E4%BB%8E0%E5%88%B01-%E4%B8%80">
+  <meta property="og:description" content="Angular 2 教程第一篇，介绍Angular 2和Angular-CLI">
+  <meta property="og:site_name" content="Think Smarter, Code Smarter">
+  <meta property="og:image" content="http://gogeek.me/assets/og-image.jpg">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:url" content="http://gogeek.me/posts/angular-2-0-%E4%BB%8E0%E5%88%B01-%E4%B8%80">
+  <meta name="twitter:title" content="Angular 2.x 从0到1（一）">
+  <meta name="twitter:description" content="Angular 2 教程第一篇，介绍Angular 2和Angular-CLI">
+  <meta name="twitter:image" content="http://gogeek.me/assets/og-image.jpg">
+
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link href="http://gogeek.me/feed.xml" type="application/rss+xml" rel="alternate" title="Think Smarter, Code Smarter Last 10 blog posts" />
+
+  
+    <link type="text/css" rel="stylesheet" href="/assets/dark.css">
+  
+</head>
+
+<body>
+  <main role="main">
+    <div class="grid grid-centered">
+      <div class="grid-cell">
+        <nav class="header-nav reveal">
+  <a href="/" class="header-logo" title="Think Smarter, Code Smarter">Think Smarter, Code Smarter</a>
+  <ul class="header-links">
+    
+      <li>
+        <a href="/about" title="About me">
+          <span class="icon icon-android-person"></span>
+        </a>
+      </li>
+    
+    
+      <li>
+        <a href="https://twitter.com/wpcfan" target="_blank" title="Twitter">
+          <span class="icon icon-social-twitter"></span>
+        </a>
+      </li>
+    
+    
+      <li>
+        <a href="https://www.facebook.com/peng.wang" target="_blank" title="Facebook">
+          <span class="icon icon-social-facebook"></span>
+        </a>
+      </li>
+    
+    
+      <li>
+        <a href="https://github.com/wpcfan" target="_blank" title="GitHub">
+          <span class="icon icon-social-github"></span>
+        </a>
+      </li>
+    
+    
+    
+    
+      <li>
+        <a href="https://www.linkedin.com/in/peng.wong" target="_blank" title="LinkedIn">
+          <span class="icon icon-social-linkedin"></span>
+        </a>
+      </li>
+    
+    
+    
+      <li>
+        <a href="mailto:wpcfan@gmail.com" target="_blank" title="Email">
+          <span class="icon icon-at"></span>
+        </a>
+      </li>
+    
+    
+      <li>
+        <a href="/feed.xml" target="_blank" title="RSS">
+          <span class="icon icon-social-rss"></span>
+        </a>
+      </li>
+    
+  </ul>
+</nav>
+
+        <article class="article reveal">
+          <header class="article-header">
+            <h1>Angular 2.x 从0到1（一）</h1>
+            <p>Angular 2 教程第一篇，介绍Angular 2和Angular-CLI</p>
+            <div class="article-list-footer">
+              <span class="article-list-date">
+                November 25, 2016
+              </span>
+              <span class="article-list-divider">-</span>
+              <span class="article-list-minutes">
+                
+                
+                  4 minute read
+                
+              </span>
+              <span class="article-list-divider">-</span>
+              <div class="article-list-tags">
+                
+                  <a href="/tag/web">web</a>
+                
+                  <a href="/tag/javascript">javascript</a>
+                
+                  <a href="/tag/angular2">angular2</a>
+                
+              </div>
+            </div>
+          </header>
+
+          <div class="article-content">
+            <ul id="markdown-toc">
+  <li><a href="#前言--一个大叔码农的angular2创世纪" id="markdown-toc-前言--一个大叔码农的angular2创世纪">前言 – 一个大叔码农的Angular2创世纪</a></li>
+  <li><a href="#第一章认识angular-20" id="markdown-toc-第一章认识angular-20">第一章：认识Angular 2.0</a>    <ul>
+      <li><a href="#angular2简介" id="markdown-toc-angular2简介">Angular2简介</a></li>
+      <li><a href="#环境配置要求" id="markdown-toc-环境配置要求">环境配置要求</a></li>
+      <li><a href="#第一个小应用-hello-angular" id="markdown-toc-第一个小应用-hello-angular">第一个小应用 Hello Angular</a></li>
+      <li><a href="#第一个组件" id="markdown-toc-第一个组件">第一个组件</a></li>
+      <li><a href="#一些基础概念" id="markdown-toc-一些基础概念">一些基础概念</a>        <ul>
+          <li><a href="#什么是模块" id="markdown-toc-什么是模块">什么是模块？</a></li>
+          <li><a href="#引导过程" id="markdown-toc-引导过程">引导过程</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h1 id="前言--一个大叔码农的angular2创世纪">前言 – 一个大叔码农的Angular2创世纪</h1>
+
+<p>作为一个出生于70年代的大叔，我在软件这个领域已经摸爬滚打了16年：从程序员、项目经理、产品经理、项目总监到部门管理等各个角色都体验过。深深地了解这个行业发展的速度之快是其他行业无法比拟的：从编程语言、各种平台、各种框架、设计模式到各类开源工具、组件林林种种，要学习的东西实在太多，变化太快。</p>
+
+<p>但万变不离其宗，名词变化虽多，但透射的本质其实是趋同的：那就是程序员受不了代码的折磨，千方百计的想让这个工作更简单，更能应对变化。比如说，面向对象编程（Object-Oriented Programming）理念的提出其实是牺牲了部分性能换来代码层次结构的清晰，因此也催生了C++，Java，C#等一系列优秀的面向对象编程语言；后来程序员们发现在实际的逻辑中，往往不是像对象树那样可以划分的那么清楚。还有一些类似安全、日志等功能其实是撒在系统各个角落的，然后，面向切面的编程（Aspect-Oriented Programming）应运而生。再后来一部分科学家发现现有的编程语言做分析或数据计算实在太麻烦，明明要计算的逻辑很清晰，却要用一大堆的对象封装赋值，函式编程（Functional Programming）出现了。最近几年被产品经理逼疯的程序员认为强类型语言改动起来太慢太繁琐，于是动态脚本类语言大行其道。</p>
+
+<p>但仔细分析一下，这些不是互斥的，其实好的元素都会被慢慢吸收到各自的语言、平台上面去的。比如C#、Java也采纳了函式编程的一些特点，比如Lamda表达式，.Net和Java平台上也拥有动态脚本语言。本书写的Angular2就是在JavaScript这种脚本语言基础上引入了TypeScript，进而可以享受面向对象编程和强类型语言的优点；引入了依赖性注入（Dependency Injection）这种在强类型语言中被证明非常有用的设计模式；通过引入Rx，让Javascript拥有了函式编程的能力。</p>
+
+<p>在本书中，我们通过做一个待办事项列表的小应用来逐渐体会这些优点。同时建议学习一些其他框架，比如React或Vue，参照后你会发现很多事情其实异曲同工。希望年轻的你和大叔的我一起学习，一起面对这个迅速成长的行业！</p>
+
+<p>王芃</p>
+
+<hr />
+
+<h1 id="第一章认识angular-20">第一章：认识Angular 2.0</h1>
+
+<h2 id="angular2简介">Angular2简介</h2>
+
+<p><a href="https://angular.io/">Angular 2</a> 是Google推出的一个跨平台全终端的框架，和目前比较火的React和Vue.js相比，有如下优点：</p>
+
+<ol>
+  <li>由于Google的目的是推出一个完整解决方案，所以官方默认提供的类库（比如routing，http，依赖性注入（DI）等）非常完整，无需自己选择。React的一大痛点就是选择太多导致在配置寻找组件和类库的过程中消耗太多精力，当然从另一方面看这也是其优势，选择众多且自由。</li>
+  <li>官方支持<a href="http://www.typescriptlang.org/">TypeScript</a>（微软出品，是JavaScript的超集，是 JavaScript 的强类型版本）作为首选编程语言，使得开发脚本语言的一些问题可以更早更方便的找到。</li>
+  <li><a href="http://reactivex.io/rxjs/">RxJS</a>友好使得响应式编程在Augular2中变得极为容易（Google开发的框架依赖这么多的微软的产品，可见微软的转型还是很成功的）</li>
+  <li>支持<a href="https://www.nativescript.org/">NativeScript</a>甚至<a href="http://angular.github.io/react-native-renderer/">ReactNative</a>等进行原生Android/iOS应用开发（React支持React Native）</li>
+  <li>支持服务器端渲染（React也支持）</li>
+</ol>
+
+<p>但总体来讲，个人认为Angular2更适合从原生App开发或后端Java/.Net等转型过来开发前端的程序员，因为它的开发模型更接近于传统强类型语言的模式，加上官方内建的组件和类库比较完整，有<a href="https://angular.cn">官方中文网站 https://angular.cn </a>，学习曲线要低一些。有过Angular 1.x 开发经验的同学要注意了，虽然只有一个版本号的差距，但2.x和1.x是完全不同的，不要奢望1.x的应用会平滑迁移到2.x。</p>
+
+<p>Angular 支持大多数常用浏览器，包括下列版本：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Chrome</th>
+      <th>Firefox</th>
+      <th>Edge</th>
+      <th>IE</th>
+      <th>Safari</th>
+      <th>iOS</th>
+      <th>Android</th>
+      <th>IE Mobile</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>45以上</td>
+      <td>40以上</td>
+      <td>13以上</td>
+      <td>9以上</td>
+      <td>7以上</td>
+      <td>7以上</td>
+      <td>4.1以上</td>
+      <td>11以上</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="环境配置要求">环境配置要求</h2>
+
+<p>Angular2需要<a href="https://nodejs.org/en/">node.js</a>和npm，我们下面的例子需要node.js 6.x.x和npm 3.x.x，请使用 <code class="highlighter-rouge">node -v</code> 和 <code class="highlighter-rouge">npm -v</code> 来检查。由于众所周知的原因，http://npmjs.org 的站点访问经常不是很顺畅，这里给出一个由淘宝团队维护的国内镜像 http://npm.taobao.org/ 。安装好node后，请输入<code class="highlighter-rouge">npm config set registry https://registry.npm.taobao.org</code></p>
+
+<p>和<a href="https://angular.cn/docs/ts/latest/quickstart.html">官方快速起步文档</a>给出的例子不同，我们下面要使用Angular团队目前正在开发中的一个工具–<a href="https://github.com/angular/angular-cli">Angular CLI</a> 。这是一个类似于React CLI和Ember CLI的命令行工具，用于快速构建Angular2的应用。它的优点是进一步屏蔽了很多配置的步骤、自动按官方推荐的模式进行代码组织、自动生成组件/服务等模板以及更方便的发布和测试代码。由于目前这个工具还在beta阶段，安装时请使用 <code class="highlighter-rouge">npm install -g angular-cli@latest</code> 命令。</p>
+
+<p>IDE的选择也比较多，免费的<a href="https://code.visualstudio.com/">Visual Studio Code</a> 和 <a href="https://atom.io/">Atom</a>，收费的有<a href="https://www.jetbrains.com/webstorm/">WebStorm</a>。我们这里推荐采用 Visual Studio Code，可以到 https://code.visualstudio.com/ 下载 Windows/Linux/MacOS 版本。</p>
+
+<p>安装完以上这些工具，开发环境就部署好了，下面我们将开始Angular2的探险之旅。</p>
+
+<h2 id="第一个小应用-hello-angular">第一个小应用 Hello Angular</h2>
+
+<p>那么现在开启一个terminal（命令行窗口），键入 <code class="highlighter-rouge">ng new hello-angular</code></p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/zrmu59kvd6986hbojldvzu4t/c1_s1_ng_new_hello-angular.png" alt="angular-cli创建新项目" /></p>
+
+<p>如上图所示，这个命令为我们新建了一个名为“hello-angular”的工程，进入该工程目录，键入 <code class="highlighter-rouge">code .</code> 可以打开IDE看到如下目录</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/hwsg3a6eashfnxhodwgzmd6r/c1_s1_vscode_project_struct.png" alt="VSCode管理工程" /></p>
+
+<p>使用Mac的用户可能发现找不到我们刚才使用的命令行的 <code class="highlighter-rouge">code</code>，您需要通过IDE安装一下，点击F1，输入install，即可看到“在Path中安装code命令”，选择之后就ok了。</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/2k52lgyw9say0bk0pzudz4qk/image_1b3i1ig2aqnq17ac1gk31lvtu579.png" alt="Mac用户需要安装命令行" /></p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/djkgkmm92yjakfp1tf53a8tu/image_1b2aksv68uhs3mf64j1h9st7o9.png" alt="文件目录结构" /></p>
+
+<p>大概了解了文件目录结构后，我们重新回到命令行，在应用根目录键入 <code class="highlighter-rouge">ng serve</code> 可以看到应用编译打包后server运行在4200端口。</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/4xrvfcelykg9dbmft73rm3ym/c1_s1_ng_serve.png" alt="使用ng serve运行应用" /></p>
+
+<p>打开浏览器输入 http://localhost:4200 即可看到程序运行成功啦！</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/1fhyangnbqqjemxr5md4qa2p/c1_s1_project_1st_browser.png" alt="第一次运行应用" /></p>
+
+<p>自动生成的太没有成就感了是不是，那么我们动手改一下吧。保持运行服务的命令窗口，然后进入VSCode，打开 <code class="highlighter-rouge">src/app/app.component.ts</code> 修改title，比如： <code class="highlighter-rouge">title = 'This is a hello-angular app';</code>，保存后返回浏览器看一下吧，结果已经更新了，这种热装载的特性使得开发变得很方便。</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/00ujvqg9m6ir0km0nzp54x4d/c1_s1_project_1st_browser_update.png" alt="第一次小修改" /></p>
+
+<h2 id="第一个组件">第一个组件</h2>
+
+<p>那么我们来为我们的app增加一个Component吧，在命令行窗口输入 <code class="highlighter-rouge">ng generate component login --inline-template --inline-style</code> 。 顾名思义，参数generate是用来生成文件的，参数component是说明我们要生成一个组件，login呢是我们的组件名称，你可以自己想个其他有意思的名字。后面的两个参数是告诉angular-cli：生成组件时，请把组件的HTML模板和CSS样式和组件放在同一个文件中（其实分开文件更清晰，但第一个例子我们还是采用inline方式了）。</p>
+
+<p>是不是感觉这个命令行太长了？幸运的是Angular团队也这么想，所以你可以把上面的命令改写成 <code class="highlighter-rouge">ng g c login -it -is</code> ,也就是说可以用generate的首字母g来代替generate，用component的首字母c来代替component，类似的<code class="highlighter-rouge">--inline-template</code>的两个词分别取首字母变成<code class="highlighter-rouge">-it</code></p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/cemx8k69lys6xcjtecvgns3o/image_1b27r02qlo6f11f19qg1q9k1fclm.png" alt="CLI生成新组件" /></p>
+
+<p>angular-cli为我们在\src\app目录下生成了一个新文件夹login，在login目录下生成了2个文件，其中 <code class="highlighter-rouge">login.component.spec.ts</code> 是测试文件，我们这里暂时不提。另一个是 <code class="highlighter-rouge">login.component.ts</code> 这个就是我们新建的Component了。</p>
+
+<p>Angular提倡的文件命名方式是这样的：<code class="highlighter-rouge">组件名称.component.ts</code> ，组件的HTML模板命名为： <code class="highlighter-rouge">组件名称.component.html</code>，组件的样式文件命名为： <code class="highlighter-rouge">组件名称.component.css</code>,大家在编码中尽量遵循Google的官方建议。</p>
+
+<p>我们新生成的Login组件源码如下</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">Component</span><span class="p">,</span> <span class="nx">OnInit</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+
+<span class="c1">//@Component是Angular提供的装饰器函数，用来描述Compoent的元数据</span>
+<span class="c1">//其中selector是指这个组件的在HTML模板中的标签是什么</span>
+<span class="c1">//template是嵌入（inline）的HTML模板，如果使用单独文件可用templateUrl</span>
+<span class="c1">//styles是嵌入（inline）的CSS样式，如果使用单独文件可用styleUrls</span>
+<span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
+  <span class="na">selector</span><span class="p">:</span> <span class="s1">'app-login'</span><span class="p">,</span>
+  <span class="na">template</span><span class="p">:</span> <span class="err">`</span>
+    <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>
+      <span class="nx">login</span> <span class="nx">Works</span><span class="o">!</span>
+    <span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span>  <span class="err">`</span><span class="p">,</span>
+  <span class="na">styles</span><span class="p">:</span> <span class="p">[]</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">LoginComponent</span> <span class="kr">implements</span> <span class="nx">OnInit</span> <span class="p">{</span>
+
+  <span class="nx">constructor</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span>
+
+  <span class="nx">ngOnInit</span><span class="p">()</span> <span class="p">{</span>
+  <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>那么这个组件建成后，我们怎么使用呢？注意上面的代码中@Component修饰配置中的 <code class="highlighter-rouge">selector: 'app-login'</code>，这意味着我们可以在其他组件的template中使用 <code class="highlighter-rouge">&lt;app-login&gt;&lt;/app-login&gt;</code> 来引用我们的这个组件。</p>
+
+<p>现在我们打开 <code class="highlighter-rouge">hello-angular\src\app\app.component.html</code> 加入我们的组件引用</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;h1&gt;</span>
+  
+<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;app-login&gt;&lt;/app-login&gt;</span>
+</code></pre>
+</div>
+
+<p>保存后返回浏览器，可以看到我们的第一个组件也显示出来了。</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/hykairb7gc7indb3ytousn2r/image_1b27qsmhp1nlrb8g1uh6cp71qcj9.png" alt="image_1b27qsmhp1nlrb8g1uh6cp71qcj9.png-19kB" /></p>
+
+<h2 id="一些基础概念">一些基础概念</h2>
+
+<p>这里我们粗略介绍一些Angular的基础概念，这些基础概念在后面的章节中会更详细的讲解。</p>
+
+<h3 id="什么是模块">什么是模块？</h3>
+
+<p>简单来说模块就是提供相对独立功能的功能块，每块聚焦于一个特定业务领域。Angular内建的很多库是以模块形式提供的，比如FormsModule封装了表单处理，HttpModule封装了Http的处理等等。</p>
+
+<p>每个Angular应用至少有一个模块类 —— <em>根模块</em>，我们将通过引导根模块来启动应用。按照约定，根模块的类名叫做AppModule，被放在 <code class="highlighter-rouge">app.module.ts</code> 文件中。我们这个例子中的根模块位于 <code class="highlighter-rouge">hello-angular\src\app\app.module.ts</code></p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">BrowserModule</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/platform-browser'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">NgModule</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">FormsModule</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/forms'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">HttpModule</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/http'</span><span class="p">;</span>
+
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">AppComponent</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'./app.component'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">LoginComponent</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'./login/login.component'</span><span class="p">;</span>
+
+<span class="err">@</span><span class="nx">NgModule</span><span class="p">({</span>
+  <span class="na">declarations</span><span class="p">:</span> <span class="p">[</span>
+    <span class="nx">AppComponent</span><span class="p">,</span>
+    <span class="nx">LoginComponent</span>
+  <span class="p">],</span>
+  <span class="na">imports</span><span class="p">:</span> <span class="p">[</span>
+    <span class="nx">BrowserModule</span><span class="p">,</span>
+    <span class="nx">FormsModule</span><span class="p">,</span>
+    <span class="nx">HttpModule</span>
+  <span class="p">],</span>
+  <span class="na">providers</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="na">bootstrap</span><span class="p">:</span> <span class="p">[</span><span class="nx">AppComponent</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">AppModule</span> <span class="p">{</span> <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>@NgModule装饰器用来为模块定义元数据。declarations列出了应用中的顶层组件，包括引导性组件AppComponent和我们刚刚创建的LoginComponent。在module里面声明的组件在module范围内都可以直接使用，也就是说在同一module里面的任何Component都可以在其模板文件中直接使用声明的组件，就想我们在AppComponent的模板末尾加上 <code class="highlighter-rouge">&lt;app-login&gt;&lt;/app-login&gt;</code> 一样。</p>
+
+<p>imports引入了3个辅助模块：</p>
+
+<ul>
+  <li>BrowserModule提供了运行在浏览器中的应用所需要的关键服务（Service）和指令（Directive），这个模块所有需要在浏览器中跑的应用都必须引用；</li>
+  <li>FormsModule提供了表单处理和双向绑定等服务和指令</li>
+  <li>HttpModule提供Http请求和响应的服务</li>
+</ul>
+
+<p>providers列出会在此模块中“注入”的服务（Service），关于依赖性注入会在后面章节中详细解释。</p>
+
+<p>bootstrap指明哪个组件为引导性组件（本案例中的AppComponent）。当Angular引导应用时，它会在DOM中渲染这个引导性组件，并把结果放进index.html的该组件的元素标签中（本案例中的app-root）。</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;!doctype html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;title&gt;</span>HelloAngular<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;base</span> <span class="na">href=</span><span class="s">"/"</span><span class="nt">&gt;</span>
+
+  <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"icon"</span> <span class="na">type=</span><span class="s">"image/x-icon"</span> <span class="na">href=</span><span class="s">"favicon.ico"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;app-root&gt;</span>Loading...<span class="nt">&lt;/app-root&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre>
+</div>
+
+<h3 id="引导过程">引导过程</h3>
+
+<p>Angular2通过在main.ts中引导AppModule来启动应用。针对不同的平台，Angular提供了很多引导选项。下面的代码是通过即时（JiT）编译器动态引导，一般在进行开发调试时，默认采用这种方式。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="c1">//main.ts</span>
+<span class="kr">import</span> <span class="s1">'./polyfills.ts'</span><span class="p">;</span>
+
+<span class="c1">// 连同Angular编译器一起发布到浏览器</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">platformBrowserDynamic</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/platform-browser-dynamic'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">enableProdMode</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">environment</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'./environments/environment'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">AppModule</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'./app/'</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nx">environment</span><span class="p">.</span><span class="nx">production</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">enableProdMode</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="c1">//Angular编译器在浏览器中编译并引导该应用</span>
+<span class="nx">platformBrowserDynamic</span><span class="p">().</span><span class="nx">bootstrapModule</span><span class="p">(</span><span class="nx">AppModule</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p>另一种方式是使用预编译器（AoT - Ahead-Of-Time）进行静态引导，静态方案可以生成更小、启动更快的应用，建议优先使用它，特别是在移动设备或高延迟网络下。使用static选项，Angular编译器作为构建流程的一部分提前运行，生成一组类工厂。它们的核心就是AppModuleNgFactory。引导预编译的AppModuleNgFactory的语法和动态引导AppModule类的方式很相似。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="c1">// 不把编译器发布到浏览器</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">platformBrowser</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/platform-browser'</span><span class="p">;</span>
+
+<span class="c1">// 静态编译器会生成一个AppModule的工厂AppModuleNgFactory</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">AppModuleNgFactory</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'./app.module.ngfactory'</span><span class="p">;</span>
+
+<span class="c1">// 引导AppModuleNgFactory</span>
+<span class="nx">platformBrowser</span><span class="p">().</span><span class="nx">bootstrapModuleFactory</span><span class="p">(</span><span class="nx">AppModuleNgFactory</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p>本节代码：https://github.com/wpcfan/awesome-tutorials/tree/chap01/angular2/ng2-tut</p>
+
+<p>下一节我们再继续，记住大叔能学会的你也能。</p>
+
+
+          </div>
+
+          <div class="article-share">
+            
+            <a href="" title="Share on Twitter" onclick="window.open('https://twitter.com/home?status=Angular 2.x 从0到1（一） - http://gogeek.me/posts/angular-2-0-%E4%BB%8E0%E5%88%B01-%E4%B8%80 by @wpcfan', 'newwindow', 'width=500, height=225'); return false;">
+              <span class="icon icon-social-twitter"></span>
+            </a>
+            <a href="" title="Share on Facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=http://gogeek.me/posts/angular-2-0-%E4%BB%8E0%E5%88%B01-%E4%B8%80', 'newwindow', 'width=500, height=500'); return false;">
+              <span class="icon icon-social-facebook"></span>
+            </a>
+            <a href="" title="Share on Google+" onclick="window.open('https://plus.google.com/share?url=http://gogeek.me/posts/angular-2-0-%E4%BB%8E0%E5%88%B01-%E4%B8%80', 'newwindow', 'width=550, height=400'); return false;">
+              <span class="icon icon-social-googleplus"></span>
+            </a>
+          </div>
+
+          
+            <!-- 多说评论框 start -->
+              <div id="disqus_thread" class="ds-thread" data-thread-key="Angular 2.x 从0到1（一）" data-title="Angular 2.x 从0到1（一）"></div>
+            <!-- 多说评论框 end -->
+            <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+            <script type="text/javascript">
+            var duoshuoQuery = {short_name:"gogeek"};
+              (function() {
+                var ds = document.createElement('script');
+                ds.type = 'text/javascript';
+                ds.async = true;
+                ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+                ds.charset = 'UTF-8';
+                (document.getElementsByTagName('head')[0] 
+                || document.getElementsByTagName('body')[0]).appendChild(ds);
+              })();
+              </script>
+            <!-- 多说公共JS代码 end -->
+            <!--<div id="disqus_thread" class="article-comments"></div>
+            <script>
+              (function() {
+                  var d = document, s = d.createElement('script');
+                  s.src = '//gogeek.disqus.com/embed.js';
+                  s.setAttribute('data-timestamp', +new Date());
+                  (d.head || d.body).appendChild(s);
+              })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            -->
+          
+        </article>
+        <footer class="footer reveal">
+  <p>
+    I will share my thoughts on coding and tech and you can find more about me at 
+    <a href="/about" title="About me">Peng Wang</a>. 
+  </p>
+</footer>
+
+      </div>
+    </div>
+  </main>
+  <script type="text/javascript" src="/assets/vendor.js"></script>
+<script type="text/javascript" src="/assets/application.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+<script>
+  WebFont.load({
+    google: {
+      families: ['Cormorant Garamond:700', 'Lato:300,400,700']
+    }
+  });
+</script>
+
+
+
+</body>
+</html>
