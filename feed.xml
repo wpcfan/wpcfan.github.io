@@ -3,87 +3,87 @@
   <channel>
     <title>Think Smarter, Code Smarter</title>
     <description></description>
-    <link>http://gogeek.me/</link>
-    <atom:link href="http://gogeek.me//feed.xml" rel="self" type="application/rss+xml" />
+    <link>http://gogeek.me</link>
+    <atom:link href="http://gogeek.me/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
         <title>Angular 2.x 从0到1（八）</title>
         <description>Angular 2 教程最后一篇，RxJS的介绍和在Angular2 中的使用</description>
         <pubDate>Wed, 14 Dec 2016 00:00:00 +0800</pubDate>
-        <link>http://gogeek.me//posts/angular-2-0-%E4%BB%8E0%E5%88%B01-%E5%85%AB</link>
-        <guid isPermaLink="true">http://gogeek.me//posts/angular-2-0-%E4%BB%8E0%E5%88%B01-%E5%85%AB</guid>
+        <link>http://gogeek.me/posts/angular-2-0-%E4%BB%8E0%E5%88%B01-%E5%85%AB</link>
+        <guid isPermaLink="true">http://gogeek.me/posts/angular-2-0-%E4%BB%8E0%E5%88%B01-%E5%85%AB</guid>
       </item>
     
       <item>
         <title>Angular 2.x 从0到1（七）</title>
         <description>Angular 2 教程第七篇，动画框架、第三方对话框以及生命周期钩子</description>
         <pubDate>Wed, 07 Dec 2016 00:00:00 +0800</pubDate>
-        <link>http://gogeek.me//posts/angular-2-0-%E4%BB%8E0%E5%88%B01-%E4%B8%83</link>
-        <guid isPermaLink="true">http://gogeek.me//posts/angular-2-0-%E4%BB%8E0%E5%88%B01-%E4%B8%83</guid>
+        <link>http://gogeek.me/posts/angular-2-0-%E4%BB%8E0%E5%88%B01-%E4%B8%83</link>
+        <guid isPermaLink="true">http://gogeek.me/posts/angular-2-0-%E4%BB%8E0%E5%88%B01-%E4%B8%83</guid>
       </item>
     
       <item>
         <title>Angular 2.x 从0到1（六）</title>
         <description>Angular 2 教程第六篇，如何部署到生产环境？如何使用第三方控件？</description>
         <pubDate>Mon, 05 Dec 2016 00:00:00 +0800</pubDate>
-        <link>http://gogeek.me//posts/angular-2-0-%E4%BB%8E0%E5%88%B01-%E5%85%AD</link>
-        <guid isPermaLink="true">http://gogeek.me//posts/angular-2-0-%E4%BB%8E0%E5%88%B01-%E5%85%AD</guid>
+        <link>http://gogeek.me/posts/angular-2-0-%E4%BB%8E0%E5%88%B01-%E5%85%AD</link>
+        <guid isPermaLink="true">http://gogeek.me/posts/angular-2-0-%E4%BB%8E0%E5%88%B01-%E5%85%AD</guid>
       </item>
     
       <item>
         <title>Angular 2.x 从0到1（五）</title>
         <description>Angular 2 教程第五篇，多用户版本的Todo，路由模块化，VSCode的调试环境</description>
         <pubDate>Sun, 04 Dec 2016 00:00:00 +0800</pubDate>
-        <link>http://gogeek.me//posts/angular-2-0-%E4%BB%8E0%E5%88%B01-%E4%BA%94</link>
-        <guid isPermaLink="true">http://gogeek.me//posts/angular-2-0-%E4%BB%8E0%E5%88%B01-%E4%BA%94</guid>
+        <link>http://gogeek.me/posts/angular-2-0-%E4%BB%8E0%E5%88%B01-%E4%BA%94</link>
+        <guid isPermaLink="true">http://gogeek.me/posts/angular-2-0-%E4%BB%8E0%E5%88%B01-%E4%BA%94</guid>
       </item>
     
       <item>
         <title>Angular 2.x 从0到1（四）</title>
         <description>Angular 2 教程第四篇，分拆Todo为多个子组件、组件间通信以及Json-server的快速构建Web API</description>
         <pubDate>Sat, 03 Dec 2016 00:00:00 +0800</pubDate>
-        <link>http://gogeek.me//posts/angular-2-0-%E4%BB%8E0%E5%88%B01-%E5%9B%9B</link>
-        <guid isPermaLink="true">http://gogeek.me//posts/angular-2-0-%E4%BB%8E0%E5%88%B01-%E5%9B%9B</guid>
+        <link>http://gogeek.me/posts/angular-2-0-%E4%BB%8E0%E5%88%B01-%E5%9B%9B</link>
+        <guid isPermaLink="true">http://gogeek.me/posts/angular-2-0-%E4%BB%8E0%E5%88%B01-%E5%9B%9B</guid>
       </item>
     
       <item>
         <title>Angular 2.x 从0到1（三）</title>
         <description>Angular 2 教程第三篇，以一个Todo应用来介绍路由和内存WebAPI</description>
         <pubDate>Fri, 02 Dec 2016 00:00:00 +0800</pubDate>
-        <link>http://gogeek.me//posts/angular-2-0-%E4%BB%8E0%E5%88%B01-%E4%B8%89</link>
-        <guid isPermaLink="true">http://gogeek.me//posts/angular-2-0-%E4%BB%8E0%E5%88%B01-%E4%B8%89</guid>
+        <link>http://gogeek.me/posts/angular-2-0-%E4%BB%8E0%E5%88%B01-%E4%B8%89</link>
+        <guid isPermaLink="true">http://gogeek.me/posts/angular-2-0-%E4%BB%8E0%E5%88%B01-%E4%B8%89</guid>
       </item>
     
       <item>
         <title>Angular 2.x 从0到1（二）</title>
         <description>Angular 2 教程第二发，我们看看表单、验证、引用和双向绑定</description>
         <pubDate>Thu, 01 Dec 2016 00:00:00 +0800</pubDate>
-        <link>http://gogeek.me//posts/angular-2-0-%E4%BB%8E0%E5%88%B01-%E4%BA%8C</link>
-        <guid isPermaLink="true">http://gogeek.me//posts/angular-2-0-%E4%BB%8E0%E5%88%B01-%E4%BA%8C</guid>
+        <link>http://gogeek.me/posts/angular-2-0-%E4%BB%8E0%E5%88%B01-%E4%BA%8C</link>
+        <guid isPermaLink="true">http://gogeek.me/posts/angular-2-0-%E4%BB%8E0%E5%88%B01-%E4%BA%8C</guid>
       </item>
     
       <item>
         <title>Angular 2.x 从0到1（一）</title>
         <description>Angular 2 教程第一篇，介绍Angular 2和Angular-CLI</description>
         <pubDate>Fri, 25 Nov 2016 00:00:00 +0800</pubDate>
-        <link>http://gogeek.me//posts/angular-2-0-%E4%BB%8E0%E5%88%B01-%E4%B8%80</link>
-        <guid isPermaLink="true">http://gogeek.me//posts/angular-2-0-%E4%BB%8E0%E5%88%B01-%E4%B8%80</guid>
+        <link>http://gogeek.me/posts/angular-2-0-%E4%BB%8E0%E5%88%B01-%E4%B8%80</link>
+        <guid isPermaLink="true">http://gogeek.me/posts/angular-2-0-%E4%BB%8E0%E5%88%B01-%E4%B8%80</guid>
       </item>
     
       <item>
         <title>Introducing chalk</title>
         <description>Chalk is a high quality, completely customizable, performant and 100% free blog template for Jekyll.</description>
         <pubDate>Mon, 17 Oct 2016 00:00:00 +0800</pubDate>
-        <link>http://gogeek.me//posts/introducing-chalk</link>
-        <guid isPermaLink="true">http://gogeek.me//posts/introducing-chalk</guid>
+        <link>http://gogeek.me/posts/introducing-chalk</link>
+        <guid isPermaLink="true">http://gogeek.me/posts/introducing-chalk</guid>
       </item>
     
       <item>
         <title>How to configure Chalk</title>
         <description>Learn more about the config file for Chalk and how to set it up properly.</description>
         <pubDate>Sun, 16 Oct 2016 00:00:00 +0800</pubDate>
-        <link>http://gogeek.me//posts/configuring-chalk</link>
-        <guid isPermaLink="true">http://gogeek.me//posts/configuring-chalk</guid>
+        <link>http://gogeek.me/posts/configuring-chalk</link>
+        <guid isPermaLink="true">http://gogeek.me/posts/configuring-chalk</guid>
       </item>
     
   </channel>
