@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html>
+
+	
+	    <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <meta content="Angular 2 教程第二发，我们看看表单、验证、引用和双向绑定" name="description">
+  
+  
+    <meta name="keywords" content="web, javascript, angular2">
+  
+  <meta name="author" content="Peng">
+
+  <title>
+    
+        Think Smarter, Code Smarter|Angular 2.x 从0到1（二）
+    
+  </title>
+  <!-- favicon -->
+  <link rel="shortcut icon" href="/static/img/favicon.ico">
+
+  <!-- Third-party CSS -->
+  <link href="/bower_components/normalize-css/normalize.min.css" rel="stylesheet">
+  <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/bower_components/animate.css/animate.min.css" rel="stylesheet">
+  <link href="/bower_components/components-font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/static/font-mfizz/font-mfizz.css" rel="stylesheet">
+  <!-- <link href="/bower_components/toastr/toastr.min.css" rel="stylesheet"> -->
+  <link href="/bower_components/jquery.gritter/css/jquery.gritter.css" rel="stylesheet">
+  <link rel="stylesheet" href="/search/css/cb-search.css">
+
+  <!-- Custom styles for this template -->
+  <link href="/static/css/style.min.css" rel="stylesheet">
+  <link href="/static/css/pygments.css" rel="stylesheet">
+
+  <!-- Scripts -->
+  <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="/search/js/bootstrap3-typeahead.min.js"></script>
+
+  <!-- cb-search -->
+  <script src="/search/js/cb-search.js"></script>
+  <script>
+    $(function(){
+        $("pre").css('display','block');
+    });
+  </script>
+  <!-- Mainly scripts -->
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/bower_components/metisMenu/dist/metisMenu.min.js"></script>
+  <script src="/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+
+  <!-- Peity -->
+  <script src="/bower_components/peity/jquery.peity.min.js"></script>
+
+  <script src="/bower_components/PACE/pace.min.js"></script>
+  <script src="/bower_components/wow/dist/wow.min.js"></script>
+  <!-- Custom and plugin javascript -->
+  <script src="/static/js/inspinia.js"></script>
+
+  <!-- Rickshaw -->
+  <script src="/bower_components/rickshaw/vendor/d3.v3.js"></script>
+  <script src="/bower_components/rickshaw/rickshaw.min.js"></script>
+
+
+  <!-- jPages -->
+  <script src="/static/js/jPages.js"></script>
+  <script src="/static/js/js.js"></script>
+  
+  <script type="text/javascript">
+        $(function(){
+          /* initiate the plugin */
+          $("div.pag-holder").jPages({
+              containerID  : "pag-itemContainer",
+              perPage      : 5,  /* num of items per page */
+              startPage    : 1,
+              startRange   : 1,
+              midRange     : 3,
+              endRange     : 1
+          });
+      });
+  </script>
+  <script src="//cdn.bootcss.com/highlight.js/9.9.0/highlight.min.js"></script>
+<!-- GrowingIO -->
+
+
+</head>
+
+	
+
+
+<body id="page-top" class="landing-page">
+
+	
+	    <div class="search-tool"
+      style="position: fixed; top: 0px ; bottom: 0px; left: 0px; right:  0px; opacity: 0.95; background-color: #111111; z-index: 9999; display: none;">
+    <input type="text" class="form-control search-content" id="search-content" style="position: fixed; top: 60px" placeholder="Search Blog">
+
+    <div style="position: fixed; top: 16px; right: 16px; z-index: 9999;">
+        <img src="/search/img/cb-close.png" id="close-btn"/>
+    </div>
+</div>
+
+<div style="position: fixed; right: 16px; bottom: 20px; z-index: 9999;">
+    <img src="/search/img/cb-search.png"  id="search-btn"  title="Double click Ctrl"/>
+</div>
+
+<div class="navbar-wrapper">
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header page-scroll">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">Think Smarter, Code Smarter</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a class="page-scroll" href="/blog/"></a></li>
+                        
+                            
+                            <li>
+                            
+                            <a class="page-scroll" href="/blog/">Blog</a></li>
+                        
+                            
+                            <li>
+                            
+                            <a class="page-scroll" href="/python/">Python</a></li>
+                        
+                            
+                            <li>
+                            
+                            <a class="page-scroll" href="/javascript/">JavaScript</a></li>
+                        
+                            
+                            <li>
+                            
+                            <a class="page-scroll" href="/html/">HTML</a></li>
+                        
+                            
+                            <li>
+                            
+                            <a class="page-scroll" href="/database/">Database</a></li>
+                        
+                            
+                            <li>
+                            
+                            <a class="page-scroll" href="/mac/">Mac</a></li>
+                        
+                            
+                            <li>
+                            
+                            <a class="page-scroll" href="/android/">Android</a></li>
+                        
+                            
+                            <li>
+                            
+                            <a class="page-scroll" href="/iOS/">iOS</a></li>
+                        
+                            
+                            <li>
+                            
+                            <a class="page-scroll" href="/life/">Life</a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </nav>
+</div>
+<div id="inSlider" class="carousel carousel-fade" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#inSlider" data-slide-to="0" class="active"></li>
+        <li data-target="#inSlider" data-slide-to="1"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <div class="container">
+                <div class="carousel-caption">
+                </div>
+                <div class="carousel-image wow zoomIn">
+                    <!-- <img src="static/img/landing/laptop.png" alt="laptop"/> -->
+                </div>
+            </div>
+            <!-- Set background for slide in css -->
+            <div class="header-back one"></div>
+
+        </div>
+        <div class="item">
+            <div class="container">
+                <div class="carousel-caption blank">
+                </div>
+            </div>
+            <!-- Set background for slide in css -->
+            <div class="header-back two"></div>
+        </div>
+    </div>
+    <a class="left carousel-control" href="#inSlider" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#inSlider" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+	
+
+    <div class="wrapper wrapper-content  animated fadeInRight article">
+    <div class="row">
+        <div class="col-lg-10 col-lg-offset-1">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <div class="pull-right">
+                    	
+                        	<button class="btn btn-white btn-xs" type="button">JavaScript</button>
+                        
+                    </div>
+                    <div class="text-center article-title">
+                    <span class="text-muted"><i class="fa fa-clock-o"></i> 1 Dec 2016</span>
+                        <h1>
+                            Angular 2.x 从0到1（二）
+                        </h1>
+                    </div>
+                    	<ul id="markdown-toc">
+  <li><a href="#第二章用form表单做一个登录控件" id="markdown-toc-第二章用form表单做一个登录控件">第二章：用Form表单做一个登录控件</a>    <ul>
+      <li><a href="#对于login组件的小改造" id="markdown-toc-对于login组件的小改造">对于login组件的小改造</a></li>
+      <li><a href="#建立一个服务去完成业务逻辑" id="markdown-toc-建立一个服务去完成业务逻辑">建立一个服务去完成业务逻辑</a>        <ul>
+          <li><a href="#什么是依赖性注入" id="markdown-toc-什么是依赖性注入">什么是依赖性注入？</a></li>
+        </ul>
+      </li>
+      <li><a href="#双向数据绑定" id="markdown-toc-双向数据绑定">双向数据绑定</a></li>
+      <li><a href="#表单数据的验证" id="markdown-toc-表单数据的验证">表单数据的验证</a></li>
+      <li><a href="#验证结果的样式自定义" id="markdown-toc-验证结果的样式自定义">验证结果的样式自定义</a></li>
+      <li><a href="#组件样式" id="markdown-toc-组件样式">组件样式</a></li>
+      <li><a href="#进一步的练习" id="markdown-toc-进一步的练习">进一步的练习</a></li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h1 id="第二章用form表单做一个登录控件">第二章：用Form表单做一个登录控件</h1>
+
+<h2 id="对于login组件的小改造">对于login组件的小改造</h2>
+
+<p>在 <code class="highlighter-rouge">hello-angular\src\app\login\login.component.ts</code> 中更改其模板为下面的样子</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">Component</span><span class="p">,</span> <span class="nx">OnInit</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+
+<span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
+  <span class="na">selector</span><span class="p">:</span> <span class="s1">'app-login'</span><span class="p">,</span>
+  <span class="na">template</span><span class="p">:</span> <span class="err">`</span>
+    <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="s2">"text"</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">button</span><span class="o">&gt;</span><span class="nx">Login</span><span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="err">`</span><span class="p">,</span>
+  <span class="na">styles</span><span class="p">:</span> <span class="p">[]</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">LoginComponent</span> <span class="kr">implements</span> <span class="nx">OnInit</span> <span class="p">{</span>
+
+  <span class="nx">constructor</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span>
+
+  <span class="nx">ngOnInit</span><span class="p">()</span> <span class="p">{</span>
+  <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>我们增加了一个文本输入框和一个按钮，保存后返回浏览器可以看到结果</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/g2c5iklgoiefb4gwf032ewy3/c2_s1_input_button_added.png" alt="第一个组件" /></p>
+
+<p>接下来我们尝试给Login按钮添加一个处理方法 <code class="highlighter-rouge">&lt;button (click)="onClick()"&gt;Login&lt;/button&gt;</code>。<code class="highlighter-rouge">(click)</code>表示我们要处理这个button的click事件，圆括号是说<strong>发生此事件时，调用等号后面的表达式或函数</strong>。等号后面的<code class="highlighter-rouge">onClick()</code>是我们自己定义在LoginComponent中的函数，这个名称你可以随便定成什么，不一定叫<code class="highlighter-rouge">onClick()</code>。</p>
+
+<p>下面我们就来定义这个函数，在LoginComponent中写一个叫<code class="highlighter-rouge">onClick()</code>的方法，内容很简单就是把“button was clicked”输出到Console。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code>  <span class="nx">onClick</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'button was clicked'</span><span class="p">);</span>
+  <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>返回浏览器，并按F12调出开发者工具。当你点击Login时，会发现Console窗口输出了我们期待的文字。</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/vguefg9j7ogiyrnqyymb0tkd/c2_s1_handle_click_method.png" alt="Chrome开发者工具" /></p>
+
+<p>那么如果要在onClick中传递一个参数，比如是上面的文本输入框输入的值怎么处理呢？我们可以在文本输入框标签内加一个#usernameRef，这个叫引用（reference）。注意这个<strong>引用是的input对象</strong>，我们如果想传递input的值，可以用<code class="highlighter-rouge">usernameRef.value</code>，然后就可以把<code class="highlighter-rouge">onClick()</code>方法改成<code class="highlighter-rouge">onClick(usernameRef.value)</code>：</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;div&gt;</span>
+  <span class="nt">&lt;input</span> <span class="err">#</span><span class="na">usernameRef</span> <span class="na">type=</span><span class="s">"text"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;button</span> <span class="err">(</span><span class="na">click</span><span class="err">)="</span><span class="na">onClick</span><span class="err">(</span><span class="na">usernameRef</span><span class="err">.</span><span class="na">value</span><span class="err">)"</span><span class="nt">&gt;</span>Login<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre>
+</div>
+
+<p>在Component内部的onClick方法也要随之改写成一个接受username的方法</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code>  <span class="nx">onClick</span><span class="p">(</span><span class="nx">username</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">username</span><span class="p">);</span>
+  <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>现在我们再看看结果是什么样子，在文本输入框中键入“hello”，点击Login按钮，观察Console窗口：hello被输出了。</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/6v6bvj0yj60rrei7y8bhk0t3/c2_s1_input_button_ref.png" alt="Console窗口" /></p>
+
+<p>好了，现在我们再加一个密码输入框，然后改写onClick方法可以同时接收2个参数：用户名和密码。代码如下：</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">Component</span><span class="p">,</span> <span class="nx">OnInit</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+
+<span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
+  <span class="na">selector</span><span class="p">:</span> <span class="s1">'app-login'</span><span class="p">,</span>
+  <span class="na">template</span><span class="p">:</span> <span class="err">`</span>
+    <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">input</span> <span class="err">#</span><span class="nx">usernameRef</span> <span class="nx">type</span><span class="o">=</span><span class="s2">"text"</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">input</span> <span class="err">#</span><span class="nx">passwordRef</span> <span class="nx">type</span><span class="o">=</span><span class="s2">"password"</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">button</span> <span class="p">(</span><span class="nx">click</span><span class="p">)</span><span class="o">=</span><span class="s2">"onClick(usernameRef.value, passwordRef.value)"</span><span class="o">&gt;</span><span class="nx">Login</span><span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="err">`</span><span class="p">,</span>
+  <span class="na">styles</span><span class="p">:</span> <span class="p">[]</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">LoginComponent</span> <span class="kr">implements</span> <span class="nx">OnInit</span> <span class="p">{</span>
+
+  <span class="nx">constructor</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span>
+
+  <span class="nx">ngOnInit</span><span class="p">()</span> <span class="p">{</span>
+  <span class="p">}</span>
+
+  <span class="nx">onClick</span><span class="p">(</span><span class="nx">username</span><span class="p">,</span> <span class="nx">password</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'username:'</span> <span class="o">+</span> <span class="nx">username</span> <span class="o">+</span> <span class="s2">"\n\r"</span> <span class="o">+</span> <span class="s2">"password:"</span> <span class="o">+</span> <span class="nx">password</span><span class="p">);</span>
+  <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>看看结果吧，在浏览器中第一个输入框输入“wang”，第二个输入框输入“1234567”，观察Console窗口，Bingo！</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/opkt3h9vqpne88q3e988oghr/c2_s1_username_password_ref.png" alt="元素引用的使用" /></p>
+
+<h2 id="建立一个服务去完成业务逻辑">建立一个服务去完成业务逻辑</h2>
+
+<p>如果我们把登录的业务逻辑在onClick方法中完成，当然也可以，但是这样做的耦合性太强了。设想一下，如果我们增加了微信登录、微博登录等，业务逻辑会越来越复杂，显然我们需要把这个业务逻辑分离出去。</p>
+
+<p>那么我们接下来创建一个AuthService吧, 首先我们在src\app下建立一个core的子文件夹（<code class="highlighter-rouge">src\app\core</code>）,然后命令行中输入 <code class="highlighter-rouge">ng g s core\auth</code> （s这里是service的缩写，core\auth是说在core的目录下建立auth服务相关文件）。<code class="highlighter-rouge">auth.service.ts</code>和<code class="highlighter-rouge">auth.service.spec.ts</code>这个两个文件应该已经出现在你的目录里了。</p>
+
+<p>下面我们为这个service添加一个方法，你可能注意到这里我们为这个方法指定了返回类型和参数类型。这就是TypeScript带来的好处，有了类型约束，你在别处调用这个方法时，如果给出的参数类型或返回类型不正确，IDE就可以直接告诉你错了。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">Injectable</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+
+<span class="err">@</span><span class="nx">Injectable</span><span class="p">()</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">AuthService</span> <span class="p">{</span>
+
+  <span class="nx">constructor</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span>
+
+  <span class="nx">loginWithCredentials</span><span class="p">(</span><span class="nx">username</span><span class="err">:</span> <span class="nx">string</span><span class="p">,</span> <span class="nx">password</span><span class="err">:</span> <span class="nx">string</span><span class="p">)</span><span class="err">:</span> <span class="kr">boolean</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">username</span> <span class="o">===</span> <span class="s1">'wangpeng'</span><span class="p">)</span>
+      <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+  <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>等一下，这个service虽然被创建了，但仍然无法在Component中使用。当然你可以在Component中import这个服务，然后实例化后使用，但是这样做并不好，仍然时一个紧耦合的模式，Angular2提供了一种依赖性注入（Dependency Injection）的方法。</p>
+
+<h3 id="什么是依赖性注入">什么是依赖性注入？</h3>
+
+<p>如果不使用DI（依赖性注入）的时候，我们自然的想法是这样的，在<code class="highlighter-rouge">login.component.ts</code>中import引入AuthService，在构造中初始化service，在onClick中调用service。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">Component</span><span class="p">,</span> <span class="nx">OnInit</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+<span class="c1">//引入AuthService</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">AuthService</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'../core/auth.service'</span><span class="p">;</span>
+
+<span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
+  <span class="na">selector</span><span class="p">:</span> <span class="s1">'app-login'</span><span class="p">,</span>
+  <span class="na">template</span><span class="p">:</span> <span class="err">`</span>
+    <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">input</span> <span class="err">#</span><span class="nx">usernameRef</span> <span class="nx">type</span><span class="o">=</span><span class="s2">"text"</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">input</span> <span class="err">#</span><span class="nx">passwordRef</span> <span class="nx">type</span><span class="o">=</span><span class="s2">"password"</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">button</span> <span class="p">(</span><span class="nx">click</span><span class="p">)</span><span class="o">=</span><span class="s2">"onClick(usernameRef.value, passwordRef.value)"</span><span class="o">&gt;</span><span class="nx">Login</span><span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="err">`</span><span class="p">,</span>
+  <span class="na">styles</span><span class="p">:</span> <span class="p">[]</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">LoginComponent</span> <span class="kr">implements</span> <span class="nx">OnInit</span> <span class="p">{</span>
+
+  <span class="c1">//声明成员变量，其类型为AuthService</span>
+  <span class="nl">service</span><span class="p">:</span> <span class="nx">AuthService</span><span class="p">;</span>
+
+  <span class="nx">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">service</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AuthService</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="nx">ngOnInit</span><span class="p">()</span> <span class="p">{</span>
+  <span class="p">}</span>
+
+  <span class="nx">onClick</span><span class="p">(</span><span class="nx">username</span><span class="p">,</span> <span class="nx">password</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//调用service的方法</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'auth result is: '</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">service</span><span class="p">.</span><span class="nx">loginWithCredentials</span><span class="p">(</span><span class="nx">username</span><span class="p">,</span> <span class="nx">password</span><span class="p">));</span>
+  <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>这么做呢也可以跑起来，但存在几个问题：</p>
+
+<ul>
+  <li>由于实例化是在组件中进行的，意味着我们如果更改service的构造函数的话，组件也需要更改。</li>
+  <li>如果我们以后需要开发、测试和生产环境配置不同的AuthService，以这种方式实现会非常不方便。</li>
+</ul>
+
+<p>下面我们看看如果使用DI是什么样子的，首先我们需要在组件的修饰器中配置AuthService，然后在组件的构造函数中使用参数进行依赖注入。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">Component</span><span class="p">,</span> <span class="nx">OnInit</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">AuthService</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'../core/auth.service'</span><span class="p">;</span>
+
+<span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
+  <span class="na">selector</span><span class="p">:</span> <span class="s1">'app-login'</span><span class="p">,</span>
+  <span class="na">template</span><span class="p">:</span> <span class="err">`</span>
+    <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">input</span> <span class="err">#</span><span class="nx">usernameRef</span> <span class="nx">type</span><span class="o">=</span><span class="s2">"text"</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">input</span> <span class="err">#</span><span class="nx">passwordRef</span> <span class="nx">type</span><span class="o">=</span><span class="s2">"password"</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">button</span> <span class="p">(</span><span class="nx">click</span><span class="p">)</span><span class="o">=</span><span class="s2">"onClick(usernameRef.value, passwordRef.value)"</span><span class="o">&gt;</span><span class="nx">Login</span><span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="err">`</span><span class="p">,</span>
+  <span class="na">styles</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="c1">//在providers中配置AuthService</span>
+  <span class="na">providers</span><span class="p">:[</span><span class="nx">AuthService</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">LoginComponent</span> <span class="kr">implements</span> <span class="nx">OnInit</span> <span class="p">{</span>
+  <span class="c1">//在构造函数中将AuthService示例注入到成员变量service中</span>
+  <span class="c1">//而且我们不需要显式声明成员变量service了</span>
+  <span class="nx">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">service</span><span class="err">:</span> <span class="nx">AuthService</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">}</span>
+
+  <span class="nx">ngOnInit</span><span class="p">()</span> <span class="p">{</span>
+  <span class="p">}</span>
+
+  <span class="nx">onClick</span><span class="p">(</span><span class="nx">username</span><span class="p">,</span> <span class="nx">password</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'auth result is: '</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">service</span><span class="p">.</span><span class="nx">loginWithCredentials</span><span class="p">(</span><span class="nx">username</span><span class="p">,</span> <span class="nx">password</span><span class="p">));</span>
+  <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>看到这里你会发现我们仍然需要import相关的服务，这是import是要将类型引入进来，而provider里面会配置这个类型的实例。当然即使这样还是不太爽，可不可以不引入AuthService呢？答案是可以。</p>
+
+<p>我们看一下<code class="highlighter-rouge">app.module.ts</code>，这个根模块文件中我们发现也有个providers，根模块中的这个providers是配置在模块中全局可用的service或参数的。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">providers</span><span class="err">:</span> <span class="p">[</span>
+    <span class="p">{</span><span class="na">provide</span><span class="p">:</span> <span class="s1">'auth'</span><span class="p">,</span>  <span class="na">useClass</span><span class="p">:</span> <span class="nx">AuthService</span><span class="p">}</span>
+    <span class="p">]</span>
+</code></pre>
+</div>
+
+<p>providers是一个数组，这个数组呢其实是把你想要注入到其他组件中的服务配置在这里。大家注意到我们这里的写法和上面优点区别，没有直接写成</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">providers</span><span class="err">:</span><span class="p">[</span><span class="nx">AuthService</span><span class="p">]</span>
+</code></pre>
+</div>
+
+<p>而是给出了一个对象，里面有两个属性，provide和useClass，provide定义了这个服务的名称，有需要注入这个服务的就引用这个名称就好。useClass指明这个名称对应的服务是一个类，本例中就是AuthService了。这样定义好之后，我们就可以在任意组件中注入这个依赖了。</p>
+
+<p>下面我们改动一下<code class="highlighter-rouge">login.component.ts</code>，去掉头部的<code class="highlighter-rouge">import { AuthService } from '../core/auth.service';</code>和组件修饰器中的providers，更改其构造函数为</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">constructor</span><span class="p">(</span><span class="err">@</span><span class="nx">Inject</span><span class="p">(</span><span class="s1">'auth'</span><span class="p">)</span> <span class="kr">private</span> <span class="nx">service</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>我们去掉了service的类型声明，但加了一个修饰符<code class="highlighter-rouge">@Inject('auth')</code>，这个修饰符的意思是请到系统配置中找到名称为<code class="highlighter-rouge">auth</code>的那个依赖注入到我修饰的变量中。当然这样改完后你会发现<code class="highlighter-rouge">Inject</code>这个修饰符系统不识别，我们需要在<code class="highlighter-rouge">@angular/core</code>中引用这个修饰符，现在<code class="highlighter-rouge">login.component.ts</code>看起来应该是下面这个样子</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">Component</span><span class="p">,</span> <span class="nx">OnInit</span><span class="p">,</span> <span class="nx">Inject</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+
+<span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
+  <span class="na">selector</span><span class="p">:</span> <span class="s1">'app-login'</span><span class="p">,</span>
+  <span class="na">template</span><span class="p">:</span> <span class="err">`</span>
+    <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">input</span> <span class="err">#</span><span class="nx">usernameRef</span> <span class="nx">type</span><span class="o">=</span><span class="s2">"text"</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">input</span> <span class="err">#</span><span class="nx">passwordRef</span> <span class="nx">type</span><span class="o">=</span><span class="s2">"password"</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">button</span> <span class="p">(</span><span class="nx">click</span><span class="p">)</span><span class="o">=</span><span class="s2">"onClick(usernameRef.value, passwordRef.value)"</span><span class="o">&gt;</span><span class="nx">Login</span><span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="err">`</span><span class="p">,</span>
+  <span class="na">styles</span><span class="p">:</span> <span class="p">[]</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">LoginComponent</span> <span class="kr">implements</span> <span class="nx">OnInit</span> <span class="p">{</span>
+
+  <span class="nx">constructor</span><span class="p">(</span><span class="err">@</span><span class="nx">Inject</span><span class="p">(</span><span class="s1">'auth'</span><span class="p">)</span> <span class="kr">private</span> <span class="nx">service</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">}</span>
+
+  <span class="nx">ngOnInit</span><span class="p">()</span> <span class="p">{</span>
+  <span class="p">}</span>
+
+  <span class="nx">onClick</span><span class="p">(</span><span class="nx">username</span><span class="p">,</span> <span class="nx">password</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'auth result is: '</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">service</span><span class="p">.</span><span class="nx">loginWithCredentials</span><span class="p">(</span><span class="nx">username</span><span class="p">,</span> <span class="nx">password</span><span class="p">));</span>
+  <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>注意依赖性注入<strong>不是</strong>仅仅为Service服务的，任何的类都可以通过这种方式提供和注入，它提供了一种解耦的方式，通过Providers提供，通过constructor注入。：</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">constructor</span><span class="p">(</span><span class="nx">userService</span><span class="err">:</span> <span class="nx">UserService</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">userService</span><span class="p">.</span><span class="nx">addUser</span><span class="p">({</span><span class="na">username</span><span class="p">:</span> <span class="s1">'wang'</span><span class="p">,</span> <span class="na">password</span><span class="p">:</span><span class="s1">'1234'</span><span class="p">});</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>注入器从哪得到的依赖？它可能在自己内部容器里已经有该依赖了。如果它没有，也能在提供商的帮助下新建一个。提供商就是一个用于交付服务的配方，它被关联到一个令牌。Angular会使用一些自带的提供商来初始化这些注入器。我们必须自行注册属于自己的提供商，通常用组件或者指令元数据中的providers数组进行注册。简单的类提供商是最典型的例子。只要在providers数值里面提到该类就可以了。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">providers</span><span class="err">:</span> <span class="p">[</span> <span class="nx">AuthService</span><span class="p">,</span> <span class="nx">UserService</span> <span class="p">]</span>
+</code></pre>
+</div>
+
+<p>除了上面那种最简单的提供方式之外，我们还可以以令牌方式提供。我们通常在构造函数里面，为参数指定类型，让Angular来处理依赖注入。该参数类型就是依赖注入器所需的令牌。Angular把该令牌传给注入器，然后把得到的结果赋给参数。下面是一个典型的例子</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">providers</span><span class="err">:</span> <span class="p">[</span>
+    <span class="p">{</span> <span class="na">provide</span><span class="p">:</span> <span class="s1">'auth'</span><span class="p">,</span> <span class="na">useClass</span><span class="p">:</span> <span class="nx">AuthService</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="na">provide</span><span class="p">:</span> <span class="s1">'user'</span><span class="p">,</span> <span class="na">useClass</span><span class="p">:</span> <span class="nx">UserService</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="na">provide</span><span class="p">:</span> <span class="nx">BASE_URL</span><span class="p">,</span>  <span class="na">useValue</span><span class="p">:</span>   <span class="s1">'http://localhost:3000/todos'</span> <span class="p">},</span>
+    <span class="nx">AuthGuardService</span>
+    <span class="p">]</span>
+</code></pre>
+</div>
+
+<p>我们发现providers数组是由一系列的provide对象构成的，这个对象是<code class="highlighter-rouge"><span class="p">{</span><span class="err">provide:</span><span class="w"> </span><span class="err">...,</span><span class="w"> </span><span class="err">useClass:</span><span class="w"> </span><span class="err">...</span><span class="p">}</span></code>或者<code class="highlighter-rouge"><span class="p">{</span><span class="err">provide:</span><span class="w"> </span><span class="err">...,</span><span class="w"> </span><span class="err">useValue:</span><span class="w"> </span><span class="err">...</span><span class="p">}</span></code>形式的。我们把第一个属性叫令牌，第二个属性叫定义对象。这两种形式分别对应<strong>类供应商</strong>和<strong>值供应商</strong>。</p>
+
+<p>值供应商通常用来进行运行期常量设置，比如网站的基础地址和功能标志等。那么最简单那种情形是怎么回事呢？比如：<code class="highlighter-rouge">providers: [ AuthGuardService ]</code>，其实这是一个语法糖，等价于<code class="highlighter-rouge"><span class="p">{</span><span class="err">provide:</span><span class="w"> </span><span class="err">AuthGuardService,</span><span class="w"> </span><span class="err">useClass:</span><span class="w">    </span><span class="err">AuthGuardService</span><span class="p">}</span></code> 。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w"> </span><span class="err">provide:</span><span class="w"> </span><span class="err">BASE_URL,</span><span class="w">  </span><span class="err">useValue:</span><span class="w">   </span><span class="err">'http://localhost:3000/todos'</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>这个例子和其他的好像还是不太一样，BASE_URL不是个字符串对象也不是一个类对象。这是我们创建的一个令牌，这样创建的令牌拥有一个友好的名字，但不会与其它的同名令牌发生冲突。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">OpaqueToken</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+
+<span class="kr">export</span> <span class="kr">const</span> <span class="nx">BASE_URL</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">OpaqueToken</span><span class="p">(</span><span class="s1">'BASE_URL'</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p>当然还有另外两种情形，一种叫别名提供商，我们为同一个对象起了不同的别名。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="p">{</span> <span class="nl">provide</span><span class="p">:</span> <span class="nx">MinimalLogger</span><span class="p">,</span> <span class="nx">useExisting</span><span class="err">:</span> <span class="nx">LoggerService</span> <span class="p">},</span>
+</code></pre>
+</div>
+
+<p>另一种叫工厂提供商，提供商通过调用工厂函数来新建一个依赖对象，如下例所示。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="p">{</span> <span class="nl">provide</span><span class="p">:</span> <span class="nx">HELLO</span><span class="p">,</span> <span class="nx">useFactory</span><span class="err">:</span>  <span class="nx">helloFactory</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="nx">deps</span><span class="err">:</span> <span class="p">[</span><span class="nx">Greeting</span><span class="p">,</span> <span class="nx">HelloService</span><span class="p">]</span> <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>使用这项技术，可以用包含了一些依赖服务和本地状态输入的工厂函数来建立一个依赖对象。helloFactory自身不是提供商工厂函数。真正的提供商工厂函数是helloFactory返回的函数。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">export</span> <span class="kd">function</span> <span class="nx">helloFactory</span><span class="p">(</span><span class="nx">take</span><span class="err">:</span> <span class="nx">number</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span><span class="nx">greeting</span><span class="err">:</span> <span class="nx">Greeting</span><span class="p">,</span> <span class="nx">helloService</span><span class="err">:</span> <span class="nx">HelloService</span><span class="p">)</span><span class="err">:</span> <span class="nx">string</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="cm">/* ... */</span>
+  <span class="p">};</span>
+<span class="p">};</span>
+</code></pre>
+</div>
+
+<h2 id="双向数据绑定">双向数据绑定</h2>
+
+<p>接下来的问题是我们是否只能通过这种方式进行表现层和逻辑之间的数据交换呢？如果我们希望在组件内对数据进行操作后再反馈到界面怎么处理呢？Angular2提供了一个双向数据绑定的机制。这个机制是这样的，在组件中提供成员数据变量，然后在模板中引用这个数据变量。我们来改造一下<code class="highlighter-rouge">login.component.ts</code>，首先在class中声明2个数据变量username和password。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code>  <span class="nx">username</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
+  <span class="nx">password</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>然后去掉<code class="highlighter-rouge">onClick</code>方法的参数，并将内部的语句改造成如下样子：</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'auth result is: '</span>
+      <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">service</span><span class="p">.</span><span class="nx">loginWithCredentials</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">username</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">password</span><span class="p">));</span>
+</code></pre>
+</div>
+
+<p>去掉参数的原因是双向绑定后，我们通过数据成员变量就可以知道用户名和密码了，不需要在传递参数了。而成员变量的引用方式是<code class="highlighter-rouge">this.成员变量</code>。
+然后我们来改造模板：</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code>    <span class="nt">&lt;div&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span>
+        <span class="err">[(</span><span class="na">ngModel</span><span class="err">)]="</span><span class="na">username</span><span class="err">"</span>
+        <span class="nt">/&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"password"</span>
+        <span class="err">[(</span><span class="na">ngModel</span><span class="err">)]="</span><span class="na">password</span><span class="err">"</span>
+        <span class="nt">/&gt;</span>
+      <span class="nt">&lt;button</span> <span class="err">(</span><span class="na">click</span><span class="err">)="</span><span class="na">onClick</span><span class="err">()"</span><span class="nt">&gt;</span>Login<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">[(ngModel)]="username"</code>这个看起来很别扭，稍微解释一下，方括号[]的作用是说把等号后面当成表达式来解析而不是当成字符串，如果我们去掉方括号那就等于说是直接给这个ngModel赋值成“username”这个字符串了。方括号的含义是单向绑定，就是说我们在组件中给model赋的值会设置到HTML的input控件中。</p>
+
+<p><code class="highlighter-rouge">[()]</code>是双向绑定的意思，就是说HTML对应控件的状态的改变会反射设置到组件的model中。ngModel是FormModule中提供的指令，它负责从Domain Model（这里就是username或password，以后我们可用绑定更复杂的对象）中创建一个FormControl的实例，并将这个实例和表单的控件绑定起来。</p>
+
+<p>同样的对于click事件的处理，我们不需要传入参数了，因为其调用的是刚刚我们改造的组件中的onClick方法。现在我们保存文件后打开浏览器看一下，效果和上一节的应该一样的。本节的完整代码如下：</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="c1">//login.component.ts</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Component</span><span class="p">,</span> <span class="nx">OnInit</span><span class="p">,</span> <span class="nx">Inject</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+
+<span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
+  <span class="na">selector</span><span class="p">:</span> <span class="s1">'app-login'</span><span class="p">,</span>
+  <span class="na">template</span><span class="p">:</span> <span class="err">`</span>
+    <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="s2">"text"</span>
+        <span class="p">[(</span><span class="nx">ngModel</span><span class="p">)]</span><span class="o">=</span><span class="s2">"username"</span>
+        <span class="o">/&gt;</span>
+      <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="s2">"password"</span>
+        <span class="p">[(</span><span class="nx">ngModel</span><span class="p">)]</span><span class="o">=</span><span class="s2">"password"</span>
+        <span class="o">/&gt;</span>
+      <span class="o">&lt;</span><span class="nx">button</span> <span class="p">(</span><span class="nx">click</span><span class="p">)</span><span class="o">=</span><span class="s2">"onClick()"</span><span class="o">&gt;</span><span class="nx">Login</span><span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="err">`</span><span class="p">,</span>
+  <span class="na">styles</span><span class="p">:</span> <span class="p">[]</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">LoginComponent</span> <span class="kr">implements</span> <span class="nx">OnInit</span> <span class="p">{</span>
+
+  <span class="nx">username</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+  <span class="nx">password</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+
+  <span class="nx">constructor</span><span class="p">(</span><span class="err">@</span><span class="nx">Inject</span><span class="p">(</span><span class="s1">'auth'</span><span class="p">)</span> <span class="kr">private</span> <span class="nx">service</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">}</span>
+
+  <span class="nx">ngOnInit</span><span class="p">()</span> <span class="p">{</span>
+  <span class="p">}</span>
+
+  <span class="nx">onClick</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'auth result is: '</span>
+      <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">service</span><span class="p">.</span><span class="nx">loginWithCredentials</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">username</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">password</span><span class="p">));</span>
+  <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h2 id="表单数据的验证">表单数据的验证</h2>
+
+<p>通常情况下，表单的数据是有一定的规则的，我们需要依照其规则对输入的数据做验证以及反馈验证结果。Angular2中对表单验证有非常完善的支持，我们继续上面的例子，在<code class="highlighter-rouge">login</code>组件中，我们定义了一个用户名和密码的输入框，现在我们来为它们加上规则。首先我们定义一下规则，用户名和密码都是必须输入的，也就是不能为空。更改<code class="highlighter-rouge">login.component.ts</code>中的模板为下面的样子</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code>    <span class="nt">&lt;div&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">required</span> <span class="na">type=</span><span class="s">"text"</span>
+        <span class="err">[(</span><span class="na">ngModel</span><span class="err">)]="</span><span class="na">username</span><span class="err">"</span>
+        <span class="err">#</span><span class="na">usernameRef=</span><span class="s">"ngModel"</span>
+        <span class="nt">/&gt;</span>
+        
+      <span class="nt">&lt;input</span> <span class="na">required</span> <span class="na">type=</span><span class="s">"password"</span>
+        <span class="err">[(</span><span class="na">ngModel</span><span class="err">)]="</span><span class="na">password</span><span class="err">"</span>
+        <span class="err">#</span><span class="na">passwordRef=</span><span class="s">"ngModel"</span>
+        <span class="nt">/&gt;</span>
+        
+      <span class="nt">&lt;button</span> <span class="err">(</span><span class="na">click</span><span class="err">)="</span><span class="na">onClick</span><span class="err">()"</span><span class="nt">&gt;</span>Login<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+</code></pre>
+</div>
+
+<p>注意到我们只是为username和password两个控件加上了required这个属性，表明这两个控件为必填项。通过<code class="highlighter-rouge">#usernameRef="ngModel"</code>我们重新又加入了引用，这次的引用指向了ngModel，这个引用是要在模板中使用的，所以才加入这个引用如果不需要在模板中使用，可以不要这句。``双花括号表示解析括号中的表达式，并把这个值输出到模板中。</p>
+
+<p>这里我们为了可以显性的看到控件的验证状态，直接在对应控件后输出了验证的状态。初始状态可以看到2个控件的验证状态都是false，试着填写一些字符在两个输入框中，看看状态变化吧。</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/ep2fv9smcl6wpesjd9lyymn5/c2_s2_form_validation.png" alt="表单验证状态" /></p>
+
+<p>我们是知道了验证的状态是什么，但是如果我们想知道验证失败的原因怎么办呢？我们只需要将<code class="highlighter-rouge">替换成</code>。<code class="highlighter-rouge">|</code>是管道操作符，用于将前面的结果通过管道输出成另一种格式，这里就是把errors对象输出成json格式的意思。看一下结果吧，返回的结果如下</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/r5or515a7vbbaegcumt1szrg/c2_s2_form_validation_errors.png" alt="管道输出" /></p>
+
+<p>如果除了不能为空，我们为username再添加一个规则试试看呢，比如字符数不能少于3。</p>
+<div class="language-html highlighter-rouge"><pre class="highlight"><code>      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span>
+        <span class="err">[(</span><span class="na">ngModel</span><span class="err">)]="</span><span class="na">username</span><span class="err">"</span>
+        <span class="err">#</span><span class="na">usernameRef=</span><span class="s">"ngModel"</span>
+        <span class="na">required</span> 
+        <span class="na">minlength=</span><span class="s">"3"</span>
+        <span class="nt">/&gt;</span>
+</code></pre>
+</div>
+
+<p><img src="http://static.zybuluo.com/wpcfan/o1581cncbnl7zi8hvhvo9vn4/c2_s2_form_validation_errors_multiple.png" alt="多规则验证" /></p>
+
+<p>现在我们试着把 <code class="highlighter-rouge">\{\{表达式}}</code> 替换成友好的错误提示，我们想在有错误发生时显示错误的提示信息。那么我们来改造一下template。</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code>    <span class="nt">&lt;div&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span>
+        <span class="err">[(</span><span class="na">ngModel</span><span class="err">)]="</span><span class="na">username</span><span class="err">"</span>
+        <span class="err">#</span><span class="na">usernameRef=</span><span class="s">"ngModel"</span>
+        <span class="na">required</span>
+        <span class="na">minlength=</span><span class="s">"3"</span>
+        <span class="nt">/&gt;</span>
+        
+        <span class="nt">&lt;div</span> <span class="err">*</span><span class="na">ngIf=</span><span class="s">"usernameRef.errors?.required"</span><span class="nt">&gt;</span>this is required<span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="err">*</span><span class="na">ngIf=</span><span class="s">"usernameRef.errors?.minlength"</span><span class="nt">&gt;</span>should be at least 3 charactors<span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">required</span> <span class="na">type=</span><span class="s">"password"</span>
+        <span class="err">[(</span><span class="na">ngModel</span><span class="err">)]="</span><span class="na">password</span><span class="err">"</span>
+        <span class="err">#</span><span class="na">passwordRef=</span><span class="s">"ngModel"</span>
+        <span class="nt">/&gt;</span>
+        <span class="nt">&lt;div</span> <span class="err">*</span><span class="na">ngIf=</span><span class="s">"passwordRef.errors?.required"</span><span class="nt">&gt;</span>this is required<span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;button</span> <span class="err">(</span><span class="na">click</span><span class="err">)="</span><span class="na">onClick</span><span class="err">()"</span><span class="nt">&gt;</span>Login<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">ngIf</code>也是一个Angular2的指令，顾名思义，是用于做条件判断的。<code class="highlighter-rouge">*ngIf="usernameRef.errors?.required"</code>的意思是当<code class="highlighter-rouge">usernameRef.errors.required</code>为<code class="highlighter-rouge">true</code>时显示<code class="highlighter-rouge">div</code>标签。那么那个<code class="highlighter-rouge">?</code>是干嘛的呢？因为<code class="highlighter-rouge">errors</code>可能是个null，如果这个时候调用<code class="highlighter-rouge">errors</code>的<code class="highlighter-rouge">required</code>属性肯定会引发异常，那么<code class="highlighter-rouge">?</code>就是标明<code class="highlighter-rouge">errors</code>可能为空，在其为空时就不用调用后面的属性了。</p>
+
+<p>如果我们把用户名和密码整个看成一个表单的话，我们应该把它们放在一对<code class="highlighter-rouge">&lt;form&gt;&lt;/form&gt;</code>标签中，类似的加入一个表单的引用<code class="highlighter-rouge">formRef</code>。</p>
+<div class="language-html highlighter-rouge"><pre class="highlight"><code>    <span class="nt">&lt;div&gt;</span>
+      <span class="nt">&lt;form</span> <span class="err">#</span><span class="na">formRef=</span><span class="s">"ngForm"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span>
+          <span class="err">[(</span><span class="na">ngModel</span><span class="err">)]="</span><span class="na">username</span><span class="err">"</span>
+          <span class="err">#</span><span class="na">usernameRef=</span><span class="s">"ngModel"</span>
+          <span class="na">required</span>
+          <span class="na">minlength=</span><span class="s">"3"</span>
+          <span class="nt">/&gt;</span>
+          <span class="nt">&lt;div</span> <span class="err">*</span><span class="na">ngIf=</span><span class="s">"usernameRef.errors?.required"</span><span class="nt">&gt;</span>this is required<span class="nt">&lt;/div&gt;</span>
+          <span class="nt">&lt;div</span> <span class="err">*</span><span class="na">ngIf=</span><span class="s">"usernameRef.errors?.minlength"</span><span class="nt">&gt;</span>should be at least 3 charactors<span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"password"</span>
+          <span class="err">[(</span><span class="na">ngModel</span><span class="err">)]="</span><span class="na">password</span><span class="err">"</span>
+          <span class="err">#</span><span class="na">passwordRef=</span><span class="s">"ngModel"</span>
+          <span class="na">required</span>
+          <span class="nt">/&gt;</span>
+          <span class="nt">&lt;div</span> <span class="err">*</span><span class="na">ngIf=</span><span class="s">"passwordRef.errors?.required"</span><span class="nt">&gt;</span>this is required<span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;button</span> <span class="err">(</span><span class="na">click</span><span class="err">)="</span><span class="na">onClick</span><span class="err">()"</span><span class="nt">&gt;</span>Login<span class="nt">&lt;/button&gt;</span>
+      <span class="nt">&lt;/form&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+</code></pre>
+</div>
+
+<p>这时运行后会发现原本好用的代码出错了，这是由于如果在一个大的表单中，ngModel会注册成Form的一个子控件，注册子控件需要一个name，这要求我们显式的指定对应控件的name，因此我们需要为<code class="highlighter-rouge">input</code>增加name属性</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code>    <span class="nt">&lt;div&gt;</span>
+      <span class="nt">&lt;form</span> <span class="err">#</span><span class="na">formRef=</span><span class="s">"ngForm"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span>
+          <span class="na">name=</span><span class="s">"username"</span>
+          <span class="err">[(</span><span class="na">ngModel</span><span class="err">)]="</span><span class="na">username</span><span class="err">"</span>
+          <span class="err">#</span><span class="na">usernameRef=</span><span class="s">"ngModel"</span>
+          <span class="na">required</span>
+          <span class="na">minlength=</span><span class="s">"3"</span>
+          <span class="nt">/&gt;</span>
+          <span class="nt">&lt;div</span> <span class="err">*</span><span class="na">ngIf=</span><span class="s">"usernameRef.errors?.required"</span><span class="nt">&gt;</span>this is required<span class="nt">&lt;/div&gt;</span>
+          <span class="nt">&lt;div</span> <span class="err">*</span><span class="na">ngIf=</span><span class="s">"usernameRef.errors?.minlength"</span><span class="nt">&gt;</span>should be at least 3 charactors<span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"password"</span>
+          <span class="na">name=</span><span class="s">"password"</span>
+          <span class="err">[(</span><span class="na">ngModel</span><span class="err">)]="</span><span class="na">password</span><span class="err">"</span>
+          <span class="err">#</span><span class="na">passwordRef=</span><span class="s">"ngModel"</span>
+          <span class="na">required</span>
+          <span class="nt">/&gt;</span>
+          <span class="nt">&lt;div</span> <span class="err">*</span><span class="na">ngIf=</span><span class="s">"passwordRef.errors?.required"</span><span class="nt">&gt;</span>this is required<span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;button</span> <span class="err">(</span><span class="na">click</span><span class="err">)="</span><span class="na">onClick</span><span class="err">()"</span><span class="nt">&gt;</span>Login<span class="nt">&lt;/button&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span><span class="nt">&gt;</span>Submit<span class="nt">&lt;/button&gt;</span>
+      <span class="nt">&lt;/form&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+</code></pre>
+</div>
+
+<p>既然我们增加了一个<code class="highlighter-rouge">formRef</code>，我们就看看<code class="highlighter-rouge">formRef.value</code>有什么吧。
+首先为form增加一个表单提交事件的处理
+<code class="highlighter-rouge">&lt;form #formRef="ngForm" (ngSubmit)="onSubmit(formRef.value)"&gt;</code>。
+然后在组件中增加一个<code class="highlighter-rouge">onSubmit</code>方法</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code>  <span class="nx">onSubmit</span><span class="p">(</span><span class="nx">formValue</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">formValue</span><span class="p">);</span>
+  <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>你会发现<code class="highlighter-rouge">formRef.value</code>中包括了表单所有填写项的值。</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/vngx0hc0nusbyyfzhb1tfjro/c2_s2_form_validation_form_submit.png" alt="表单引用" /></p>
+
+<p>有时候在表单项过多时我们需要对表单项进行分组，HTML中提供了<code class="highlighter-rouge">fieldset</code>标签用来处理。那么我们看看怎么和Angular2结合吧：</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code>    <span class="nt">&lt;div&gt;</span>
+      <span class="nt">&lt;form</span> <span class="err">#</span><span class="na">formRef=</span><span class="s">"ngForm"</span> <span class="err">(</span><span class="na">ngSubmit</span><span class="err">)="</span><span class="na">onSubmit</span><span class="err">(</span><span class="na">formRef</span><span class="err">.</span><span class="na">value</span><span class="err">)"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;fieldset</span> <span class="na">ngModelGroup=</span><span class="s">"login"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span>
+            <span class="na">name=</span><span class="s">"username"</span>
+            <span class="err">[(</span><span class="na">ngModel</span><span class="err">)]="</span><span class="na">username</span><span class="err">"</span>
+            <span class="err">#</span><span class="na">usernameRef=</span><span class="s">"ngModel"</span>
+            <span class="na">required</span>
+            <span class="na">minlength=</span><span class="s">"3"</span>
+            <span class="nt">/&gt;</span>
+            <span class="nt">&lt;div</span> <span class="err">*</span><span class="na">ngIf=</span><span class="s">"usernameRef.errors?.required"</span><span class="nt">&gt;</span>this is required<span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="err">*</span><span class="na">ngIf=</span><span class="s">"usernameRef.errors?.minlength"</span><span class="nt">&gt;</span>should be at least 3 charactors<span class="nt">&lt;/div&gt;</span>
+          <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"password"</span>
+            <span class="na">name=</span><span class="s">"password"</span>
+            <span class="err">[(</span><span class="na">ngModel</span><span class="err">)]="</span><span class="na">password</span><span class="err">"</span>
+            <span class="err">#</span><span class="na">passwordRef=</span><span class="s">"ngModel"</span>
+            <span class="na">required</span>
+            <span class="nt">/&gt;</span>
+            <span class="nt">&lt;div</span> <span class="err">*</span><span class="na">ngIf=</span><span class="s">"passwordRef.errors?.required"</span><span class="nt">&gt;</span>this is required<span class="nt">&lt;/div&gt;</span>
+          <span class="nt">&lt;button</span> <span class="err">(</span><span class="na">click</span><span class="err">)="</span><span class="na">onClick</span><span class="err">()"</span><span class="nt">&gt;</span>Login<span class="nt">&lt;/button&gt;</span>
+          <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span><span class="nt">&gt;</span>Submit<span class="nt">&lt;/button&gt;</span>
+        <span class="nt">&lt;/fieldset&gt;</span>
+      <span class="nt">&lt;/form&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">&lt;fieldset ngModelGroup="login"&gt;</code>意味着我们对于fieldset之内的数据都分组到了<code class="highlighter-rouge">login</code>对象中。</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/vy66ed38x1rr3686bkzbbcfy/c2_s2_form_validation_fieldset.png" alt="表单验证" /></p>
+
+<p>接下来我们改写onSubmit方法用来替代onClick，因为看起来这两个按钮重复了，我们需要去掉onClick。首先去掉template中的<code class="highlighter-rouge">&lt;button (click)="onClick()"&gt;Login&lt;/button&gt;</code>，然后把<code class="highlighter-rouge">&lt;button type="submit"&gt;</code>标签后的<code class="highlighter-rouge">Submit</code>文本替换成<code class="highlighter-rouge">Login</code>，最后改写onSubmit方法。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code>  <span class="nx">onSubmit</span><span class="p">(</span><span class="nx">formValue</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'auth result is: '</span>
+      <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">service</span><span class="p">.</span><span class="nx">loginWithCredentials</span><span class="p">(</span><span class="nx">formValue</span><span class="p">.</span><span class="nx">login</span><span class="p">.</span><span class="nx">username</span><span class="p">,</span> <span class="nx">formValue</span><span class="p">.</span><span class="nx">login</span><span class="p">.</span><span class="nx">password</span><span class="p">));</span>
+  <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>在浏览器中试验一下吧，所有功能正常工作。</p>
+
+<h2 id="验证结果的样式自定义">验证结果的样式自定义</h2>
+
+<p>如果我们在开发工具中查看网页源码，可以看到</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/cvugsjs3o68u9aeb30xvwsr2/c2_s2_form_validation_form_styling.png" alt="验证的样式" /></p>
+
+<p>用户名控件的HTML代码是下面的样子：在验证结果为false时input的样式是<code class="highlighter-rouge">ng-invalid</code>：</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;input</span> 
+    <span class="na">name=</span><span class="s">"username"</span> 
+    <span class="na">class=</span><span class="s">"ng-pristine ng-invalid ng-touched"</span> 
+    <span class="na">required=</span><span class="s">""</span> 
+    <span class="na">type=</span><span class="s">"text"</span> 
+    <span class="na">minlength=</span><span class="s">"3"</span> 
+    <span class="na">ng-reflect-minlength=</span><span class="s">"3"</span> 
+    <span class="na">ng-reflect-name=</span><span class="s">"username"</span><span class="nt">&gt;</span>
+</code></pre>
+</div>
+
+<p>类似的可以实验一下，填入一些字符满足验证要求之后，看input的HTML是下面的样子：在验证结果为true时input的样式是<code class="highlighter-rouge">ng-valid</code>：</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;input</span> 
+    <span class="na">name=</span><span class="s">"username"</span> 
+    <span class="na">class=</span><span class="s">"ng-touched ng-dirty ng-valid"</span> 
+    <span class="na">required=</span><span class="s">""</span> 
+    <span class="na">type=</span><span class="s">"text"</span> 
+    <span class="na">ng-reflect-model=</span><span class="s">"ssdsds"</span> 
+    <span class="na">minlength=</span><span class="s">"3"</span> 
+    <span class="na">ng-reflect-minlength=</span><span class="s">"3"</span> 
+    <span class="na">ng-reflect-name=</span><span class="s">"username"</span><span class="nt">&gt;</span>
+</code></pre>
+</div>
+
+<p>知道这个后，我们可以自定义不同验证状态下的控件样式。在组件的修饰符中把styles数组改写一下：</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code>  <span class="nx">styles</span><span class="err">:</span> <span class="p">[</span><span class="err">`</span>
+    <span class="p">.</span><span class="nx">ng</span><span class="o">-</span><span class="nx">invalid</span><span class="p">{</span>
+      <span class="nl">border</span><span class="p">:</span> <span class="mi">3</span><span class="nx">px</span> <span class="nx">solid</span> <span class="nx">red</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="p">.</span><span class="nx">ng</span><span class="o">-</span><span class="nx">valid</span><span class="p">{</span>
+      <span class="nl">border</span><span class="p">:</span> <span class="mi">3</span><span class="nx">px</span> <span class="nx">solid</span> <span class="nx">green</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="err">`</span><span class="p">]</span>
+</code></pre>
+</div>
+
+<p>保存一下，返回浏览器可以看到，验证不通过时</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/b7kn9wpntcooxbucnddg59xg/c2_s2_form_validation_style_fail.png" alt="验证失败的样式" /></p>
+
+<p>验证通过时是这样的：</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/t85mj8zde5zgjxwymtbvh6mg/c2_s2_form_validation_style_pass.png" alt="验证通过的样式" /></p>
+
+<p>最后说一下，我们看到这样设置完样式后连form和fieldset都一起设置了，这是由于form和fieldset也在样式中应用了<code class="highlighter-rouge">.ng-valid</code>和<code class="highlighter-rouge">.ng-valid</code>，那怎么解决呢？只需要在<code class="highlighter-rouge">.ng-valid</code>加上<code class="highlighter-rouge">input</code>即可，它表明的是应用于input类型控件并且class引用了ng-invalid的元素。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code>  <span class="nx">styles</span><span class="err">:</span> <span class="p">[</span><span class="err">`</span>
+    <span class="nx">input</span><span class="p">.</span><span class="nx">ng</span><span class="o">-</span><span class="nx">invalid</span><span class="p">{</span>
+      <span class="nl">border</span><span class="p">:</span> <span class="mi">3</span><span class="nx">px</span> <span class="nx">solid</span> <span class="nx">red</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nx">input</span><span class="p">.</span><span class="nx">ng</span><span class="o">-</span><span class="nx">valid</span><span class="p">{</span>
+      <span class="nl">border</span><span class="p">:</span> <span class="mi">3</span><span class="nx">px</span> <span class="nx">solid</span> <span class="nx">green</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="err">`</span><span class="p">]</span>
+</code></pre>
+</div>
+
+<p>很多开发人员不太了解CSS，其实CSS还是比较简单的，我建议先从Selector开始看，Selector的概念弄懂后Angular2的开发CSS就会顺畅很多。具体可见<a href="http://www.w3schools.com/cssref/css_selectors.asp">W3School中对于CSS Selctor的参考</a>和https://css-tricks.com/multiple-class-id-selectors/。</p>
+
+<h2 id="组件样式">组件样式</h2>
+
+<p>刚刚我们其实已经使用了组件样式，这里简单介绍一下什么是组件样式。对于我们写的每个Angular组件来说，除了定义HTML模板之外，我们还要定义用于模板的 CSS 样式、指定任意的选择器、规则和媒体查询。</p>
+
+<p>实现方式之一，是在组件的元数据中设置styles属性。styles属性可以接受一个包含 CSS 代码的字符串数组。通常我们只给它一个字符串就行了，就像我们在LoginComponent中做的那样。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
+  <span class="na">selector</span><span class="p">:</span> <span class="s1">'app-login'</span><span class="p">,</span>
+  <span class="na">template</span><span class="p">:</span> <span class="err">`</span>
+    <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="s2">"text"</span>
+        <span class="p">[(</span><span class="nx">ngModel</span><span class="p">)]</span><span class="o">=</span><span class="s2">"username"</span>
+        <span class="o">/&gt;</span>
+      <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="s2">"password"</span>
+        <span class="p">[(</span><span class="nx">ngModel</span><span class="p">)]</span><span class="o">=</span><span class="s2">"password"</span>
+        <span class="o">/&gt;</span>
+      <span class="o">&lt;</span><span class="nx">button</span> <span class="p">(</span><span class="nx">click</span><span class="p">)</span><span class="o">=</span><span class="s2">"onClick()"</span><span class="o">&gt;</span><span class="nx">Login</span><span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="err">`</span><span class="p">,</span>
+  <span class="na">styles</span><span class="p">:</span> <span class="p">[</span><span class="err">`</span>
+    <span class="nx">input</span><span class="p">.</span><span class="nx">ng</span><span class="o">-</span><span class="nx">invalid</span><span class="p">{</span>
+      <span class="na">border</span><span class="p">:</span> <span class="mi">3</span><span class="nx">px</span> <span class="nx">solid</span> <span class="nx">red</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nx">input</span><span class="p">.</span><span class="nx">ng</span><span class="o">-</span><span class="nx">valid</span><span class="p">{</span>
+      <span class="na">border</span><span class="p">:</span> <span class="mi">3</span><span class="nx">px</span> <span class="nx">solid</span> <span class="nx">green</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="err">`</span><span class="p">]</span>
+<span class="p">})</span>
+</code></pre>
+</div>
+
+<p>组件样式在很多方面都不同于传统的全局性样式。我们放在组件样式中的选择器，只会应用在组件自身的模板中。上面这个例子中的input选择器只会对 LoginComponent模板中的<code class="highlighter-rouge">&lt;input&gt;</code>标签生效，而对应用中其它地方的<code class="highlighter-rouge">&lt;input&gt;</code>元素毫无影响。</p>
+
+<p>这种模块化相对于CSS的传统工作方式有如下优点：</p>
+
+<ol>
+  <li>CSS 类名和选择器是控件范围的。属于组件内部的，它不会和应用中其它地方的类名和选择器出现冲突。</li>
+  <li>我们组件的样式不会因为别的地方修改了样式而被意外改变。</li>
+  <li>我们可以让每个组件的CSS代码和它的TypeScript、HTML代码放在一起，这将促成清爽整洁的项目结构。</li>
+  <li>修改或移除组件的CSS代码时，不用搜索整个应用来看它有没有被别处用到。</li>
+</ol>
+
+<p>本节代码： https://github.com/wpcfan/awesome-tutorials/tree/chap02/angular2/ng2-tut</p>
+
+<h2 id="进一步的练习">进一步的练习</h2>
+
+<ul>
+  <li>练习1：如果我们想给username和password输入框设置默认值。比如“请输入用户名”和“请输入密码”，自己动手试一下吧。</li>
+  <li>练习2：如果我们想在输入框聚焦时把默认文字清除掉，该怎么做？</li>
+  <li>练习3：如果我们想把默认文字颜色设置成浅灰色该怎么做？</li>
+</ul>
+
+
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                                <h5 style="display: inline;">Tags:</h5>
+                                
+                                    <button class="btn btn-white btn-xs" type="button">blog</button>
+                                
+                                    <button class="btn btn-white btn-xs" type="button">javascript</button>
+                                
+                                    <button class="btn btn-white btn-xs" type="button">angular2</button>
+                                
+                        </div>
+                        <div class="col-md-6">
+                            <div class="small text-right">
+                                <h5>Stats:</h5>
+                                <div> 
+                                
+                                    <i class="fa fa-comments-o"> </i> <span id = "url::/javascript/2016/12/01/angular-2.0-%E4%BB%8E0%E5%88%B01-%E4%BA%8C.html" class = "cy_cmt_count" ></span> comments
+                                
+                                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <!-- donate -->
+                            
+                                <div class="text-center">
+<button class="btn btn-warning  dim btn-large-dim btn-outline" type="button" data-toggle="modal" data-target="#myModal2"><i class="fa fa-smile-o"></i></button>
+</div>
+<div class="modal inmodal" id="myModal2" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated flipInY">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">Donate Me</h4>
+                <small class="font-bold">If you like this article and want to help me, please give me little fee.</small><br>
+                <small class="font-bold">Thanks for your support!</small>
+            </div>
+            <div class="modal-body text-center">
+                <img src="/static/img/pay/w1.jpeg" width="250">
+                &emsp;
+                <img src="/static/img/pay/w5.jpeg" width="250">
+            </div>
+        </div>
+    </div>
+</div>
+
+                            
+                            <br>
+                            <!-- share -->
+                            
+                                <h2>Share:</h2>
+
+<div class="bshare-custom">
+	<a title="分享到微信" class="bshare-weixin"></a>
+	<a title="分享到QQ空间" class="bshare-qzone"></a>
+	<a title="分享到新浪微博" class="bshare-sinaminiblog"></a>
+	<a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a>
+</div>
+<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=59fd3d05-03d3-43ad-9650-ef46f9487bb8&amp;pophcol=1&amp;lang=zh"></script>
+<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+                            
+                            <br>
+                            <!-- comment -->
+                            
+<h2>Comments:</h2>
+<div id="SOHUCS"></div>
+<script charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/changyan.js" ></script>
+<script type="text/javascript">
+    window.changyan.api.config({
+        appid: 'cysKvjNmC',
+        conf: '14195e6733a549bb2f800fb931489c56'
+    });
+</script>
+
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+	
+	    <script src="/static/js/scroll.js"></script>
+
+<!-- Baidu analytics -->
+
+  <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?fc44e98b7062976fd7982188c4179bb8";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+  </script>
+
+
+<!-- Google analytics -->
+
+
+
+
+
+  <script id="cy_cmt_num" src="http://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cysfY7ULn"></script>
+
+
+
+	
+
+</body>
+</html>

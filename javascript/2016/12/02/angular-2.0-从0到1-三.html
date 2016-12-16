@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html>
+
+	
+	    <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <meta content="Angular 2 教程第三篇，以一个Todo应用来介绍路由和内存WebAPI" name="description">
+  
+  
+    <meta name="keywords" content="web, javascript, angular2">
+  
+  <meta name="author" content="Peng">
+
+  <title>
+    
+        Think Smarter, Code Smarter|Angular 2.x 从0到1（三）
+    
+  </title>
+  <!-- favicon -->
+  <link rel="shortcut icon" href="/static/img/favicon.ico">
+
+  <!-- Third-party CSS -->
+  <link href="/bower_components/normalize-css/normalize.min.css" rel="stylesheet">
+  <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/bower_components/animate.css/animate.min.css" rel="stylesheet">
+  <link href="/bower_components/components-font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/static/font-mfizz/font-mfizz.css" rel="stylesheet">
+  <!-- <link href="/bower_components/toastr/toastr.min.css" rel="stylesheet"> -->
+  <link href="/bower_components/jquery.gritter/css/jquery.gritter.css" rel="stylesheet">
+  <link rel="stylesheet" href="/search/css/cb-search.css">
+
+  <!-- Custom styles for this template -->
+  <link href="/static/css/style.min.css" rel="stylesheet">
+  <link href="/static/css/pygments.css" rel="stylesheet">
+
+  <!-- Scripts -->
+  <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="/search/js/bootstrap3-typeahead.min.js"></script>
+
+  <!-- cb-search -->
+  <script src="/search/js/cb-search.js"></script>
+  <script>
+    $(function(){
+        $("pre").css('display','block');
+    });
+  </script>
+  <!-- Mainly scripts -->
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/bower_components/metisMenu/dist/metisMenu.min.js"></script>
+  <script src="/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+
+  <!-- Peity -->
+  <script src="/bower_components/peity/jquery.peity.min.js"></script>
+
+  <script src="/bower_components/PACE/pace.min.js"></script>
+  <script src="/bower_components/wow/dist/wow.min.js"></script>
+  <!-- Custom and plugin javascript -->
+  <script src="/static/js/inspinia.js"></script>
+
+  <!-- Rickshaw -->
+  <script src="/bower_components/rickshaw/vendor/d3.v3.js"></script>
+  <script src="/bower_components/rickshaw/rickshaw.min.js"></script>
+
+
+  <!-- jPages -->
+  <script src="/static/js/jPages.js"></script>
+  <script src="/static/js/js.js"></script>
+  
+  <script type="text/javascript">
+        $(function(){
+          /* initiate the plugin */
+          $("div.pag-holder").jPages({
+              containerID  : "pag-itemContainer",
+              perPage      : 5,  /* num of items per page */
+              startPage    : 1,
+              startRange   : 1,
+              midRange     : 3,
+              endRange     : 1
+          });
+      });
+  </script>
+  <script src="//cdn.bootcss.com/highlight.js/9.9.0/highlight.min.js"></script>
+<!-- GrowingIO -->
+
+
+</head>
+
+	
+
+
+<body id="page-top" class="landing-page">
+
+	
+	    <div class="search-tool"
+      style="position: fixed; top: 0px ; bottom: 0px; left: 0px; right:  0px; opacity: 0.95; background-color: #111111; z-index: 9999; display: none;">
+    <input type="text" class="form-control search-content" id="search-content" style="position: fixed; top: 60px" placeholder="Search Blog">
+
+    <div style="position: fixed; top: 16px; right: 16px; z-index: 9999;">
+        <img src="/search/img/cb-close.png" id="close-btn"/>
+    </div>
+</div>
+
+<div style="position: fixed; right: 16px; bottom: 20px; z-index: 9999;">
+    <img src="/search/img/cb-search.png"  id="search-btn"  title="Double click Ctrl"/>
+</div>
+
+<div class="navbar-wrapper">
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header page-scroll">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">Think Smarter, Code Smarter</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a class="page-scroll" href="/blog/"></a></li>
+                        
+                            
+                            <li>
+                            
+                            <a class="page-scroll" href="/blog/">Blog</a></li>
+                        
+                            
+                            <li>
+                            
+                            <a class="page-scroll" href="/python/">Python</a></li>
+                        
+                            
+                            <li>
+                            
+                            <a class="page-scroll" href="/javascript/">JavaScript</a></li>
+                        
+                            
+                            <li>
+                            
+                            <a class="page-scroll" href="/html/">HTML</a></li>
+                        
+                            
+                            <li>
+                            
+                            <a class="page-scroll" href="/database/">Database</a></li>
+                        
+                            
+                            <li>
+                            
+                            <a class="page-scroll" href="/mac/">Mac</a></li>
+                        
+                            
+                            <li>
+                            
+                            <a class="page-scroll" href="/android/">Android</a></li>
+                        
+                            
+                            <li>
+                            
+                            <a class="page-scroll" href="/iOS/">iOS</a></li>
+                        
+                            
+                            <li>
+                            
+                            <a class="page-scroll" href="/life/">Life</a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </nav>
+</div>
+<div id="inSlider" class="carousel carousel-fade" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#inSlider" data-slide-to="0" class="active"></li>
+        <li data-target="#inSlider" data-slide-to="1"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <div class="container">
+                <div class="carousel-caption">
+                </div>
+                <div class="carousel-image wow zoomIn">
+                    <!-- <img src="static/img/landing/laptop.png" alt="laptop"/> -->
+                </div>
+            </div>
+            <!-- Set background for slide in css -->
+            <div class="header-back one"></div>
+
+        </div>
+        <div class="item">
+            <div class="container">
+                <div class="carousel-caption blank">
+                </div>
+            </div>
+            <!-- Set background for slide in css -->
+            <div class="header-back two"></div>
+        </div>
+    </div>
+    <a class="left carousel-control" href="#inSlider" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#inSlider" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+	
+
+    <div class="wrapper wrapper-content  animated fadeInRight article">
+    <div class="row">
+        <div class="col-lg-10 col-lg-offset-1">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <div class="pull-right">
+                    	
+                        	<button class="btn btn-white btn-xs" type="button">JavaScript</button>
+                        
+                    </div>
+                    <div class="text-center article-title">
+                    <span class="text-muted"><i class="fa fa-clock-o"></i> 2 Dec 2016</span>
+                        <h1>
+                            Angular 2.x 从0到1（三）
+                        </h1>
+                    </div>
+                    	<ul id="markdown-toc">
+  <li><a href="#第三章建立一个待办事项应用" id="markdown-toc-第三章建立一个待办事项应用">第三章：建立一个待办事项应用</a>    <ul>
+      <li><a href="#建立routing的步骤" id="markdown-toc-建立routing的步骤">建立routing的步骤</a>        <ul>
+          <li><a href="#路由插座" id="markdown-toc-路由插座">路由插座</a></li>
+          <li><a href="#分离路由定义" id="markdown-toc-分离路由定义">分离路由定义</a></li>
+        </ul>
+      </li>
+      <li><a href="#让待办事项变得有意义" id="markdown-toc-让待办事项变得有意义">让待办事项变得有意义</a>        <ul>
+          <li><a href="#隔离业务逻辑" id="markdown-toc-隔离业务逻辑">隔离业务逻辑</a></li>
+        </ul>
+      </li>
+      <li><a href="#建立模拟web服务和异步操作" id="markdown-toc-建立模拟web服务和异步操作">建立模拟web服务和异步操作</a>        <ul>
+          <li><a href="#构建数据模型" id="markdown-toc-构建数据模型">构建数据模型</a></li>
+          <li><a href="#实现内存web服务" id="markdown-toc-实现内存web服务">实现内存web服务</a></li>
+          <li><a href="#内存服务器提供的restful-api" id="markdown-toc-内存服务器提供的restful-api">内存服务器提供的Restful API</a></li>
+          <li><a href="#angular2内建的http方法" id="markdown-toc-angular2内建的http方法">Angular2内建的Http方法</a></li>
+          <li><a href="#页面展现" id="markdown-toc-页面展现">页面展现</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h1 id="第三章建立一个待办事项应用">第三章：建立一个待办事项应用</h1>
+
+<p>这一章我们会建立一个更复杂的待办事项应用，当然我们的登录功能也还保留，这样的话我们的应用就有了多个相对独立的功能模块。以往的web应用根据不同的功能跳转到不同的功能页面。但目前前端的趋势是开发一个SPA（Single Page Application 单页应用），所以其实我们应该把这种跳转叫视图切换：根据不同的路径显示不同的组件。那我们怎么处理这种视图切换呢？幸运的是，我们无需寻找第三方组件，Angular官方内建了自己的路由模块。</p>
+
+<h2 id="建立routing的步骤">建立routing的步骤</h2>
+
+<p>由于我们要以路由形式显示组件，建立路由前，让我们先把<code class="highlighter-rouge">src\app\app.component.html</code>中的<code class="highlighter-rouge">&lt;app-login&gt;&lt;/app-login&gt;</code>删掉。</p>
+
+<ul>
+  <li>第一步：在<code class="highlighter-rouge">src/index.html</code>中指定基准路径，即在<code class="highlighter-rouge">&lt;header&gt;</code>中加入<code class="highlighter-rouge">&lt;base href="/"&gt;</code>，这个是指向你的<code class="highlighter-rouge">index.html</code>所在的路径，浏览器也会根据这个路径下载css，图像和js文件，所以请将这个语句放在header的最顶端。</li>
+  <li>第二步：在<code class="highlighter-rouge">src/app/app.module.ts</code>中引入RouterModule：<code class="highlighter-rouge">import { RouterModule }   from '@angular/router';</code></li>
+  <li>第三步：定义和配置路由数组，我们暂时只为login来定义路由，仍然在<code class="highlighter-rouge">src/app/app.module.ts</code>中的imports中
+    <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">imports</span><span class="err">:</span> <span class="p">[</span>
+  <span class="nx">BrowserModule</span><span class="p">,</span>
+  <span class="nx">FormsModule</span><span class="p">,</span>
+  <span class="nx">HttpModule</span><span class="p">,</span>
+  <span class="nx">RouterModule</span><span class="p">.</span><span class="nx">forRoot</span><span class="p">([</span>
+    <span class="p">{</span>
+      <span class="na">path</span><span class="p">:</span> <span class="s1">'login'</span><span class="p">,</span>
+      <span class="na">component</span><span class="p">:</span> <span class="nx">LoginComponent</span>
+    <span class="p">}</span>
+  <span class="p">])</span>
+<span class="p">],</span>
+</code></pre>
+    </div>
+  </li>
+</ul>
+
+<p>注意到这个形式和其他的比如BrowserModule、FormModule和HTTPModule表现形式好像不太一样，这里解释一下，forRoot其实是一个静态的工厂方法，它返回的仍然是Module，下面的是Angular API文档给出的<code class="highlighter-rouge">RouterModule.forRoot</code>的定义。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">forRoot</span><span class="p">(</span><span class="nx">routes</span><span class="err">:</span> <span class="nx">Routes</span><span class="p">,</span> <span class="nx">config</span><span class="p">?:</span> <span class="nx">ExtraOptions</span><span class="p">)</span> <span class="err">:</span> <span class="nx">ModuleWithProviders</span>
+</code></pre>
+</div>
+
+<p>为什么叫forRoot呢？因为这个路由定义是应用在应用根部的，你可能猜到了还有一个工厂方法叫forChild，后面我们会详细讲。接下来我们看一下forRoot接收的参数，参数看起来是一个数组，每个数组元素是一个<code class="highlighter-rouge"><span class="p">{</span><span class="err">path:</span><span class="w"> </span><span class="err">'xxx',</span><span class="w"> </span><span class="err">component:</span><span class="w"> </span><span class="err">XXXComponent</span><span class="p">}</span></code>这个样子的对象。这个数组就叫做路由定义（RouteConfig）数组，每个数组元素就叫路由定义，目前我们只有一个路由定义。路由定义这个对象包括若干属性：</p>
+
+<ul>
+  <li>path：路由器会用它来匹配路由中指定的路径和浏览器地址栏中的当前路径，如 /login 。</li>
+  <li>component：导航到此路由时，路由器需要创建的组件，如 <code class="highlighter-rouge">LoginComponent</code> 。</li>
+  <li>redirectTo：重定向到某个path，使用场景的话，比如在用户输入不存在的路径时重定向到首页。</li>
+  <li>pathMatch：路径的字符匹配策略</li>
+  <li>children：子路由数组</li>
+</ul>
+
+<h3 id="路由插座">路由插座</h3>
+
+<p>运行一下，我们会发现出错了</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/8jg6bdnos6i7an84mt1zqoov/image_1b0hgdsiu87n1lha1kcahl51ckb9.png" alt="没有路由插座导致的报错" /></p>
+
+<p>这个错误看上去应该是对于’‘没有找到匹配的route，这是由于我们只定义了一个’login’，我们再试试在浏览器地址栏输入：<code class="highlighter-rouge">http://localhost:4200/login</code>。这次仍然出错，但错误信息变成了下面的样子，意思是我们没有找到一个outlet去加载LoginComponent。对的，这就引出了router outlet的概念，如果要显示对应路由的组件，我们需要一个插头（outlet）来装载组件。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>error_handler.js:48EXCEPTION: Uncaught (in promise): Error: Cannot find primary outlet to load 'LoginComponent'
+Error: Cannot find primary outlet to load 'LoginComponent'
+    at getOutlet (http://localhost:4200/main.bundle.js:66161:19)
+    at ActivateRoutes.activateRoutes (http://localhost:4200/main.bundle.js:66088:30)
+    at http://localhost:4200/main.bundle.js:66052:19
+    at Array.forEach (native)
+    at ActivateRoutes.activateChildRoutes (http://localhost:4200/main.bundle.js:66051:29)
+    at ActivateRoutes.activate (http://localhost:4200/main.bundle.js:66046:14)
+    at http://localhost:4200/main.bundle.js:65787:56
+    at SafeSubscriber._next (http://localhost:4200/main.bundle.js:9000:21)
+    at SafeSubscriber.__tryOrSetError (http://localhost:4200/main.bundle.js:42013:16)
+    at SafeSubscriber.next (http://localhost:4200/main.bundle.js:41955:27)
+</code></pre>
+</div>
+
+<p>下面我们把<code class="highlighter-rouge">&lt;router-outlet&gt;&lt;/router-outlet&gt;</code>写在<code class="highlighter-rouge">src\app\app.component.html</code>的末尾，地址栏输入<code class="highlighter-rouge">http://localhost:4200/login</code>重新看看浏览器中的效果吧，我们的应用应该正常显示了。但如果输入<code class="highlighter-rouge">http://localhost:4200</code>时仍然是有异常出现的，我们需要添加一个路由定义来处理。输入<code class="highlighter-rouge">http://localhost:4200</code>时相对于根路径的path应该是空，即’‘。而我们这时希望将用户仍然引导到登录页面，这就是<code class="highlighter-rouge">redirectTo: 'login'</code>的作用。<code class="highlighter-rouge">pathMatch: 'full'</code>的意思是必须完全符合路径的要求，也就是说<code class="highlighter-rouge">http://localhost:4200/1</code>是不会匹配到这个规则的，必须严格是<code class="highlighter-rouge">http://localhost:4200</code>：</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code>    <span class="nx">RouterModule</span><span class="p">.</span><span class="nx">forRoot</span><span class="p">([</span>
+      <span class="p">{</span>
+        <span class="na">path</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span>
+        <span class="na">redirectTo</span><span class="p">:</span> <span class="s1">'login'</span><span class="p">,</span>
+        <span class="na">pathMatch</span><span class="p">:</span> <span class="s1">'full'</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="na">path</span><span class="p">:</span> <span class="s1">'login'</span><span class="p">,</span>
+        <span class="na">component</span><span class="p">:</span> <span class="nx">LoginComponent</span>
+      <span class="p">}</span>
+    <span class="p">])</span>
+</code></pre>
+</div>
+
+<p>注意路径配置的<strong>顺序</strong>是非常重要的，Angular2使用“先匹配优先”的原则，也就是说如果一个路径可以同时匹配几个路径配置的规则的话，以第一个匹配的规则为准。现在打开浏览器试验一下，我们的功能又恢复了正常。</p>
+
+<h3 id="分离路由定义">分离路由定义</h3>
+
+<p>但是现在还有一点小不爽，就是直接在<code class="highlighter-rouge">app.modules.ts</code>中定义路径并不是很好的方式，因为随着路径定义的复杂，这部分最好还是用单独的文件来定义。现在我们新建一个文件<code class="highlighter-rouge">src\app\app.routes.ts</code>，将上面在<code class="highlighter-rouge">app.modules.ts</code>中定义的路径删除并在<code class="highlighter-rouge">app.routes.ts</code>中重新定义。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">Routes</span><span class="p">,</span> <span class="nx">RouterModule</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/router'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">LoginComponent</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'./login/login.component'</span><span class="p">;</span>
+
+<span class="kr">export</span> <span class="kr">const</span> <span class="nx">routes</span><span class="err">:</span> <span class="nx">Routes</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="na">path</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span>
+    <span class="na">redirectTo</span><span class="p">:</span> <span class="s1">'login'</span><span class="p">,</span>
+    <span class="na">pathMatch</span><span class="p">:</span> <span class="s1">'full'</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="na">path</span><span class="p">:</span> <span class="s1">'login'</span><span class="p">,</span>
+    <span class="na">component</span><span class="p">:</span> <span class="nx">LoginComponent</span>
+  <span class="p">}</span>
+<span class="p">];</span>
+
+<span class="kr">export</span> <span class="kr">const</span> <span class="nx">routing</span> <span class="o">=</span> <span class="nx">RouterModule</span><span class="p">.</span><span class="nx">forRoot</span><span class="p">(</span><span class="nx">routes</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p>接下来我们在<code class="highlighter-rouge">app.modules.ts</code>中引入routing，<code class="highlighter-rouge">import { routing } from './app.routes';</code>，然后在imports数组里添加routing，现在我们的<code class="highlighter-rouge">app.modules.ts</code>看起来是下面这个样子。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">BrowserModule</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/platform-browser'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">NgModule</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">FormsModule</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/forms'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">HttpModule</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/http'</span><span class="p">;</span>
+
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">AppComponent</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'./app.component'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">LoginComponent</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'./login/login.component'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">AuthService</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'./core/auth.service'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">routing</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'./app.routes'</span><span class="p">;</span>
+
+<span class="err">@</span><span class="nx">NgModule</span><span class="p">({</span>
+  <span class="na">declarations</span><span class="p">:</span> <span class="p">[</span>
+    <span class="nx">AppComponent</span><span class="p">,</span>
+    <span class="nx">LoginComponent</span>
+  <span class="p">],</span>
+  <span class="na">imports</span><span class="p">:</span> <span class="p">[</span>
+    <span class="nx">BrowserModule</span><span class="p">,</span>
+    <span class="nx">FormsModule</span><span class="p">,</span>
+    <span class="nx">HttpModule</span><span class="p">,</span>
+    <span class="nx">routing</span>
+  <span class="p">],</span>
+  <span class="na">providers</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span><span class="na">provide</span><span class="p">:</span> <span class="s1">'auth'</span><span class="p">,</span>  <span class="na">useClass</span><span class="p">:</span> <span class="nx">AuthService</span><span class="p">}</span>
+    <span class="p">],</span>
+  <span class="na">bootstrap</span><span class="p">:</span> <span class="p">[</span><span class="nx">AppComponent</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">AppModule</span> <span class="p">{</span> <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>现在我们来规划一下根路径<code class="highlighter-rouge">''</code>，对应根路径我们想建立一个todo组件，那么我们使用<code class="highlighter-rouge">ng g c todo</code>来生成组件，然后在<code class="highlighter-rouge">app.routes.ts</code>中加入路由定义，对于根路径我们不再需要重定向到登录了，我们把它改写成重定向到todo。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">export</span> <span class="kr">const</span> <span class="nx">routes</span><span class="err">:</span> <span class="nx">Routes</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="na">path</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span>
+    <span class="na">redirectTo</span><span class="p">:</span> <span class="s1">'todo'</span><span class="p">,</span>
+    <span class="na">pathMatch</span><span class="p">:</span> <span class="s1">'full'</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="na">path</span><span class="p">:</span> <span class="s1">'todo'</span><span class="p">,</span>
+    <span class="na">component</span><span class="p">:</span> <span class="nx">TodoComponent</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="na">path</span><span class="p">:</span> <span class="s1">'login'</span><span class="p">,</span>
+    <span class="na">component</span><span class="p">:</span> <span class="nx">LoginComponent</span>
+  <span class="p">}</span>
+<span class="p">];</span>
+</code></pre>
+</div>
+
+<p>在浏览器中键入<code class="highlighter-rouge">http://localhost:4200</code>可以看到自动跳转到了todo路径，并且我们的todo组件也显示出来了。</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/s7fmz6gcsek66kc5y2729j10/image_1b0k2ba0d1qqraa51mj51hpdpeo9.png" alt="Todo组件" /></p>
+
+<h2 id="让待办事项变得有意义">让待办事项变得有意义</h2>
+
+<p>我们希望的Todo页面应该有一个输入待办事项的输入框和一个显示待办事项状态的列表。那么我们先来定义一下todo的结构，todo应该有一个id用来唯一标识，还应该有一个desc用来描述这个todo是干什么的，再有一个completed用来标识是否已经完成。好了，我们来建立这个todo模型吧，在todo文件夹下新建一个文件<code class="highlighter-rouge">todo.model.ts</code>：</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">export</span> <span class="kr">class</span> <span class="nx">Todo</span> <span class="p">{</span>
+  <span class="nl">id</span><span class="p">:</span> <span class="nx">number</span><span class="p">;</span>
+  <span class="nl">desc</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+  <span class="nl">completed</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>然后我们应该改造一下todo组件了，引入刚刚建立好的todo对象，并且建立一个todos数组作为所有todo的集合，一个desc是当前添加的新的todo的内容。当然我们还需要一个addTodo方法把新的todo加到todos数组中。这里我们暂且写一个漏洞百出的版本。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">Component</span><span class="p">,</span> <span class="nx">OnInit</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Todo</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'./todo.model'</span><span class="p">;</span>
+
+<span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
+  <span class="na">selector</span><span class="p">:</span> <span class="s1">'app-todo'</span><span class="p">,</span>
+  <span class="na">templateUrl</span><span class="p">:</span> <span class="s1">'./todo.component.html'</span><span class="p">,</span>
+  <span class="na">styleUrls</span><span class="p">:</span> <span class="p">[</span><span class="s1">'./todo.component.css'</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">TodoComponent</span> <span class="kr">implements</span> <span class="nx">OnInit</span> <span class="p">{</span>
+  <span class="nl">todos</span><span class="p">:</span> <span class="nx">Todo</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[];</span>
+  <span class="nx">desc</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+  <span class="nx">constructor</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span>
+
+  <span class="nx">ngOnInit</span><span class="p">()</span> <span class="p">{</span>
+  <span class="p">}</span>
+
+  <span class="nx">addTodo</span><span class="p">(){</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">todos</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span><span class="na">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="na">desc</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">desc</span><span class="p">,</span> <span class="na">completed</span><span class="p">:</span> <span class="kc">false</span><span class="p">});</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">desc</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>然后我们改造一下<code class="highlighter-rouge">src\app\todo\todo.component.html</code></p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;div&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="err">[(</span><span class="na">ngModel</span><span class="err">)]="</span><span class="na">desc</span><span class="err">"</span> <span class="err">(</span><span class="na">keyup</span><span class="err">.</span><span class="na">enter</span><span class="err">)="</span><span class="na">addTodo</span><span class="err">()"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ul&gt;</span>
+    <span class="nt">&lt;li</span> <span class="err">*</span><span class="na">ngFor=</span><span class="s">"let todo of todos"</span><span class="nt">&gt;&lt;/li&gt;</span>
+  <span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre>
+</div>
+
+<p>如上面代码所示，我们建立了一个文本输入框，这个输入框的值应该是新todo的描述（desc），我们想在用户按了回车键后进行添加操作（<code class="highlighter-rouge">(keyup.enter)="addTodo()</code>）。由于todos是个数组，所以我们利用一个循环将数组内容显示出来（<code class="highlighter-rouge">&lt;li *ngFor="let todo of todos"&gt;&lt;/li&gt;</code>）。好了让我们欣赏一下成果吧</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/slqndbbtc8v2chwgtfb5cmoc/image_1b0kgg9mnppf16pkip81b2hhbrm.png" alt="有实际意义的Todo" /></p>
+
+<h3 id="隔离业务逻辑">隔离业务逻辑</h3>
+
+<p>如果我们还记得之前提到的业务逻辑应该放在单独的service中，我们还可以做的更好一些。在todo文件夹内建立TodoService：<code class="highlighter-rouge">ng g s todo\todo</code>。上面的例子中所有创建的todo都是id为1的，这显然是一个大bug，我们看一下怎么处理。常见的不重复id创建方式有两种，一个是搞一个自增长数列，另一个是采用随机生成一组不可能重复的字符序列，常见的就是UUID了。</p>
+
+<p>我们来引入一个uuid的包：<code class="highlighter-rouge">npm i --save angular2-uuid</code>，由于这个包中已经含有了用于typescript的定义文件，这里就执行这一个命令就足够了。这里稍微提一下如何引入第三方JS类库，分几种情况：</p>
+
+<ol>
+  <li>如果类库的npm包中含有类型定义文件（查看<code class="highlighter-rouge">node_modules/第三方类库</code> 中是否有 <code class="highlighter-rouge">.d.ts</code> 后缀的文件），那么直接使用 <code class="highlighter-rouge">npm i --save 要引入包的名称</code>即可。</li>
+  <li>如果类库中没有类型定义文件，可先使用  <code class="highlighter-rouge">npm i --save 要引入包的名称</code> 正常安装，然后执行 <code class="highlighter-rouge">npm install @types/要引入包的名称 --save-dev</code>。这个命令是要在 <code class="highlighter-rouge">@types/</code> 搜索安装类型定义文件。</li>
+  <li>当然还是有可能找不到类型定义文件，这时还是可以使用的，但需要手动添加类型定义：首先在 <code class="highlighter-rouge">src/typings.d.ts</code> 中写 <code class="highlighter-rouge">declare module '要引入包的名称';</code>，然后在组件中可以这样引入 <code class="highlighter-rouge">import * as friendName from '要引入包的名称';</code>（<code class="highlighter-rouge">friendName</code>是个友好别名，起一个你认为符合你风格的名称就行），使用时就可以这样调用方法了 <code class="highlighter-rouge">friendName.method();</code></li>
+</ol>
+
+<p>由于此时<code class="highlighter-rouge">Todo</code>对象的<code class="highlighter-rouge">id</code>已经是字符型了，请更改其声明为<code class="highlighter-rouge">id: string;</code>。
+然后修改service成下面的样子：</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">Injectable</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span><span class="nx">Todo</span><span class="p">}</span> <span class="nx">from</span> <span class="s1">'./todo.model'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">UUID</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'angular2-uuid'</span><span class="p">;</span>
+
+<span class="err">@</span><span class="nx">Injectable</span><span class="p">()</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">TodoService</span> <span class="p">{</span>
+
+  <span class="nl">todos</span><span class="p">:</span> <span class="nx">Todo</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[];</span>
+
+  <span class="nx">constructor</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span>
+
+  <span class="nx">addTodo</span><span class="p">(</span><span class="nx">todoItem</span><span class="err">:</span><span class="nx">string</span><span class="p">)</span><span class="err">:</span> <span class="nx">Todo</span><span class="p">[]</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">todo</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">id</span><span class="p">:</span> <span class="nx">UUID</span><span class="p">.</span><span class="nx">UUID</span><span class="p">(),</span>
+      <span class="na">desc</span><span class="p">:</span> <span class="nx">todoItem</span><span class="p">,</span>
+      <span class="na">completed</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">};</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">todos</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">todo</span><span class="p">);</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">todos</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>当然我们还要把组件中的代码改成使用service的</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">Component</span><span class="p">,</span> <span class="nx">OnInit</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Todo</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'./todo.model'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">TodoService</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'./todo.service'</span><span class="p">;</span>
+
+<span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
+  <span class="na">selector</span><span class="p">:</span> <span class="s1">'app-todo'</span><span class="p">,</span>
+  <span class="na">templateUrl</span><span class="p">:</span> <span class="s1">'./todo.component.html'</span><span class="p">,</span>
+  <span class="na">styleUrls</span><span class="p">:</span> <span class="p">[</span><span class="s1">'./todo.component.css'</span><span class="p">],</span>
+  <span class="na">providers</span><span class="p">:[</span><span class="nx">TodoService</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">TodoComponent</span> <span class="kr">implements</span> <span class="nx">OnInit</span> <span class="p">{</span>
+  <span class="nl">todos</span><span class="p">:</span> <span class="nx">Todo</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[];</span>
+  <span class="nx">desc</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+  <span class="nx">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">service</span><span class="err">:</span><span class="nx">TodoService</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+
+  <span class="nx">ngOnInit</span><span class="p">()</span> <span class="p">{</span>
+  <span class="p">}</span>
+
+  <span class="nx">addTodo</span><span class="p">(){</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">todos</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">service</span><span class="p">.</span><span class="nx">addTodo</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">desc</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">desc</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>为了可以清晰的看到我们的成果，我们为chrome浏览器装一个插件，在chrome的地址栏中输入<code class="highlighter-rouge">chrome://extensions</code>，拉到最底部会看到一个“获取更多扩展程序”的链接，点击这个链接然后搜索“Augury”，安装即可。安装好后，按F12调出开发者工具，里面出现一个叫“Augury”的tab。</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/vuqanfa8jbnt6hwqmtdr05bc/image_1b0kr7gpn17td7v1p4s1qucuu313.png" alt="Auguary可以是一个专门针对Angular的Chrome插件" /></p>
+
+<p>我们可以看到id这时候被设置成了一串字符，这个就是UUID了。</p>
+
+<h2 id="建立模拟web服务和异步操作">建立模拟web服务和异步操作</h2>
+
+<p>实际的开发中我们的service是要和服务器api进行交互的，而不是现在这样简单的操作数组。但问题来了，现在没有web服务啊，难道真要自己开发一个吗？答案是可以做个假的，假作真时真亦假。我们在开发过程中经常会遇到这类问题，等待后端同学的进度是很痛苦的。所以Angular内建提供了一个可以快速建立测试用web服务的方法：内存 (in-memory) 服务器。</p>
+
+<h3 id="构建数据模型">构建数据模型</h3>
+
+<p>一般来说，你需要知道自己对服务器的期望是什么，期待它返回什么样的数据，有了这个数据呢，我们就可以自己快速的建立一个内存服务器了。拿这个例子来看，我们可能需要一个这样的对象</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">class</span> <span class="nx">Todo</span> <span class="p">{</span>
+  <span class="nl">id</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+  <span class="nl">desc</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+  <span class="nl">completed</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>对应的JSON应该是这样的</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="p">{</span>
+  <span class="s2">"data"</span><span class="err">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"f823b191-7799-438d-8d78-fcb1e468fc78"</span><span class="p">,</span>
+      <span class="s2">"desc"</span><span class="p">:</span> <span class="s2">"blablabla"</span><span class="p">,</span>
+      <span class="s2">"completed"</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"c316a3bf-b053-71f9-18a3-0073c7ee3b76"</span><span class="p">,</span>
+      <span class="s2">"desc"</span><span class="p">:</span> <span class="s2">"tetssts"</span><span class="p">,</span>
+      <span class="s2">"completed"</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"dd65a7c0-e24f-6c66-862e-0999ea504ca0"</span><span class="p">,</span>
+      <span class="s2">"desc"</span><span class="p">:</span> <span class="s2">"getting up"</span><span class="p">,</span>
+      <span class="s2">"completed"</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>首先我们需要安装<code class="highlighter-rouge">angular-in-memory-web-api</code>，输入<code class="highlighter-rouge">npm install --save angular-in-memory-web-api</code>
+然后在Todo文件夹下创建一个文件<code class="highlighter-rouge">src\app\todo\todo-data.ts</code>：</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">InMemoryDbService</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'angular-in-memory-web-api'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Todo</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'./todo.model'</span><span class="p">;</span>
+
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">InMemoryTodoDbService</span> <span class="kr">implements</span> <span class="nx">InMemoryDbService</span> <span class="p">{</span>
+  <span class="nx">createDb</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">todos</span><span class="err">:</span> <span class="nx">Todo</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span>
+      <span class="p">{</span><span class="na">id</span><span class="p">:</span> <span class="s2">"f823b191-7799-438d-8d78-fcb1e468fc78"</span><span class="p">,</span> <span class="na">desc</span><span class="p">:</span> <span class="s1">'Getting up'</span><span class="p">,</span> <span class="na">completed</span><span class="p">:</span> <span class="kc">true</span><span class="p">},</span>
+      <span class="p">{</span><span class="na">id</span><span class="p">:</span> <span class="s2">"c316a3bf-b053-71f9-18a3-0073c7ee3b76"</span><span class="p">,</span> <span class="na">desc</span><span class="p">:</span> <span class="s1">'Go to school'</span><span class="p">,</span> <span class="na">completed</span><span class="p">:</span> <span class="kc">false</span><span class="p">}</span>
+    <span class="p">];</span>
+    <span class="k">return</span> <span class="p">{</span><span class="nx">todos</span><span class="p">};</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h3 id="实现内存web服务">实现内存web服务</h3>
+
+<p>可以看到，我们创建了一个实现<code class="highlighter-rouge">InMemoryDbService</code>的内存数据库，这个数据库其实也就是把数组传入进去。接下来我们要更改<code class="highlighter-rouge">src\app\app.module.ts</code>，加入类引用和对应的模块声明：</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">InMemoryWebApiModule</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'angular-in-memory-web-api'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">InMemoryTodoDbService</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'./todo/todo-data'</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>然后在imports数组中紧挨着<code class="highlighter-rouge">HttpModule</code>加上<code class="highlighter-rouge">InMemoryWebApiModule.forRoot(InMemoryTodoDbService),</code>。</p>
+
+<p>现在我们在service中试着调用我们的“假web服务”吧</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">Injectable</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Http</span><span class="p">,</span> <span class="nx">Headers</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/http'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">UUID</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'angular2-uuid'</span><span class="p">;</span>
+
+<span class="kr">import</span> <span class="s1">'rxjs/add/operator/toPromise'</span><span class="p">;</span>
+
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Todo</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'./todo.model'</span><span class="p">;</span>
+
+<span class="err">@</span><span class="nx">Injectable</span><span class="p">()</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">TodoService</span> <span class="p">{</span>
+
+  <span class="c1">//定义你的假WebAPI地址，这个定义成什么都无所谓</span>
+  <span class="c1">//只要确保是无法访问的地址就好</span>
+  <span class="kr">private</span> <span class="nx">api_url</span> <span class="o">=</span> <span class="s1">'api/todos'</span><span class="p">;</span>
+  <span class="kr">private</span> <span class="nx">headers</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Headers</span><span class="p">({</span><span class="s1">'Content-Type'</span><span class="p">:</span> <span class="s1">'application/json'</span><span class="p">});</span>
+
+  <span class="nx">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">http</span><span class="err">:</span> <span class="nx">Http</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+
+  <span class="c1">// POST /todos</span>
+  <span class="nx">addTodo</span><span class="p">(</span><span class="nx">desc</span><span class="err">:</span><span class="nx">string</span><span class="p">)</span><span class="err">:</span> <span class="nx">Promise</span><span class="o">&lt;</span><span class="nx">Todo</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">todo</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">id</span><span class="p">:</span> <span class="nx">UUID</span><span class="p">.</span><span class="nx">UUID</span><span class="p">(),</span>
+      <span class="na">desc</span><span class="p">:</span> <span class="nx">desc</span><span class="p">,</span>
+      <span class="na">completed</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">};</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">http</span>
+            <span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">api_url</span><span class="p">,</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">todo</span><span class="p">),</span> <span class="p">{</span><span class="na">headers</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">headers</span><span class="p">})</span>
+            <span class="p">.</span><span class="nx">toPromise</span><span class="p">()</span>
+            <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span> <span class="o">=&gt;</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">().</span><span class="nx">data</span> <span class="nx">as</span> <span class="nx">Todo</span><span class="p">)</span>
+            <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">handleError</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="kr">private</span> <span class="nx">handleError</span><span class="p">(</span><span class="na">error</span><span class="p">:</span> <span class="nx">any</span><span class="p">):</span> <span class="nx">Promise</span><span class="o">&lt;</span><span class="nx">any</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">'An error occurred'</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span> 
+    <span class="k">return</span> <span class="nx">Promise</span><span class="p">.</span><span class="nx">reject</span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span> <span class="o">||</span> <span class="nx">error</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>上面的代码我们看到定义了一个<code class="highlighter-rouge">api_url = 'api/todos'</code>，你可能会问这个是怎么来的？其实这个我们改写成<code class="highlighter-rouge">api_url = 'blablabla/nahnahnah'</code>也无所谓，因为这个内存web服务的机理是拦截web访问，也就是说随便什么地址都可以，内存web服务会拦截这个地址并解析你的请求是否满足RESTful API的要求。</p>
+
+<h3 id="内存服务器提供的restful-api">内存服务器提供的Restful API</h3>
+
+<p>简单来说RESTful API中以“名词”来标识资源，比如todos；以don“动词”标识操作，比如：GET请求用于查询，PUT用于更新，DELETE用于删除，POST用于添加。比如如果url是api/todos，那么</p>
+
+<ul>
+  <li>查询所有待办事项：以GET方法访问<code class="highlighter-rouge">api/todos</code></li>
+  <li>查询单个待办事项：以GET方法访问<code class="highlighter-rouge">api/todos/id</code>，比如id是1，那么访问<code class="highlighter-rouge">api/todos/1</code></li>
+  <li>更新某个待办事项：以PUT方法访问<code class="highlighter-rouge">api/todos/id</code></li>
+  <li>删除某个待办事项：以DELETE方法访问<code class="highlighter-rouge">api/todos/id</code></li>
+  <li>增加一个待办事项：以POST方法访问<code class="highlighter-rouge">api/todos</code></li>
+</ul>
+
+<p>在service的构造函数中我们注入了Http，而angular的Http封装了大部分我们需要的方法，比如例子中的增加一个todo，我们就调用<code class="highlighter-rouge">this.http.post(url, body, options)</code>，上面代码中的<code class="highlighter-rouge">.post(this.api_url, JSON.stringify(todo), {headers: this.headers})</code>含义是：构造一个POST类型的HTTP请求，其访问的url是<code class="highlighter-rouge">this.api_url</code>，request的body是一个JSON（把todo对象转换成JSON），在参数配置中我们配置了request的header。</p>
+
+<p>这个请求发出后返回的是一个Observable（可观察对象），我们把它转换成Promise然后处理res（Http Response）。Promise提供异步的处理，注意到then中的写法，这个和我们传统编程写法不大一样，叫做lamda表达式，相当于是一个匿名函数，<code class="highlighter-rouge">(input parameters) =&gt; expression</code>，<code class="highlighter-rouge">=&gt;</code>前面的是函数的参数，后面的是函数体。</p>
+
+<p>还要一点需要强调的是：在用内存Web服务时，一定要注意<code class="highlighter-rouge">res.json().data</code>中的data属性必须要有，因为内存web服务坑爹的在返回的json中加了data对象，你真正要得到的json是在这个data里面。</p>
+
+<p>下一步我们来更改Todo组件的addTodo方法以便可以使用我们新的异步http方法</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code>  <span class="nx">addTodo</span><span class="p">(){</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">service</span>
+      <span class="p">.</span><span class="nx">addTodo</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">desc</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">todo</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">todos</span> <span class="o">=</span> <span class="p">[...</span><span class="k">this</span><span class="p">.</span><span class="nx">todos</span><span class="p">,</span> <span class="nx">todo</span><span class="p">];</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">desc</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+      <span class="p">});</span>
+  <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>这里面的前半部分应该还是好理解的：<code class="highlighter-rouge">this.service.addTodo(this.desc)</code>是调用service的对应方法而已，但后半部分是什么鬼？<code class="highlighter-rouge">...</code>这个貌似省略号的东东是ES7中计划提供的Object Spread操作符，它的功能是将对象或数组“打散，拍平”。这么说可能还是不懂，举例子吧：</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">];</span>
+<span class="kd">let</span> <span class="nx">arr2</span> <span class="o">=</span> <span class="p">[...</span><span class="nx">arr</span><span class="p">];</span> 
+<span class="nx">arr2</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span> 
+
+<span class="c1">// arr2 变成了 [1,2,3,4]</span>
+<span class="c1">// arr 保存原来的样子</span>
+
+<span class="kd">let</span> <span class="nx">arr3</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">];</span>
+<span class="kd">let</span> <span class="nx">arr4</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">];</span>
+<span class="nx">arr3</span><span class="p">.</span><span class="nx">push</span><span class="p">(...</span><span class="nx">arr4</span><span class="p">);</span>
+<span class="c1">// arr3变成了[0, 1, 2, 3, 4, 5]</span>
+
+<span class="kd">let</span> <span class="nx">arr5</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">];</span>
+<span class="kd">let</span> <span class="nx">arr6</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">...</span><span class="nx">arr5</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+<span class="c1">// arr6 变成了[-1, 0, 1, 2, 3]</span>
+</code></pre>
+</div>
+
+<p>所以呢我们上面的<code class="highlighter-rouge">this.todos = [...this.todos, todo];</code>相当于为todos增加一个新元素，和push很像，那为什么不用push呢？因为这样构造出来的对象是全新的，而不是引用的，在现代编程中一个明显的趋势是不要在过程中改变输入的参数。第二个原因是这样做会带给我们极大的便利性和编程的一致性。下面通过给我们的例子添加几个功能，我们来一起体会一下。</p>
+
+<h3 id="angular2内建的http方法">Angular2内建的Http方法</h3>
+
+<p>首先更改<code class="highlighter-rouge">src\app\todo\todo.service.ts</code>：</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="c1">//src\app\todo\todo.service.ts</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Injectable</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Http</span><span class="p">,</span> <span class="nx">Headers</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/http'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">UUID</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'angular2-uuid'</span><span class="p">;</span>
+
+<span class="kr">import</span> <span class="s1">'rxjs/add/operator/toPromise'</span><span class="p">;</span>
+
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Todo</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'./todo.model'</span><span class="p">;</span>
+
+<span class="err">@</span><span class="nx">Injectable</span><span class="p">()</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">TodoService</span> <span class="p">{</span>
+
+  <span class="kr">private</span> <span class="nx">api_url</span> <span class="o">=</span> <span class="s1">'api/todos'</span><span class="p">;</span>
+  <span class="kr">private</span> <span class="nx">headers</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Headers</span><span class="p">({</span><span class="s1">'Content-Type'</span><span class="p">:</span> <span class="s1">'application/json'</span><span class="p">});</span>
+  <span class="nx">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">http</span><span class="err">:</span> <span class="nx">Http</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+  <span class="c1">// POST /todos</span>
+  <span class="nx">addTodo</span><span class="p">(</span><span class="nx">desc</span><span class="err">:</span><span class="nx">string</span><span class="p">)</span><span class="err">:</span> <span class="nx">Promise</span><span class="o">&lt;</span><span class="nx">Todo</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">todo</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">id</span><span class="p">:</span> <span class="nx">UUID</span><span class="p">.</span><span class="nx">UUID</span><span class="p">(),</span>
+      <span class="na">desc</span><span class="p">:</span> <span class="nx">desc</span><span class="p">,</span>
+      <span class="na">completed</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">};</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">http</span>
+            <span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">api_url</span><span class="p">,</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">todo</span><span class="p">),</span> <span class="p">{</span><span class="na">headers</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">headers</span><span class="p">})</span>
+            <span class="p">.</span><span class="nx">toPromise</span><span class="p">()</span>
+            <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span> <span class="o">=&gt;</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">().</span><span class="nx">data</span> <span class="nx">as</span> <span class="nx">Todo</span><span class="p">)</span>
+            <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">handleError</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="c1">// PUT /todos/:id</span>
+  <span class="nx">toggleTodo</span><span class="p">(</span><span class="na">todo</span><span class="p">:</span> <span class="nx">Todo</span><span class="p">):</span> <span class="nx">Promise</span><span class="o">&lt;</span><span class="nx">Todo</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="err">`</span><span class="nx">$</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">api_url</span><span class="p">}</span><span class="sr">/${todo.id}`</span><span class="err">;
+</span>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">url</span><span class="p">);</span>
+    <span class="kd">let</span> <span class="nx">updatedTodo</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">({},</span> <span class="nx">todo</span><span class="p">,</span> <span class="p">{</span><span class="na">completed</span><span class="p">:</span> <span class="o">!</span><span class="nx">todo</span><span class="p">.</span><span class="nx">completed</span><span class="p">});</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">http</span>
+            <span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">updatedTodo</span><span class="p">),</span> <span class="p">{</span><span class="na">headers</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">headers</span><span class="p">})</span>
+            <span class="p">.</span><span class="nx">toPromise</span><span class="p">()</span>
+            <span class="p">.</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">updatedTodo</span><span class="p">)</span>
+            <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">handleError</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="c1">// DELETE /todos/:id</span>
+  <span class="nx">deleteTodoById</span><span class="p">(</span><span class="na">id</span><span class="p">:</span> <span class="nx">string</span><span class="p">):</span> <span class="nx">Promise</span><span class="o">&lt;</span><span class="k">void</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="err">`</span><span class="nx">$</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">api_url</span><span class="p">}</span><span class="sr">/${id}`</span><span class="err">;
+</span>    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">http</span>
+            <span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="p">{</span><span class="na">headers</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">headers</span><span class="p">})</span>
+            <span class="p">.</span><span class="nx">toPromise</span><span class="p">()</span>
+            <span class="p">.</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="kc">null</span><span class="p">)</span>
+            <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">handleError</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="c1">// GET /todos</span>
+  <span class="nx">getTodos</span><span class="p">():</span> <span class="nx">Promise</span><span class="o">&lt;</span><span class="nx">Todo</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">api_url</span><span class="p">)</span>
+              <span class="p">.</span><span class="nx">toPromise</span><span class="p">()</span>
+              <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span> <span class="o">=&gt;</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">().</span><span class="nx">data</span> <span class="nx">as</span> <span class="nx">Todo</span><span class="p">[])</span>
+              <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">handleError</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="kr">private</span> <span class="nx">handleError</span><span class="p">(</span><span class="na">error</span><span class="p">:</span> <span class="nx">any</span><span class="p">):</span> <span class="nx">Promise</span><span class="o">&lt;</span><span class="nx">any</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">'An error occurred'</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span> 
+    <span class="k">return</span> <span class="nx">Promise</span><span class="p">.</span><span class="nx">reject</span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span> <span class="o">||</span> <span class="nx">error</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>上面的代码中可以看到对应Restful API的各个“动词”，angular 2.x 提供了一系列对应名称的方法，非常简单易用。比如说在<code class="highlighter-rouge">deleteTodoById</code>方法中，我们要访问的API是<code class="highlighter-rouge">/todos/:id</code>，使用的HTTP方法是DELETE，那么我们就使用<code class="highlighter-rouge">this.http.delete(url, {headers: this.headers})</code></p>
+
+<h3 id="页面展现">页面展现</h3>
+
+<p>更新<code class="highlighter-rouge">src\app\todo\todo.component.ts</code>，调用我们新的service中的方法。有趣的是利用Object Spread操作符，我们看到代码风格更一致，逻辑也更容易理解了。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">Component</span><span class="p">,</span> <span class="nx">OnInit</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">TodoService</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'./todo.service'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Todo</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'./todo.model'</span><span class="p">;</span>
+
+<span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
+  <span class="na">selector</span><span class="p">:</span> <span class="s1">'app-todo'</span><span class="p">,</span>
+  <span class="na">templateUrl</span><span class="p">:</span> <span class="s1">'./todo.component.html'</span><span class="p">,</span>
+  <span class="na">styleUrls</span><span class="p">:</span> <span class="p">[</span><span class="s1">'./todo.component.css'</span><span class="p">],</span>
+  <span class="na">providers</span><span class="p">:</span> <span class="p">[</span><span class="nx">TodoService</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">TodoComponent</span> <span class="kr">implements</span> <span class="nx">OnInit</span> <span class="p">{</span>
+  <span class="nl">todos</span> <span class="p">:</span> <span class="nx">Todo</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[];</span>
+  <span class="nl">desc</span><span class="p">:</span> <span class="nx">string</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+
+  <span class="nx">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">service</span><span class="err">:</span> <span class="nx">TodoService</span><span class="p">)</span> <span class="p">{}</span>
+  <span class="nx">ngOnInit</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">getTodos</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="nx">addTodo</span><span class="p">(){</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">service</span>
+      <span class="p">.</span><span class="nx">addTodo</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">desc</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">todo</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">todos</span> <span class="o">=</span> <span class="p">[...</span><span class="k">this</span><span class="p">.</span><span class="nx">todos</span><span class="p">,</span> <span class="nx">todo</span><span class="p">];</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">desc</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+      <span class="p">});</span>
+  <span class="p">}</span>
+  <span class="nx">toggleTodo</span><span class="p">(</span><span class="na">todo</span><span class="p">:</span> <span class="nx">Todo</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">i</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">todos</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">todo</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">service</span>
+      <span class="p">.</span><span class="nx">toggleTodo</span><span class="p">(</span><span class="nx">todo</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">t</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">todos</span> <span class="o">=</span> <span class="p">[</span>
+          <span class="p">...</span><span class="k">this</span><span class="p">.</span><span class="nx">todos</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nx">i</span><span class="p">),</span>
+          <span class="nx">t</span><span class="p">,</span>
+          <span class="p">...</span><span class="k">this</span><span class="p">.</span><span class="nx">todos</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+          <span class="p">];</span>
+      <span class="p">});</span>
+  <span class="p">}</span>
+  <span class="nx">removeTodo</span><span class="p">(</span><span class="na">todo</span><span class="p">:</span> <span class="nx">Todo</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">i</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">todos</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">todo</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">service</span>
+      <span class="p">.</span><span class="nx">deleteTodoById</span><span class="p">(</span><span class="nx">todo</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(()</span><span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">todos</span> <span class="o">=</span> <span class="p">[</span>
+          <span class="p">...</span><span class="k">this</span><span class="p">.</span><span class="nx">todos</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nx">i</span><span class="p">),</span>
+          <span class="p">...</span><span class="k">this</span><span class="p">.</span><span class="nx">todos</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="p">];</span>
+      <span class="p">});</span>
+  <span class="p">}</span>
+  <span class="nx">getTodos</span><span class="p">():</span> <span class="k">void</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">service</span>
+      <span class="p">.</span><span class="nx">getTodos</span><span class="p">()</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">todos</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">todos</span> <span class="o">=</span> <span class="p">[...</span><span class="nx">todos</span><span class="p">]);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>模板文件<code class="highlighter-rouge">src\app\todo\todo.component.html</code>需要把对应的功能体现在页面上，于是我们增加了toggleTodo（切换完成状态）的checkbox和removeTodo（删除待办事项）的button。</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">"todoapp"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"header"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h1&gt;</span>Todos<span class="nt">&lt;/h1&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"new-todo"</span> <span class="na">placeholder=</span><span class="s">"What needs to be done?"</span> <span class="na">autofocus=</span><span class="s">""</span> <span class="err">[(</span><span class="na">ngModel</span><span class="err">)]="</span><span class="na">desc</span><span class="err">"</span> <span class="err">(</span><span class="na">keyup</span><span class="err">.</span><span class="na">enter</span><span class="err">)="</span><span class="na">addTodo</span><span class="err">()"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/header&gt;</span>
+  <span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">"main"</span> <span class="err">*</span><span class="na">ngIf=</span><span class="s">"todos?.length &gt; 0"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"toggle-all"</span> <span class="na">type=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"todo-list"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;li</span> <span class="err">*</span><span class="na">ngFor=</span><span class="s">"let todo of todos"</span> <span class="err">[</span><span class="na">class</span><span class="err">.</span><span class="na">completed</span><span class="err">]="</span><span class="na">todo</span><span class="err">.</span><span class="na">completed</span><span class="err">"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"view"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"toggle"</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="err">(</span><span class="na">click</span><span class="err">)="</span><span class="na">toggleTodo</span><span class="err">(</span><span class="na">todo</span><span class="err">)"</span> <span class="err">[</span><span class="na">checked</span><span class="err">]="</span><span class="na">todo</span><span class="err">.</span><span class="na">completed</span><span class="err">"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;label</span> <span class="err">(</span><span class="na">click</span><span class="err">)="</span><span class="na">toggleTodo</span><span class="err">(</span><span class="na">todo</span><span class="err">)"</span><span class="nt">&gt;&lt;/label&gt;</span>
+          <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"destroy"</span> <span class="err">(</span><span class="na">click</span><span class="err">)="</span><span class="na">removeTodo</span><span class="err">(</span><span class="na">todo</span><span class="err">);</span> <span class="err">$</span><span class="na">event</span><span class="err">.</span><span class="na">stopPropagation</span><span class="err">()"</span><span class="nt">&gt;&lt;/button&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+  <span class="nt">&lt;/section&gt;</span>
+  <span class="nt">&lt;footer</span> <span class="na">class=</span><span class="s">"footer"</span> <span class="err">*</span><span class="na">ngIf=</span><span class="s">"todos?.length &gt; 0"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"todo-count"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;strong&gt;&lt;/strong&gt;</span>  left
+    <span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"filters"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">""</span><span class="nt">&gt;</span>All<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+      <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">""</span><span class="nt">&gt;</span>Active<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+      <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">""</span><span class="nt">&gt;</span>Completed<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"clear-completed"</span><span class="nt">&gt;</span>Clear completed<span class="nt">&lt;/button&gt;</span>
+  <span class="nt">&lt;/footer&gt;</span>
+<span class="err">&lt;</span>/section
+</code></pre>
+</div>
+
+<p>更新组件的css样式: <code class="highlighter-rouge">src\app\todo\todo.component.css</code> 和 <code class="highlighter-rouge">src\styles.css</code>，这两个文件比较大，可以到下面列出的本节代码中去查看。</p>
+
+<p>其中<code class="highlighter-rouge">src\app\todo\todo.component.css</code>有一段代码稍微讲一下，这段代码把复选框原本的方块替换成SVG格式的图片，以便实现比较炫酷的效果。</p>
+
+<div class="language-css highlighter-rouge"><pre class="highlight"><code><span class="o">...</span>
+<span class="nc">.todo-list</span> <span class="nt">li</span> <span class="nc">.toggle</span><span class="nd">:after</span> <span class="p">{</span>
+    <span class="nl">content</span><span class="p">:</span> <span class="sx">url('data:image/svg+xml;utf8,&lt;svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"&gt;&lt;circle cx="50" cy="50" r="50" fill="none" stroke="#ededed" stroke-width="3"/&gt;&lt;/svg&gt;')</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.todo-list</span> <span class="nt">li</span> <span class="nc">.toggle</span><span class="nd">:checked:after</span> <span class="p">{</span>
+    <span class="nl">content</span><span class="p">:</span> <span class="sx">url('data:image/svg+xml;utf8,&lt;svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"&gt;&lt;circle cx="50" cy="50" r="50" fill="none" stroke="#bddad5" stroke-width="3"/&gt;&lt;path fill="#5dc2af" d="M72 25L42 71 27 56l-4 4 20 20 34-52z"/&gt;&lt;/svg&gt;')</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="o">...</span>
+</code></pre>
+</div>
+
+<p>现在我们看看成果吧，现在好看多了</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/m9xxtfp9xebdrsv4tfl1oihj/image_1b11jlmes1nithths9q1n8ijqg9.png" alt="带样式的待办事项" /></p>
+
+<p>本节代码：https://github.com/wpcfan/awesome-tutorials/tree/chap03/angular2/ng2-tut</p>
+
+
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                                <h5 style="display: inline;">Tags:</h5>
+                                
+                                    <button class="btn btn-white btn-xs" type="button">blog</button>
+                                
+                                    <button class="btn btn-white btn-xs" type="button">javascript</button>
+                                
+                                    <button class="btn btn-white btn-xs" type="button">angular2</button>
+                                
+                        </div>
+                        <div class="col-md-6">
+                            <div class="small text-right">
+                                <h5>Stats:</h5>
+                                <div> 
+                                
+                                    <i class="fa fa-comments-o"> </i> <span id = "url::/javascript/2016/12/02/angular-2.0-%E4%BB%8E0%E5%88%B01-%E4%B8%89.html" class = "cy_cmt_count" ></span> comments
+                                
+                                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <!-- donate -->
+                            
+                                <div class="text-center">
+<button class="btn btn-warning  dim btn-large-dim btn-outline" type="button" data-toggle="modal" data-target="#myModal2"><i class="fa fa-smile-o"></i></button>
+</div>
+<div class="modal inmodal" id="myModal2" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated flipInY">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">Donate Me</h4>
+                <small class="font-bold">If you like this article and want to help me, please give me little fee.</small><br>
+                <small class="font-bold">Thanks for your support!</small>
+            </div>
+            <div class="modal-body text-center">
+                <img src="/static/img/pay/w1.jpeg" width="250">
+                &emsp;
+                <img src="/static/img/pay/w5.jpeg" width="250">
+            </div>
+        </div>
+    </div>
+</div>
+
+                            
+                            <br>
+                            <!-- share -->
+                            
+                                <h2>Share:</h2>
+
+<div class="bshare-custom">
+	<a title="分享到微信" class="bshare-weixin"></a>
+	<a title="分享到QQ空间" class="bshare-qzone"></a>
+	<a title="分享到新浪微博" class="bshare-sinaminiblog"></a>
+	<a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a>
+</div>
+<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=59fd3d05-03d3-43ad-9650-ef46f9487bb8&amp;pophcol=1&amp;lang=zh"></script>
+<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+                            
+                            <br>
+                            <!-- comment -->
+                            
+<h2>Comments:</h2>
+<div id="SOHUCS"></div>
+<script charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/changyan.js" ></script>
+<script type="text/javascript">
+    window.changyan.api.config({
+        appid: 'cysKvjNmC',
+        conf: '14195e6733a549bb2f800fb931489c56'
+    });
+</script>
+
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+	
+	    <script src="/static/js/scroll.js"></script>
+
+<!-- Baidu analytics -->
+
+  <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?fc44e98b7062976fd7982188c4179bb8";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+  </script>
+
+
+<!-- Google analytics -->
+
+
+
+
+
+  <script id="cy_cmt_num" src="http://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cysfY7ULn"></script>
+
+
+
+	
+
+</body>
+</html>

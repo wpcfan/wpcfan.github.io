@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html>
+
+	
+	    <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <meta content="Angular 2 教程第五篇，多用户版本的Todo，路由模块化，VSCode的调试环境" name="description">
+  
+  
+    <meta name="keywords" content="web, javascript, angular2">
+  
+  <meta name="author" content="Peng">
+
+  <title>
+    
+        Think Smarter, Code Smarter|Angular 2.x 从0到1（五）
+    
+  </title>
+  <!-- favicon -->
+  <link rel="shortcut icon" href="/static/img/favicon.ico">
+
+  <!-- Third-party CSS -->
+  <link href="/bower_components/normalize-css/normalize.min.css" rel="stylesheet">
+  <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/bower_components/animate.css/animate.min.css" rel="stylesheet">
+  <link href="/bower_components/components-font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/static/font-mfizz/font-mfizz.css" rel="stylesheet">
+  <!-- <link href="/bower_components/toastr/toastr.min.css" rel="stylesheet"> -->
+  <link href="/bower_components/jquery.gritter/css/jquery.gritter.css" rel="stylesheet">
+  <link rel="stylesheet" href="/search/css/cb-search.css">
+
+  <!-- Custom styles for this template -->
+  <link href="/static/css/style.min.css" rel="stylesheet">
+  <link href="/static/css/pygments.css" rel="stylesheet">
+
+  <!-- Scripts -->
+  <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="/search/js/bootstrap3-typeahead.min.js"></script>
+
+  <!-- cb-search -->
+  <script src="/search/js/cb-search.js"></script>
+  <script>
+    $(function(){
+        $("pre").css('display','block');
+    });
+  </script>
+  <!-- Mainly scripts -->
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/bower_components/metisMenu/dist/metisMenu.min.js"></script>
+  <script src="/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+
+  <!-- Peity -->
+  <script src="/bower_components/peity/jquery.peity.min.js"></script>
+
+  <script src="/bower_components/PACE/pace.min.js"></script>
+  <script src="/bower_components/wow/dist/wow.min.js"></script>
+  <!-- Custom and plugin javascript -->
+  <script src="/static/js/inspinia.js"></script>
+
+  <!-- Rickshaw -->
+  <script src="/bower_components/rickshaw/vendor/d3.v3.js"></script>
+  <script src="/bower_components/rickshaw/rickshaw.min.js"></script>
+
+
+  <!-- jPages -->
+  <script src="/static/js/jPages.js"></script>
+  <script src="/static/js/js.js"></script>
+  
+  <script type="text/javascript">
+        $(function(){
+          /* initiate the plugin */
+          $("div.pag-holder").jPages({
+              containerID  : "pag-itemContainer",
+              perPage      : 5,  /* num of items per page */
+              startPage    : 1,
+              startRange   : 1,
+              midRange     : 3,
+              endRange     : 1
+          });
+      });
+  </script>
+  <script src="//cdn.bootcss.com/highlight.js/9.9.0/highlight.min.js"></script>
+<!-- GrowingIO -->
+
+
+</head>
+
+	
+
+
+<body id="page-top" class="landing-page">
+
+	
+	    <div class="search-tool"
+      style="position: fixed; top: 0px ; bottom: 0px; left: 0px; right:  0px; opacity: 0.95; background-color: #111111; z-index: 9999; display: none;">
+    <input type="text" class="form-control search-content" id="search-content" style="position: fixed; top: 60px" placeholder="Search Blog">
+
+    <div style="position: fixed; top: 16px; right: 16px; z-index: 9999;">
+        <img src="/search/img/cb-close.png" id="close-btn"/>
+    </div>
+</div>
+
+<div style="position: fixed; right: 16px; bottom: 20px; z-index: 9999;">
+    <img src="/search/img/cb-search.png"  id="search-btn"  title="Double click Ctrl"/>
+</div>
+
+<div class="navbar-wrapper">
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header page-scroll">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">Think Smarter, Code Smarter</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a class="page-scroll" href="/blog/"></a></li>
+                        
+                            
+                            <li>
+                            
+                            <a class="page-scroll" href="/blog/">Blog</a></li>
+                        
+                            
+                            <li>
+                            
+                            <a class="page-scroll" href="/python/">Python</a></li>
+                        
+                            
+                            <li>
+                            
+                            <a class="page-scroll" href="/javascript/">JavaScript</a></li>
+                        
+                            
+                            <li>
+                            
+                            <a class="page-scroll" href="/html/">HTML</a></li>
+                        
+                            
+                            <li>
+                            
+                            <a class="page-scroll" href="/database/">Database</a></li>
+                        
+                            
+                            <li>
+                            
+                            <a class="page-scroll" href="/mac/">Mac</a></li>
+                        
+                            
+                            <li>
+                            
+                            <a class="page-scroll" href="/android/">Android</a></li>
+                        
+                            
+                            <li>
+                            
+                            <a class="page-scroll" href="/iOS/">iOS</a></li>
+                        
+                            
+                            <li>
+                            
+                            <a class="page-scroll" href="/life/">Life</a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </nav>
+</div>
+<div id="inSlider" class="carousel carousel-fade" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#inSlider" data-slide-to="0" class="active"></li>
+        <li data-target="#inSlider" data-slide-to="1"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <div class="container">
+                <div class="carousel-caption">
+                </div>
+                <div class="carousel-image wow zoomIn">
+                    <!-- <img src="static/img/landing/laptop.png" alt="laptop"/> -->
+                </div>
+            </div>
+            <!-- Set background for slide in css -->
+            <div class="header-back one"></div>
+
+        </div>
+        <div class="item">
+            <div class="container">
+                <div class="carousel-caption blank">
+                </div>
+            </div>
+            <!-- Set background for slide in css -->
+            <div class="header-back two"></div>
+        </div>
+    </div>
+    <a class="left carousel-control" href="#inSlider" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#inSlider" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+	
+
+    <div class="wrapper wrapper-content  animated fadeInRight article">
+    <div class="row">
+        <div class="col-lg-10 col-lg-offset-1">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <div class="pull-right">
+                    	
+                        	<button class="btn btn-white btn-xs" type="button">JavaScript</button>
+                        
+                    </div>
+                    <div class="text-center article-title">
+                    <span class="text-muted"><i class="fa fa-clock-o"></i> 4 Dec 2016</span>
+                        <h1>
+                            Angular 2.x 从0到1（五）
+                        </h1>
+                    </div>
+                    	<ul id="markdown-toc">
+  <li><a href="#第五章多用户版本的待办事项应用" id="markdown-toc-第五章多用户版本的待办事项应用">第五章：多用户版本的待办事项应用</a>    <ul>
+      <li><a href="#数据驱动开发" id="markdown-toc-数据驱动开发">数据驱动开发</a></li>
+      <li><a href="#验证用户账户的流程" id="markdown-toc-验证用户账户的流程">验证用户账户的流程</a>        <ul>
+          <li><a href="#核心模块" id="markdown-toc-核心模块">核心模块</a></li>
+          <li><a href="#路由守卫" id="markdown-toc-路由守卫">路由守卫</a></li>
+        </ul>
+      </li>
+      <li><a href="#路由模块化" id="markdown-toc-路由模块化">路由模块化</a></li>
+      <li><a href="#用vscode进行调试" id="markdown-toc-用vscode进行调试">用VSCode进行调试</a></li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h1 id="第五章多用户版本的待办事项应用">第五章：多用户版本的待办事项应用</h1>
+
+<p>第四章我们完成的Todo的基本功能看起来还不错，但是有个大问题，就是每个用户看到的都是一样的待办事项，我们希望的是每个用户拥有自己的待办事项列表。</p>
+
+<p>我们来分析一下怎么做，如果每个todo对象带一个UserId属性是不是可以解决呢？好像可以，逻辑大概是这样：用户登录后转到/todo，TodoComponent得到当前用户的UserId，然后调用TodoService中的方法，传入当前用户的UserId，TodoService中按UserId去筛选当前用户的Todos。
+但可惜我们目前的LoginComponent还是个实验品，很多功能的缺失，我们是先去做Login呢，还是利用现有的Todo对象先试验一下呢？我个人的习惯是先进行试验。</p>
+
+<h2 id="数据驱动开发">数据驱动开发</h2>
+
+<p>按之前我们分析的，给todo加一个userId属性，我们手动给我们目前的数据加上userId属性吧。更改<code class="highlighter-rouge">todo\todo-data.json</code>为下面的样子：</p>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="p">{</span>
+  <span class="s2">"todos"</span><span class="err">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"bf75769b-4810-64e9-d154-418ff2dbf55e"</span><span class="p">,</span>
+      <span class="s2">"desc"</span><span class="p">:</span> <span class="s2">"getting up"</span><span class="p">,</span>
+      <span class="s2">"completed"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="s2">"userId"</span><span class="p">:</span> <span class="mi">1</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"5894a12f-dae1-5ab0-5761-1371ba4f703e"</span><span class="p">,</span>
+      <span class="s2">"desc"</span><span class="p">:</span> <span class="s2">"have breakfast"</span><span class="p">,</span>
+      <span class="s2">"completed"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="s2">"userId"</span><span class="p">:</span> <span class="mi">2</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"0d2596c4-216b-df3d-1608-633899c5a549"</span><span class="p">,</span>
+      <span class="s2">"desc"</span><span class="p">:</span> <span class="s2">"go to school"</span><span class="p">,</span>
+      <span class="s2">"completed"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="s2">"userId"</span><span class="p">:</span> <span class="mi">1</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"0b1f6614-1def-3346-f070-d6d39c02d6b7"</span><span class="p">,</span>
+      <span class="s2">"desc"</span><span class="p">:</span> <span class="s2">"test"</span><span class="p">,</span>
+      <span class="s2">"completed"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="s2">"userId"</span><span class="p">:</span> <span class="mi">2</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"c1e02a43-6364-5515-1652-a772f0fab7b3"</span><span class="p">,</span>
+      <span class="s2">"desc"</span><span class="p">:</span> <span class="s2">"This is a te"</span><span class="p">,</span>
+      <span class="s2">"completed"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="s2">"userId"</span><span class="p">:</span> <span class="mi">1</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>如果你还没有启动json-server的话让我们启动它: <code class="highlighter-rouge">json-server ./src/app/todo/todo-data.json</code>，然后打开浏览器在地址栏输入<code class="highlighter-rouge">http://localhost:3000/todos/?userId=2</code>你会看到只有<code class="highlighter-rouge">userId=2</code>的json被输出了</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="p">[</span>
+  <span class="p">{</span>
+    <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"5894a12f-dae1-5ab0-5761-1371ba4f703e"</span><span class="p">,</span>
+    <span class="s2">"desc"</span><span class="p">:</span> <span class="s2">"have breakfast"</span><span class="p">,</span>
+    <span class="s2">"completed"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">"userId"</span><span class="p">:</span> <span class="mi">2</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"0b1f6614-1def-3346-f070-d6d39c02d6b7"</span><span class="p">,</span>
+    <span class="s2">"desc"</span><span class="p">:</span> <span class="s2">"test"</span><span class="p">,</span>
+    <span class="s2">"completed"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="s2">"userId"</span><span class="p">:</span> <span class="mi">2</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</code></pre>
+</div>
+
+<p>有兴趣的话可以再试试<code class="highlighter-rouge">http://localhost:3000/todos/?userId=2&amp;completed=false</code>或其他组合查询。现在<code class="highlighter-rouge">todo</code>有了<code class="highlighter-rouge">userId</code>字段，但我们还没有User对象，User的json表现形式看起来应该是这样：</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code>    <span class="p">{</span>
+      <span class="s2">"id"</span><span class="err">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s2">"username"</span><span class="err">:</span> <span class="s2">"wang"</span><span class="p">,</span>
+      <span class="s2">"password"</span><span class="err">:</span> <span class="s2">"1234"</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>当然这个表现形式有很多问题，比如密码是明文的，这些问题我们先不管，但大概样子是类似的。那么现在如果要建立User数据库的话，我们应该新建一个<code class="highlighter-rouge">user-data.json</code></p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="p">{</span>
+  <span class="s2">"users"</span><span class="err">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">"id"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s2">"username"</span><span class="p">:</span> <span class="s2">"wang"</span><span class="p">,</span>
+      <span class="s2">"password"</span><span class="p">:</span> <span class="s2">"1234"</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">"id"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+      <span class="s2">"username"</span><span class="p">:</span> <span class="s2">"peng"</span><span class="p">,</span>
+      <span class="s2">"password"</span><span class="p">:</span> <span class="s2">"5678"</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>但这样做的话感觉单独为其建一个文件有点不值得，我们干脆把user和todo数据都放在一个文件吧，现在删除<code class="highlighter-rouge">./src/app/todo/todo-data.json</code>删除，在<code class="highlighter-rouge">src\app</code>下面新建一个<code class="highlighter-rouge">data.json</code></p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="p">{</span>
+  <span class="s2">"todos"</span><span class="err">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"bf75769b-4810-64e9-d154-418ff2dbf55e"</span><span class="p">,</span>
+      <span class="s2">"desc"</span><span class="p">:</span> <span class="s2">"getting up"</span><span class="p">,</span>
+      <span class="s2">"completed"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="s2">"userId"</span><span class="p">:</span> <span class="mi">1</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"5894a12f-dae1-5ab0-5761-1371ba4f703e"</span><span class="p">,</span>
+      <span class="s2">"desc"</span><span class="p">:</span> <span class="s2">"have breakfast"</span><span class="p">,</span>
+      <span class="s2">"completed"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="s2">"userId"</span><span class="p">:</span> <span class="mi">2</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"0d2596c4-216b-df3d-1608-633899c5a549"</span><span class="p">,</span>
+      <span class="s2">"desc"</span><span class="p">:</span> <span class="s2">"go to school"</span><span class="p">,</span>
+      <span class="s2">"completed"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="s2">"userId"</span><span class="p">:</span> <span class="mi">1</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"0b1f6614-1def-3346-f070-d6d39c02d6b7"</span><span class="p">,</span>
+      <span class="s2">"desc"</span><span class="p">:</span> <span class="s2">"test"</span><span class="p">,</span>
+      <span class="s2">"completed"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="s2">"userId"</span><span class="p">:</span> <span class="mi">2</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"c1e02a43-6364-5515-1652-a772f0fab7b3"</span><span class="p">,</span>
+      <span class="s2">"desc"</span><span class="p">:</span> <span class="s2">"This is a te"</span><span class="p">,</span>
+      <span class="s2">"completed"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="s2">"userId"</span><span class="p">:</span> <span class="mi">1</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="s2">"users"</span><span class="err">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">"id"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s2">"username"</span><span class="p">:</span> <span class="s2">"wang"</span><span class="p">,</span>
+      <span class="s2">"password"</span><span class="p">:</span> <span class="s2">"1234"</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">"id"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+      <span class="s2">"username"</span><span class="p">:</span> <span class="s2">"peng"</span><span class="p">,</span>
+      <span class="s2">"password"</span><span class="p">:</span> <span class="s2">"5678"</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>当然有了数据，我们就得有对应的对象，基于同样的理由，我们把所有的entity对象都放在一个文件：删除<code class="highlighter-rouge">src\app\todo\todo.model.ts</code>，在<code class="highlighter-rouge">src\app</code>下新建一个目录domain，然后在domain下新建一个<code class="highlighter-rouge">entities.ts</code>，请别忘了更新所有的引用。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">export</span> <span class="kr">class</span> <span class="nx">Todo</span> <span class="p">{</span>
+  <span class="nl">id</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+  <span class="nl">desc</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+  <span class="nl">completed</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">;</span>
+  <span class="nl">userId</span><span class="p">:</span> <span class="nx">number</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">User</span> <span class="p">{</span>
+  <span class="nl">id</span><span class="p">:</span> <span class="nx">number</span><span class="p">;</span>
+  <span class="nl">username</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+  <span class="nl">password</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>对于TodoService来说，我们可以做的就是按照刚才的逻辑进行改写：删除和切换状态的逻辑不用改，因为是用Todo的ID标识的。其他的要在访问的URL中加入userId的参数。添加用户的时候要把userId传入：</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code>  <span class="p">...</span>
+  <span class="nx">addTodo</span><span class="p">(</span><span class="nx">desc</span><span class="err">:</span><span class="nx">string</span><span class="p">)</span><span class="err">:</span> <span class="nx">Promise</span><span class="o">&lt;</span><span class="nx">Todo</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">todo</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">id</span><span class="p">:</span> <span class="nx">UUID</span><span class="p">.</span><span class="nx">UUID</span><span class="p">(),</span>
+      <span class="na">desc</span><span class="p">:</span> <span class="nx">desc</span><span class="p">,</span>
+      <span class="na">completed</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="na">userId</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">userId</span>
+    <span class="p">};</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">http</span>
+            <span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">api_url</span><span class="p">,</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">todo</span><span class="p">),</span> <span class="p">{</span><span class="na">headers</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">headers</span><span class="p">})</span>
+            <span class="p">.</span><span class="nx">toPromise</span><span class="p">()</span>
+            <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span> <span class="o">=&gt;</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">()</span> <span class="nx">as</span> <span class="nx">Todo</span><span class="p">)</span>
+            <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">handleError</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="nx">getTodos</span><span class="p">():</span> <span class="nx">Promise</span><span class="o">&lt;</span><span class="nx">Todo</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="err">`</span><span class="nx">$</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">api_url</span><span class="p">}?</span><span class="nx">userId</span><span class="o">=</span><span class="nx">$</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">userId</span><span class="p">}</span><span class="err">`</span><span class="p">)</span>
+              <span class="p">.</span><span class="nx">toPromise</span><span class="p">()</span>
+              <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span> <span class="o">=&gt;</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">()</span> <span class="nx">as</span> <span class="nx">Todo</span><span class="p">[])</span>
+              <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">handleError</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="nx">filterTodos</span><span class="p">(</span><span class="nx">filter</span><span class="p">:</span> <span class="nx">string</span><span class="p">):</span> <span class="nx">Promise</span><span class="o">&lt;</span><span class="nx">Todo</span><span class="p">[]</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="k">switch</span><span class="p">(</span><span class="nx">filter</span><span class="p">){</span>
+      <span class="k">case</span> <span class="s1">'ACTIVE'</span><span class="p">:</span> <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">http</span>
+                        <span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="err">`</span><span class="nx">$</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">api_url</span><span class="p">}?</span><span class="nx">completed</span><span class="o">=</span><span class="kc">false</span><span class="o">&amp;</span><span class="nx">userId</span><span class="o">=</span><span class="nx">$</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">userId</span><span class="p">}</span><span class="err">`</span><span class="p">)</span>
+                        <span class="p">.</span><span class="nx">toPromise</span><span class="p">()</span>
+                        <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span> <span class="o">=&gt;</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">()</span> <span class="nx">as</span> <span class="nx">Todo</span><span class="p">[])</span>
+                        <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">handleError</span><span class="p">);</span>
+      <span class="k">case</span> <span class="s1">'COMPLETED'</span><span class="p">:</span> <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">http</span>
+                          <span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="err">`</span><span class="nx">$</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">api_url</span><span class="p">}?</span><span class="nx">completed</span><span class="o">=</span><span class="kc">true</span><span class="o">&amp;</span><span class="nx">userId</span><span class="o">=</span><span class="nx">$</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">userId</span><span class="p">}</span><span class="err">`</span><span class="p">)</span>
+                          <span class="p">.</span><span class="nx">toPromise</span><span class="p">()</span>
+                          <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span> <span class="o">=&gt;</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">()</span> <span class="nx">as</span> <span class="nx">Todo</span><span class="p">[])</span>
+                          <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">handleError</span><span class="p">);</span>
+      <span class="nl">default</span><span class="p">:</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">getTodos</span><span class="p">();</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="p">...</span>
+</code></pre>
+</div>
+
+<h2 id="验证用户账户的流程">验证用户账户的流程</h2>
+
+<p>我们来梳理一下用户验证的流程</p>
+
+<ol>
+  <li>存储要访问的URL</li>
+  <li>根据本地的已登录标识判断是否此用户已经登录，如果已登录就直接放行</li>
+  <li>如果未登录导航到登录页面 用户填写用户名和密码进行登录</li>
+  <li>系统根据用户名查找用户表中是否存在此用户，如果不存在此用户，返回错误</li>
+  <li>如果存在对比填写的密码和存储的密码是否一致，如果不一致，返回错误</li>
+  <li>如果一致，存储此用户的已登录标识到本地</li>
+  <li>导航到原本要访问的URL即第一步中存储的URL，删掉本地存储的URL</li>
+</ol>
+
+<p>看上去我们需要实现</p>
+
+<ul>
+  <li>UserService：用于通过用户名查找用户并返回用户</li>
+  <li>AuthService：用于认证用户，其中需要利用UserService的方法</li>
+  <li>AuthGuard：路由拦截器，用于拦截到路由后通过AuthService来知道此用户是否有权限访问该路由，根据结果导航到不同路径。
+看到这里，你可能有些疑问，为什么我们不把UserService和AuthService合并呢？这是因为UserService是用于对用户的操作的，不光认证流程需要用到它，我们未来要实现的一系列功能都要用到它，比如注册用户，后台用户管理，以及主页要显示用户名称等。</li>
+</ul>
+
+<h3 id="核心模块">核心模块</h3>
+
+<p>根据这个逻辑流程，我们来组织一下代码。开始之前我们想把认证相关的代码组织在一个新的模块下，我们暂时叫它<code class="highlighter-rouge">core</code>吧。在<code class="highlighter-rouge">src\app</code>下新建一个<code class="highlighter-rouge">core</code>目录，然后在<code class="highlighter-rouge">core</code>下面新建一个<code class="highlighter-rouge">core.module.ts</code></p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">ModuleWithProviders</span><span class="p">,</span> <span class="nx">NgModule</span><span class="p">,</span> <span class="nx">Optional</span><span class="p">,</span> <span class="nx">SkipSelf</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">CommonModule</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/common'</span><span class="p">;</span>
+<span class="err">@</span><span class="nx">NgModule</span><span class="p">({</span>
+  <span class="na">imports</span><span class="p">:</span> <span class="p">[</span>
+    <span class="nx">CommonModule</span>
+  <span class="p">]</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">CoreModule</span> <span class="p">{</span>
+  <span class="nx">constructor</span> <span class="p">(</span><span class="err">@</span><span class="nx">Optional</span><span class="p">()</span> <span class="err">@</span><span class="nx">SkipSelf</span><span class="p">()</span> <span class="nx">parentModule</span><span class="err">:</span> <span class="nx">CoreModule</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">parentModule</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span>
+        <span class="s1">'CoreModule is already loaded. Import it in the AppModule only'</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>注意到这个模块和其他模块不太一样，原因是我们希望<strong>只在应用启动时导入它一次，而不会在其它地方导入它。</strong>在模块的构造函数中我们会要求Angular把CoreModule注入自身，这看起来像一个危险的循环注入。不过，<code class="highlighter-rouge">@SkipSelf</code>装饰器意味着<em>在当前注入器的所有祖先注入器中寻找CoreModule。</em>如果该构造函数在我们所期望的AppModule中运行，就没有任何祖先注入器能够提供CoreModule的实例，于是注入器会放弃查找。默认情况下，当注入器找不到想找的提供商时，会抛出一个错误。但<code class="highlighter-rouge">@Optional</code>装饰器表示找不到该服务也无所谓。 于是注入器会返回null，parentModule参数也就被赋成了空值，而构造函数没有任何异常。</p>
+
+<p>那么我们在什么时候会需要这样一个模块？比如在这个模块中我们可能会要提供用户服务（UserService），这样的服务系统各个地方都需要，但我们不希望它被创建多次，希望它是一个单例。再比如某些只应用于<code class="highlighter-rouge">AppComponent</code>模板的一次性组件，没有必要共享它们，然而如果把它们留在根目录，还是显得太乱了。我们可以通过这种形式隐藏它们的实现细节。然后通过根模块AppModule导入CoreModule来获取其能力。</p>
+
+<h3 id="路由守卫">路由守卫</h3>
+
+<p>首先我们来看看Angular内建的路由守卫机制，在实际工作中我们常常会碰到下列需求：</p>
+
+<ul>
+  <li>该用户可能无权导航到目标组件。 导航前需要用户先登录（认证）。</li>
+  <li>在显示目标组件前，我们可能得先获取某些数据。</li>
+  <li>在离开组件前，我们可能要先保存修改。</li>
+  <li>我们可能要询问用户：你是否要放弃本次更改，而不用保存它们？</li>
+</ul>
+
+<p>我们可以往路由配置中添加守卫，来处理这些场景。守卫返回<code class="highlighter-rouge">true</code>，导航过程会继续；返回<code class="highlighter-rouge">false</code>，导航过程会终止，且用户会留在原地（守卫还可以告诉路由器导航到别处，这样也取消当前的导航）。</p>
+
+<p>路由器支持多种守卫：</p>
+
+<ul>
+  <li>用CanActivate来处理导航到某路由的情况。</li>
+  <li>用CanActivateChild处理导航到子路由的情况。</li>
+  <li>用CanDeactivate来处理从当前路由离开的情况。</li>
+  <li>用Resolve在路由激活之前获取路由数据。</li>
+  <li>用CanLoad来处理异步导航到某特性模块的情况。</li>
+</ul>
+
+<p>在分层路由的每个级别上，我们都可以设置多个守卫。路由器会先按照从最深的子路由<strong>由下往上</strong>检查的顺序来检查<code class="highlighter-rouge">CanDeactivate</code>守护条件。然后它会按照<strong>从上到下</strong>的顺序检查<code class="highlighter-rouge">CanActivate</code>守卫。如果任何守卫返回<code class="highlighter-rouge">false</code>，其它尚未完成的守卫会被取消，这样整个导航就被取消了。</p>
+
+<p>本例中我们希望用户未登录前不能访问todo，那么需要使用<code class="highlighter-rouge">CanActivate</code></p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">AuthGuardService</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'../core/auth-guard.service'</span><span class="p">;</span>
+<span class="kr">const</span> <span class="nx">routes</span><span class="err">:</span> <span class="nx">Routes</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="na">path</span><span class="p">:</span> <span class="s1">'todo/:filter'</span><span class="p">,</span>
+    <span class="na">canActivate</span><span class="p">:</span> <span class="p">[</span><span class="nx">AuthGuardService</span><span class="p">],</span>
+    <span class="na">component</span><span class="p">:</span> <span class="nx">TodoComponent</span>
+  <span class="p">}</span>
+<span class="p">];</span>
+</code></pre>
+</div>
+
+<p>当然光这么写是没有用的，下面我们来建立一个<code class="highlighter-rouge">AuthGuardService</code>，命令行中键入<code class="highlighter-rouge">ng g s core/auth-guard</code>（angular-cli对于Camel写法的文件名是采用<code class="highlighter-rouge">-</code>来分隔每个大写的词）。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">Injectable</span><span class="p">,</span> <span class="nx">Inject</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span>
+  <span class="nx">CanActivate</span><span class="p">,</span>
+  <span class="nx">Router</span><span class="p">,</span>
+  <span class="nx">ActivatedRouteSnapshot</span><span class="p">,</span>
+  <span class="nx">RouterStateSnapshot</span> <span class="p">}</span>    <span class="nx">from</span> <span class="s1">'@angular/router'</span><span class="p">;</span>
+
+<span class="err">@</span><span class="nx">Injectable</span><span class="p">()</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">AuthGuardService</span> <span class="kr">implements</span> <span class="nx">CanActivate</span> <span class="p">{</span>
+
+  <span class="nx">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">router</span><span class="err">:</span> <span class="nx">Router</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+
+  <span class="nx">canActivate</span><span class="p">(</span><span class="nx">route</span><span class="err">:</span> <span class="nx">ActivatedRouteSnapshot</span><span class="p">,</span> <span class="nx">state</span><span class="err">:</span> <span class="nx">RouterStateSnapshot</span><span class="p">)</span><span class="err">:</span> <span class="kr">boolean</span> <span class="p">{</span>
+    <span class="c1">//取得用户访问的URL</span>
+    <span class="kd">let</span> <span class="nx">url</span><span class="err">:</span> <span class="nx">string</span> <span class="o">=</span> <span class="nx">state</span><span class="p">.</span><span class="nx">url</span><span class="p">;</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">checkLogin</span><span class="p">(</span><span class="nx">url</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="nx">checkLogin</span><span class="p">(</span><span class="nx">url</span><span class="err">:</span> <span class="nx">string</span><span class="p">)</span><span class="err">:</span> <span class="kr">boolean</span> <span class="p">{</span>
+    <span class="c1">//如果用户已经登录就放行</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">getItem</span><span class="p">(</span><span class="s1">'userId'</span><span class="p">)</span> <span class="o">!==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">true</span><span class="p">;</span> <span class="p">}</span>
+    <span class="c1">//否则，存储要访问的URl到本地</span>
+    <span class="nx">localStorage</span><span class="p">.</span><span class="nx">setItem</span><span class="p">(</span><span class="s1">'redirectUrl'</span><span class="p">,</span> <span class="nx">url</span><span class="p">);</span>
+    <span class="c1">//然后导航到登陆页面</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">navigate</span><span class="p">([</span><span class="s1">'/login'</span><span class="p">]);</span>
+    <span class="c1">//返回false，取消导航</span>
+    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>观察上面代码，我们发现本地存储的userId的存在与否决定了用户是否已登录的状态，这当然是一个漏洞百出的实现，但我们暂且不去管它。现在我们要在登录时把这个状态值写进去。我们新建一个登录鉴权的<code class="highlighter-rouge">AuthService</code>：<code class="highlighter-rouge">ng g s core/auth</code>：</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">Injectable</span><span class="p">,</span> <span class="nx">Inject</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Http</span><span class="p">,</span> <span class="nx">Headers</span><span class="p">,</span> <span class="nx">Response</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/http'</span><span class="p">;</span>
+
+<span class="kr">import</span> <span class="s1">'rxjs/add/operator/toPromise'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Auth</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'../domain/entities'</span><span class="p">;</span>
+
+<span class="err">@</span><span class="nx">Injectable</span><span class="p">()</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">AuthService</span> <span class="p">{</span>
+
+  <span class="nx">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">http</span><span class="err">:</span> <span class="nx">Http</span><span class="p">,</span> <span class="err">@</span><span class="nx">Inject</span><span class="p">(</span><span class="s1">'user'</span><span class="p">)</span> <span class="kr">private</span> <span class="nx">userService</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+
+  <span class="nx">loginWithCredentials</span><span class="p">(</span><span class="nx">username</span><span class="err">:</span> <span class="nx">string</span><span class="p">,</span> <span class="nx">password</span><span class="err">:</span> <span class="nx">string</span><span class="p">)</span><span class="err">:</span> <span class="nx">Promise</span><span class="o">&lt;</span><span class="nx">Auth</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">userService</span>
+      <span class="p">.</span><span class="nx">findUser</span><span class="p">(</span><span class="nx">username</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">user</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">auth</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Auth</span><span class="p">();</span>
+        <span class="nx">localStorage</span><span class="p">.</span><span class="nx">removeItem</span><span class="p">(</span><span class="s1">'userId'</span><span class="p">);</span>
+        <span class="kd">let</span> <span class="nx">redirectUrl</span> <span class="o">=</span> <span class="p">(</span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">getItem</span><span class="p">(</span><span class="s1">'redirectUrl'</span><span class="p">)</span> <span class="o">===</span> <span class="kc">null</span><span class="p">)?</span>
+          <span class="s1">'/'</span><span class="p">:</span> <span class="nx">localStorage</span><span class="p">.</span><span class="nx">getItem</span><span class="p">(</span><span class="s1">'redirectUrl'</span><span class="p">);</span>
+        <span class="nx">auth</span><span class="p">.</span><span class="nx">redirectUrl</span> <span class="o">=</span> <span class="nx">redirectUrl</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="kc">null</span> <span class="o">===</span> <span class="nx">user</span><span class="p">){</span>
+          <span class="nx">auth</span><span class="p">.</span><span class="nx">hasError</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+          <span class="nx">auth</span><span class="p">.</span><span class="nx">errMsg</span> <span class="o">=</span> <span class="s1">'user not found'</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">password</span> <span class="o">===</span> <span class="nx">user</span><span class="p">.</span><span class="nx">password</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">auth</span><span class="p">.</span><span class="nx">user</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">({},</span> <span class="nx">user</span><span class="p">);</span>
+          <span class="nx">auth</span><span class="p">.</span><span class="nx">hasError</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+          <span class="nx">localStorage</span><span class="p">.</span><span class="nx">setItem</span><span class="p">(</span><span class="s1">'userId'</span><span class="p">,</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+          <span class="nx">auth</span><span class="p">.</span><span class="nx">hasError</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+          <span class="nx">auth</span><span class="p">.</span><span class="nx">errMsg</span> <span class="o">=</span> <span class="s1">'password not match'</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="nx">auth</span><span class="p">;</span>
+      <span class="p">})</span>
+      <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">handleError</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="kr">private</span> <span class="nx">handleError</span><span class="p">(</span><span class="na">error</span><span class="p">:</span> <span class="nx">any</span><span class="p">):</span> <span class="nx">Promise</span><span class="o">&lt;</span><span class="nx">any</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">'An error occurred'</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span> <span class="c1">// for demo purposes only</span>
+    <span class="k">return</span> <span class="nx">Promise</span><span class="p">.</span><span class="nx">reject</span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span> <span class="o">||</span> <span class="nx">error</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>注意到我们返回了一个Auth对象，这是因为我们要知道几件事：</p>
+
+<ul>
+  <li>用户最初要导航的页面URL</li>
+  <li>用户对象</li>
+  <li>如果发生错误的话，是什么错误，我们需要反馈给用户</li>
+</ul>
+
+<p>这个Auth对象同样在<code class="highlighter-rouge">src\app\domain\entities.ts</code>中声明</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">export</span> <span class="kr">class</span> <span class="nx">Auth</span> <span class="p">{</span>
+  <span class="nl">user</span><span class="p">:</span> <span class="nx">User</span><span class="p">;</span>
+  <span class="nl">hasError</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">;</span>
+  <span class="nl">errMsg</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+  <span class="nl">redirectUrl</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>当然我们还得实现UserService：<code class="highlighter-rouge">ng g s user</code>：</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">Injectable</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Http</span><span class="p">,</span> <span class="nx">Headers</span><span class="p">,</span> <span class="nx">Response</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/http'</span><span class="p">;</span>
+
+<span class="kr">import</span> <span class="s1">'rxjs/add/operator/toPromise'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">User</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'../domain/entities'</span><span class="p">;</span>
+
+<span class="err">@</span><span class="nx">Injectable</span><span class="p">()</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">UserService</span> <span class="p">{</span>
+
+  <span class="kr">private</span> <span class="nx">api_url</span> <span class="o">=</span> <span class="s1">'http://localhost:3000/users'</span><span class="p">;</span>
+
+  <span class="nx">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">http</span><span class="err">:</span> <span class="nx">Http</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+
+  <span class="nx">findUser</span><span class="p">(</span><span class="nx">username</span><span class="err">:</span> <span class="nx">string</span><span class="p">)</span><span class="err">:</span> <span class="nx">Promise</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="err">`</span><span class="nx">$</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">api_url</span><span class="p">}</span><span class="sr">/</span><span class="se">?</span><span class="sr">username=${username}`</span><span class="err">;
+</span>    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
+              <span class="p">.</span><span class="nx">toPromise</span><span class="p">()</span>
+              <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="kd">let</span> <span class="nx">users</span> <span class="o">=</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">()</span> <span class="nx">as</span> <span class="nx">User</span><span class="p">[];</span>
+                <span class="k">return</span> <span class="p">(</span><span class="nx">users</span><span class="p">.</span><span class="nx">length</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)?</span><span class="nx">users</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span><span class="kc">null</span><span class="p">;</span>
+              <span class="p">})</span>
+              <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">handleError</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="kr">private</span> <span class="nx">handleError</span><span class="p">(</span><span class="na">error</span><span class="p">:</span> <span class="nx">any</span><span class="p">):</span> <span class="nx">Promise</span><span class="o">&lt;</span><span class="nx">any</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">'An error occurred'</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span> <span class="c1">// for demo purposes only</span>
+    <span class="k">return</span> <span class="nx">Promise</span><span class="p">.</span><span class="nx">reject</span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span> <span class="o">||</span> <span class="nx">error</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>这段代码比较简单，就不细讲了。下面我们改造一下<code class="highlighter-rouge">src\app\login\login.component.html</code>，在原来用户名的验证信息下加入，用于显示用户不存在或者密码不对的情况</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code>        <span class="nt">&lt;div</span> <span class="err">*</span><span class="na">ngIf=</span><span class="s">"usernameRef.errors?.required"</span><span class="nt">&gt;</span>this is required<span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="err">*</span><span class="na">ngIf=</span><span class="s">"usernameRef.errors?.minlength"</span><span class="nt">&gt;</span>should be at least 3 charactors<span class="nt">&lt;/div&gt;</span>
+        <span class="c">&lt;!--add the code below--&gt;</span>
+        <span class="nt">&lt;div</span> <span class="err">*</span><span class="na">ngIf=</span><span class="s">"auth?.hasError"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre>
+</div>
+
+<p>接下来我们还得改造<code class="highlighter-rouge">src\app\login\login.component.ts</code>：</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">Component</span><span class="p">,</span> <span class="nx">OnInit</span><span class="p">,</span> <span class="nx">Inject</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Router</span><span class="p">,</span> <span class="nx">ActivatedRoute</span><span class="p">,</span> <span class="nx">Params</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/router'</span><span class="p">;</span>
+
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Auth</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'../domain/entities'</span><span class="p">;</span>
+
+<span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
+  <span class="na">selector</span><span class="p">:</span> <span class="s1">'app-login'</span><span class="p">,</span>
+  <span class="na">templateUrl</span><span class="p">:</span> <span class="s1">'./login.component.html'</span><span class="p">,</span>
+  <span class="na">styleUrls</span><span class="p">:</span> <span class="p">[</span><span class="s1">'./login.component.css'</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">LoginComponent</span> <span class="kr">implements</span> <span class="nx">OnInit</span> <span class="p">{</span>
+
+  <span class="nx">username</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+  <span class="nx">password</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+  <span class="nl">auth</span><span class="p">:</span> <span class="nx">Auth</span><span class="p">;</span>
+
+  <span class="nx">constructor</span><span class="p">(</span><span class="err">@</span><span class="nx">Inject</span><span class="p">(</span><span class="s1">'auth'</span><span class="p">)</span> <span class="kr">private</span> <span class="nx">service</span><span class="p">,</span> <span class="kr">private</span> <span class="nx">router</span><span class="err">:</span> <span class="nx">Router</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+
+  <span class="nx">ngOnInit</span><span class="p">()</span> <span class="p">{</span>
+  <span class="p">}</span>
+
+  <span class="nx">onSubmit</span><span class="p">(</span><span class="nx">formValue</span><span class="p">){</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">service</span>
+      <span class="p">.</span><span class="nx">loginWithCredentials</span><span class="p">(</span><span class="nx">formValue</span><span class="p">.</span><span class="nx">login</span><span class="p">.</span><span class="nx">username</span><span class="p">,</span> <span class="nx">formValue</span><span class="p">.</span><span class="nx">login</span><span class="p">.</span><span class="nx">password</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">auth</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">redirectUrl</span> <span class="o">=</span> <span class="p">(</span><span class="nx">auth</span><span class="p">.</span><span class="nx">redirectUrl</span> <span class="o">===</span> <span class="kc">null</span><span class="p">)?</span> <span class="s1">'/'</span><span class="p">:</span> <span class="nx">auth</span><span class="p">.</span><span class="nx">redirectUrl</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">auth</span><span class="p">.</span><span class="nx">hasError</span><span class="p">){</span>
+          <span class="k">this</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">navigate</span><span class="p">([</span><span class="nx">redirectUrl</span><span class="p">]);</span>
+          <span class="nx">localStorage</span><span class="p">.</span><span class="nx">removeItem</span><span class="p">(</span><span class="s1">'redirectUrl'</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+          <span class="k">this</span><span class="p">.</span><span class="nx">auth</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">({},</span> <span class="nx">auth</span><span class="p">);</span>
+        <span class="p">}</span>
+      <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>然后我们别忘了在core模块中声明我们的服务<code class="highlighter-rouge">src\app\core\core.module.ts</code>：</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">ModuleWithProviders</span><span class="p">,</span> <span class="nx">NgModule</span><span class="p">,</span> <span class="nx">Optional</span><span class="p">,</span> <span class="nx">SkipSelf</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">CommonModule</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/common'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">AuthService</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'./auth.service'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">UserService</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'./user.service'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">AuthGuardService</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'./auth-guard.service'</span><span class="p">;</span>
+<span class="err">@</span><span class="nx">NgModule</span><span class="p">({</span>
+  <span class="na">imports</span><span class="p">:</span> <span class="p">[</span>
+    <span class="nx">CommonModule</span>
+  <span class="p">],</span>
+  <span class="na">providers</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span> <span class="na">provide</span><span class="p">:</span> <span class="s1">'auth'</span><span class="p">,</span> <span class="na">useClass</span><span class="p">:</span> <span class="nx">AuthService</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="na">provide</span><span class="p">:</span> <span class="s1">'user'</span><span class="p">,</span> <span class="na">useClass</span><span class="p">:</span> <span class="nx">UserService</span> <span class="p">},</span>
+    <span class="nx">AuthGuardService</span>
+    <span class="p">]</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">CoreModule</span> <span class="p">{</span>
+  <span class="nx">constructor</span> <span class="p">(</span><span class="err">@</span><span class="nx">Optional</span><span class="p">()</span> <span class="err">@</span><span class="nx">SkipSelf</span><span class="p">()</span> <span class="nx">parentModule</span><span class="err">:</span> <span class="nx">CoreModule</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">parentModule</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span>
+        <span class="s1">'CoreModule is already loaded. Import it in the AppModule only'</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>最后我们得改写一下<code class="highlighter-rouge">TodoService</code>，因为我们访问的URL变了，要传递的数据也有些变化</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="c1">//todo.service.ts代码片段</span>
+  <span class="c1">// POST /todos</span>
+  <span class="nx">addTodo</span><span class="p">(</span><span class="nx">desc</span><span class="err">:</span><span class="nx">string</span><span class="p">)</span><span class="err">:</span> <span class="nx">Promise</span><span class="o">&lt;</span><span class="nx">Todo</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="c1">//“+”是一个简易方法可以把string转成number</span>
+    <span class="kr">const</span> <span class="na">userId</span><span class="p">:</span><span class="nx">number</span> <span class="o">=</span> <span class="o">+</span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">getItem</span><span class="p">(</span><span class="s1">'userId'</span><span class="p">);</span>
+    <span class="kd">let</span> <span class="nx">todo</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">id</span><span class="p">:</span> <span class="nx">UUID</span><span class="p">.</span><span class="nx">UUID</span><span class="p">(),</span>
+      <span class="na">desc</span><span class="p">:</span> <span class="nx">desc</span><span class="p">,</span>
+      <span class="na">completed</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="nx">userId</span>
+    <span class="p">};</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">http</span>
+            <span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">api_url</span><span class="p">,</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">todo</span><span class="p">),</span> <span class="p">{</span><span class="na">headers</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">headers</span><span class="p">})</span>
+            <span class="p">.</span><span class="nx">toPromise</span><span class="p">()</span>
+            <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span> <span class="o">=&gt;</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">()</span> <span class="nx">as</span> <span class="nx">Todo</span><span class="p">)</span>
+            <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">handleError</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="c1">// GET /todos</span>
+  <span class="nx">getTodos</span><span class="p">():</span> <span class="nx">Promise</span><span class="o">&lt;</span><span class="nx">Todo</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">userId</span> <span class="o">=</span> <span class="o">+</span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">getItem</span><span class="p">(</span><span class="s1">'userId'</span><span class="p">);</span>
+    <span class="kr">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="err">`</span><span class="nx">$</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">api_url</span><span class="p">}</span><span class="sr">/</span><span class="se">?</span><span class="sr">userId=${userId}`</span><span class="err">;
+</span>    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
+              <span class="p">.</span><span class="nx">toPromise</span><span class="p">()</span>
+              <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span> <span class="o">=&gt;</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">()</span> <span class="nx">as</span> <span class="nx">Todo</span><span class="p">[])</span>
+              <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">handleError</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="c1">// GET /todos?completed=true/false</span>
+  <span class="nx">filterTodos</span><span class="p">(</span><span class="na">filter</span><span class="p">:</span> <span class="nx">string</span><span class="p">):</span> <span class="nx">Promise</span><span class="o">&lt;</span><span class="nx">Todo</span><span class="p">[]</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="na">userId</span><span class="p">:</span><span class="nx">number</span> <span class="o">=</span> <span class="o">+</span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">getItem</span><span class="p">(</span><span class="s1">'userId'</span><span class="p">);</span>
+    <span class="kr">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="err">`</span><span class="nx">$</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">api_url</span><span class="p">}</span><span class="sr">/</span><span class="se">?</span><span class="sr">userId=${userId}`</span><span class="err">;
+</span>    <span class="k">switch</span><span class="p">(</span><span class="nx">filter</span><span class="p">){</span>
+      <span class="k">case</span> <span class="s1">'ACTIVE'</span><span class="p">:</span> <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">http</span>
+                        <span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="err">`</span><span class="nx">$</span><span class="p">{</span><span class="nx">url</span><span class="p">}</span><span class="o">&amp;</span><span class="nx">completed</span><span class="o">=</span><span class="kc">false</span><span class="err">`</span><span class="p">)</span>
+                        <span class="p">.</span><span class="nx">toPromise</span><span class="p">()</span>
+                        <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span> <span class="o">=&gt;</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">()</span> <span class="nx">as</span> <span class="nx">Todo</span><span class="p">[])</span>
+                        <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">handleError</span><span class="p">);</span>
+      <span class="k">case</span> <span class="s1">'COMPLETED'</span><span class="p">:</span> <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">http</span>
+                          <span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="err">`</span><span class="nx">$</span><span class="p">{</span><span class="nx">url</span><span class="p">}</span><span class="o">&amp;</span><span class="nx">completed</span><span class="o">=</span><span class="kc">true</span><span class="err">`</span><span class="p">)</span>
+                          <span class="p">.</span><span class="nx">toPromise</span><span class="p">()</span>
+                          <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span> <span class="o">=&gt;</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">()</span> <span class="nx">as</span> <span class="nx">Todo</span><span class="p">[])</span>
+                          <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">handleError</span><span class="p">);</span>
+      <span class="nl">default</span><span class="p">:</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">getTodos</span><span class="p">();</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>现在应该已经ok了，我们来看看效果：
+用户密码不匹配时，显示<code class="highlighter-rouge">password not match</code></p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/8bm5aa4ux233zro0vpqh9oun/image_1b23h2m601puv1q9664c52c1jem9.png" alt="用户密码不匹配时提示" /></p>
+
+<p>用户不存在时，显示<code class="highlighter-rouge">user not found</code></p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/f2z6lh68bsymwnqhbb6z8ovf/image_1b23h3l811dn4g9h16qu1jm11htbm.png" alt="用户不存在的提示" /></p>
+
+<p>直接在浏览器地址栏输入<code class="highlighter-rouge">http://localhost:4200/todo</code>，你会发现被重新导航到了<code class="highlighter-rouge">login</code>。输入正确的用户名密码后，我们被导航到了todo，现在每个用户都可以创建属于自己的待办事项了。</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/y5ar6642glaj2y0jbtsjp75n/image_1b23hdv51l621elh1uucsri32213.png" alt="image_1b23hdv51l621elh1uucsri32213.png-51.1kB" /></p>
+
+<h2 id="路由模块化">路由模块化</h2>
+
+<p>Angular团队推荐把路由模块化，这样便于使业务逻辑和路由松耦合。虽然目前在我们的应用中感觉用处不大，但按官方推荐的方式还是和大家一起改造一下吧。删掉原有的<code class="highlighter-rouge">app.routes.ts</code>和<code class="highlighter-rouge">todo.routes.ts</code>。添加<code class="highlighter-rouge">app-routing.module.ts</code>:</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">NgModule</span> <span class="p">}</span>     <span class="nx">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Routes</span><span class="p">,</span> <span class="nx">RouterModule</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/router'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">LoginComponent</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'./login/login.component'</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">routes</span><span class="err">:</span> <span class="nx">Routes</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="na">path</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span>
+    <span class="na">redirectTo</span><span class="p">:</span> <span class="s1">'login'</span><span class="p">,</span>
+    <span class="na">pathMatch</span><span class="p">:</span> <span class="s1">'full'</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="na">path</span><span class="p">:</span> <span class="s1">'login'</span><span class="p">,</span>
+    <span class="na">component</span><span class="p">:</span> <span class="nx">LoginComponent</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="na">path</span><span class="p">:</span> <span class="s1">'todo'</span><span class="p">,</span>
+    <span class="na">redirectTo</span><span class="p">:</span> <span class="s1">'todo/ALL'</span>
+  <span class="p">}</span>
+<span class="p">];</span>
+
+<span class="err">@</span><span class="nx">NgModule</span><span class="p">({</span>
+  <span class="na">imports</span><span class="p">:</span> <span class="p">[</span>
+    <span class="nx">RouterModule</span><span class="p">.</span><span class="nx">forRoot</span><span class="p">(</span><span class="nx">routes</span><span class="p">)</span>
+  <span class="p">],</span>
+  <span class="na">exports</span><span class="p">:</span> <span class="p">[</span>
+    <span class="nx">RouterModule</span>
+  <span class="p">]</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">AppRoutingModule</span> <span class="p">{}</span>
+</code></pre>
+</div>
+
+<p>以及<code class="highlighter-rouge">src\app\todo\todo-routing.module.ts</code>：</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">NgModule</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Routes</span><span class="p">,</span> <span class="nx">RouterModule</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/router'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">TodoComponent</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'./todo.component'</span><span class="p">;</span>
+
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">AuthGuardService</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'../core/auth-guard.service'</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">routes</span><span class="err">:</span> <span class="nx">Routes</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="na">path</span><span class="p">:</span> <span class="s1">'todo/:filter'</span><span class="p">,</span>
+    <span class="na">canActivate</span><span class="p">:</span> <span class="p">[</span><span class="nx">AuthGuardService</span><span class="p">],</span>
+    <span class="na">component</span><span class="p">:</span> <span class="nx">TodoComponent</span>
+  <span class="p">}</span>
+<span class="p">];</span>
+
+<span class="err">@</span><span class="nx">NgModule</span><span class="p">({</span>
+  <span class="na">imports</span><span class="p">:</span> <span class="p">[</span> <span class="nx">RouterModule</span><span class="p">.</span><span class="nx">forChild</span><span class="p">(</span><span class="nx">routes</span><span class="p">)</span> <span class="p">],</span>
+  <span class="na">exports</span><span class="p">:</span> <span class="p">[</span> <span class="nx">RouterModule</span> <span class="p">]</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">TodoRoutingModule</span> <span class="p">{</span> <span class="p">}</span>
+
+</code></pre>
+</div>
+
+<p>并分别在AppModule和TodoModule中引入路由模块。</p>
+
+<h2 id="用vscode进行调试">用VSCode进行调试</h2>
+
+<p>我们一直都没讲如何用vscode进行debug，这章我们来介绍一下。首先需要安装一个vscode插件，点击左侧最下面的图标或者“在查看菜单中选择命令面板，输入install，选择扩展：安装扩展”，然后输入“debugger for chrome”回车，点击安装即可。</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/xpf46qrbe9wrdwi2d5r1rp4s/image_1b23hjd3rble1nb11u7i19qgjqb1g.png" alt="VS Code Chome 调试插件" /></p>
+
+<p>然后点击最左边的倒数第二个按钮</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/0b7dqnyzc2a50z5jvohr2nxz/image_1b23htavu19i412obd751h8kusj1t.png" alt="debug profile创建" /></p>
+
+<p>如果是第一次使用的话，齿轮图标上会有个红点，点击选择<code class="highlighter-rouge">debugger for chrome</code>，vscode会帮你创建一个配置文件，这个文件位于<code class="highlighter-rouge">\.vscode\launch.json</code>是debugger的配置文件，请改写成下面的样子。注意如果是MacOSX或者Linux，请把<code class="highlighter-rouge">userDataDir</code>替换成对应的临时目录，另外把<code class="highlighter-rouge">"webpack:///C:*":"C:/*"</code>替换成<code class="highlighter-rouge">"webpack:///*": "/*"</code>，这句是因为angular-cli是采用webpack打包的，如果没有使用angular-cli不需要添加这句。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="p">{</span>
+    <span class="s2">"version"</span><span class="err">:</span> <span class="s2">"0.2.0"</span><span class="p">,</span>
+    <span class="s2">"configurations"</span><span class="err">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Launch Chrome against localhost, with sourcemaps"</span><span class="p">,</span>
+            <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"chrome"</span><span class="p">,</span>
+            <span class="s2">"request"</span><span class="p">:</span> <span class="s2">"launch"</span><span class="p">,</span>
+            <span class="s2">"url"</span><span class="p">:</span> <span class="s2">"http://localhost:4200"</span><span class="p">,</span>
+            <span class="s2">"sourceMaps"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">"runtimeArgs"</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">"--disable-session-crashed-bubble"</span><span class="p">,</span>
+                <span class="s2">"--disable-infobars"</span>
+            <span class="p">],</span>
+            <span class="s2">"diagnosticLogging"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">"webRoot"</span><span class="p">:</span> <span class="s2">"${workspaceRoot}/src"</span><span class="p">,</span>
+            <span class="c1">//windows setup</span>
+            <span class="s2">"userDataDir"</span><span class="p">:</span> <span class="s2">"C:\\temp\\chromeDummyDir"</span><span class="p">,</span>
+            <span class="s2">"sourceMapPathOverrides"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">"webpack:///C:*"</span><span class="p">:</span><span class="s2">"C:/*"</span>
+                <span class="c1">//use "webpack:///*": "/*" on Linux/OSX</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Attach to Chrome, with sourcemaps"</span><span class="p">,</span>
+            <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"chrome"</span><span class="p">,</span>
+            <span class="s2">"request"</span><span class="p">:</span> <span class="s2">"attach"</span><span class="p">,</span>
+            <span class="s2">"port"</span><span class="p">:</span> <span class="mi">9222</span><span class="p">,</span>
+            <span class="s2">"sourceMaps"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">"diagnosticLogging"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">"webRoot"</span><span class="p">:</span> <span class="s2">"${workspaceRoot}/src"</span><span class="p">,</span>
+            <span class="s2">"sourceMapPathOverrides"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">"webpack:///C:*"</span><span class="p">:</span><span class="s2">"C:/*"</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>现在你可以试着在源码中设置一个断点，点击debug视图中的debug按钮，可以尝试右键点击变量把它放到监视中看看变量值或者逐步调试应用。</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/p7dr7hd1wkwcz1rn9bdlmlrm/image_1b23igfkdhn71ug71cng3in94t2a.png" alt="在VSCODE中 Debug" /></p>
+
+<p>在笔者写书的时间点，由于一些问题（可能是zone.js引起的异常），启动VSCode debug时可能会自动进入一个断点，只要点击继续就可以了，并不影响调试。</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/r7juuikjd8mgwbjjoka4fi24/image_1b3erpn3016sl17i2vcnr3cg7lm.png" alt="可能由于Angular的zone.js引起的异常" /></p>
+
+<p>本章完整代码见： https://github.com/wpcfan/awesome-tutorials/tree/chap05/angular2/ng2-tut</p>
+
+
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                                <h5 style="display: inline;">Tags:</h5>
+                                
+                                    <button class="btn btn-white btn-xs" type="button">blog</button>
+                                
+                                    <button class="btn btn-white btn-xs" type="button">javascript</button>
+                                
+                                    <button class="btn btn-white btn-xs" type="button">angular2</button>
+                                
+                        </div>
+                        <div class="col-md-6">
+                            <div class="small text-right">
+                                <h5>Stats:</h5>
+                                <div> 
+                                
+                                    <i class="fa fa-comments-o"> </i> <span id = "url::/javascript/2016/12/04/angular-2.0-%E4%BB%8E0%E5%88%B01-%E4%BA%94.html" class = "cy_cmt_count" ></span> comments
+                                
+                                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <!-- donate -->
+                            
+                                <div class="text-center">
+<button class="btn btn-warning  dim btn-large-dim btn-outline" type="button" data-toggle="modal" data-target="#myModal2"><i class="fa fa-smile-o"></i></button>
+</div>
+<div class="modal inmodal" id="myModal2" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated flipInY">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">Donate Me</h4>
+                <small class="font-bold">If you like this article and want to help me, please give me little fee.</small><br>
+                <small class="font-bold">Thanks for your support!</small>
+            </div>
+            <div class="modal-body text-center">
+                <img src="/static/img/pay/w1.jpeg" width="250">
+                &emsp;
+                <img src="/static/img/pay/w5.jpeg" width="250">
+            </div>
+        </div>
+    </div>
+</div>
+
+                            
+                            <br>
+                            <!-- share -->
+                            
+                                <h2>Share:</h2>
+
+<div class="bshare-custom">
+	<a title="分享到微信" class="bshare-weixin"></a>
+	<a title="分享到QQ空间" class="bshare-qzone"></a>
+	<a title="分享到新浪微博" class="bshare-sinaminiblog"></a>
+	<a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a>
+</div>
+<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=59fd3d05-03d3-43ad-9650-ef46f9487bb8&amp;pophcol=1&amp;lang=zh"></script>
+<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+                            
+                            <br>
+                            <!-- comment -->
+                            
+<h2>Comments:</h2>
+<div id="SOHUCS"></div>
+<script charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/changyan.js" ></script>
+<script type="text/javascript">
+    window.changyan.api.config({
+        appid: 'cysKvjNmC',
+        conf: '14195e6733a549bb2f800fb931489c56'
+    });
+</script>
+
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+	
+	    <script src="/static/js/scroll.js"></script>
+
+<!-- Baidu analytics -->
+
+  <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?fc44e98b7062976fd7982188c4179bb8";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+  </script>
+
+
+<!-- Google analytics -->
+
+
+
+
+
+  <script id="cy_cmt_num" src="http://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cysfY7ULn"></script>
+
+
+
+	
+
+</body>
+</html>

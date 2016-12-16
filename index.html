@@ -1,469 +1,624 @@
-<!doctype html>
-<html lang="en">
-<head>
+<!DOCTYPE html>
+<html>
+
+	
+		<head>
   <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Think Smarter, Code Smarter | Think Smarter, Code Smarter</title>
-  <meta name="description" content="Peng Wang's blog about JavaScript, Android, iOS">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta property="og:title" content="Think Smarter, Code Smarter">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="http://gogeek.me/">
-  <meta property="og:description" content="Peng Wang's blog about JavaScript, Android, iOS">
-  <meta property="og:site_name" content="Think Smarter, Code Smarter">
-  <meta property="og:image" content="http://gogeek.me/assets/og-image.jpg">
+  <meta content="Peng's blog, share thoughts on javascript, android and iOS development experience" name="description">
+  <meta name="keywords" content="Peng,javascript, angular,rxjs,android,ios,blog,Jekyll,github,gh-pages">
+  <meta name="author" content="Peng">
+  <title>Think Smarter, Code Smarter</title>
+  <!-- favicon -->
+  <link rel="shortcut icon" href="/static/img/favicon.ico">
 
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:url" content="http://gogeek.me/">
-  <meta name="twitter:title" content="Think Smarter, Code Smarter">
-  <meta name="twitter:description" content="Peng Wang's blog about JavaScript, Android, iOS">
-  <meta name="twitter:image" content="http://gogeek.me/assets/og-image.jpg">
+  <!-- Third-party CSS -->
+  <link href="/bower_components/normalize-css/normalize.min.css" rel="stylesheet">
+  <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/bower_components/animate.css/animate.min.css" rel="stylesheet">
+  <link href="/bower_components/components-font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/static/font-mfizz/font-mfizz.css" rel="stylesheet">
+  <!-- <link href="/bower_components/toastr/toastr.min.css" rel="stylesheet"> -->
+  <link href="/bower_components/jquery.gritter/css/jquery.gritter.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <!-- <link href="/static/css/pygments.css" rel="stylesheet"> -->
+  <link href="/static/css/style.min.css" rel="stylesheet">
 
-  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-  <link href="http://gogeek.me/feed.xml" type="application/rss+xml" rel="alternate" title="Think Smarter, Code Smarter Last 10 blog posts" />
+  <!-- Third-party scripts -->
+  <script async defer id="github-bjs" src="https://buttons.github.io/buttons.js"></script>
+  <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/bower_components/i18next/i18next.min.js"></script>
+  <script src="/bower_components/PACE/pace.min.js"></script>
+  <script src="/bower_components/wow/dist/wow.min.js"></script>
 
-  
-    <link type="text/css" rel="stylesheet" href="/assets/dark.css">
-  
+  <!-- Custom and plugin javascript -->
+  <!-- <script src="/static/js/inspinia.js"></script> -->
+
+<!-- GrowingIO -->
+
+
 </head>
 
-<body>
-  <main role="main">
-    <div class="grid grid-centered">
-      <div class="grid-cell">
-        <nav class="header-nav reveal">
-  <a href="/" class="header-logo" title="Think Smarter, Code Smarter">Think Smarter, Code Smarter</a>
-  <ul class="header-links">
-    
-      <li>
-        <a href="/about" title="About me">
-          <span class="icon icon-android-person"></span>
-        </a>
-      </li>
-    
-    
-      <li>
-        <a href="https://twitter.com/wpcfan" target="_blank" title="Twitter">
-          <span class="icon icon-social-twitter"></span>
-        </a>
-      </li>
-    
-    
-      <li>
-        <a href="https://www.facebook.com/peng.wang" target="_blank" title="Facebook">
-          <span class="icon icon-social-facebook"></span>
-        </a>
-      </li>
-    
-    
-      <li>
-        <a href="https://github.com/wpcfan" target="_blank" title="GitHub">
-          <span class="icon icon-social-github"></span>
-        </a>
-      </li>
-    
-    
-    
-    
-      <li>
-        <a href="https://www.linkedin.com/in/peng.wong" target="_blank" title="LinkedIn">
-          <span class="icon icon-social-linkedin"></span>
-        </a>
-      </li>
-    
-    
-    
-      <li>
-        <a href="mailto:wpcfan@gmail.com" target="_blank" title="Email">
-          <span class="icon icon-at"></span>
-        </a>
-      </li>
-    
-    
-      <li>
-        <a href="/feed.xml" target="_blank" title="RSS">
-          <span class="icon icon-social-rss"></span>
-        </a>
-      </li>
-    
-  </ul>
-</nav>
+	
 
-        <ul class="article-list">
-  
-    <li class="article-list-item reveal">
-      <a href="/posts/angular-2-0-%E4%BB%8E0%E5%88%B01-%E5%85%AB" title="Angular 2.x 从0到1（八）">
-        <h5>
-          Angular 2.x 从0到1（八）
-          <span class="icon icon-ios-arrow-thin-right"></span>
-        </h5>
-      </a>
-      <p>Angular 2 教程最后一篇，RxJS的介绍和在Angular2 中的使用</p>
-      <div class="article-list-footer">
-        <span class="article-list-date">
-          December 14, 2016
-        </span>
-        <span class="article-list-divider">-</span>
-        <span class="article-list-minutes">
-          
-          
-            19 minute read
-          
-        </span>
-        <span class="article-list-divider">-</span>
-        <div class="article-list-tags">
-          
-            <a href="/tag/web">web</a>
-          
-            <a href="/tag/javascript">javascript</a>
-          
-            <a href="/tag/angular2">angular2</a>
-          
-        </div>
-      </div>
-    </li>
-  
-    <li class="article-list-item reveal">
-      <a href="/posts/angular-2-0-%E4%BB%8E0%E5%88%B01-%E4%B8%83" title="Angular 2.x 从0到1（七）">
-        <h5>
-          Angular 2.x 从0到1（七）
-          <span class="icon icon-ios-arrow-thin-right"></span>
-        </h5>
-      </a>
-      <p>Angular 2 教程第七篇，动画框架、第三方对话框以及生命周期钩子</p>
-      <div class="article-list-footer">
-        <span class="article-list-date">
-          December 7, 2016
-        </span>
-        <span class="article-list-divider">-</span>
-        <span class="article-list-minutes">
-          
-          
-            11 minute read
-          
-        </span>
-        <span class="article-list-divider">-</span>
-        <div class="article-list-tags">
-          
-            <a href="/tag/web">web</a>
-          
-            <a href="/tag/javascript">javascript</a>
-          
-            <a href="/tag/angular2">angular2</a>
-          
-        </div>
-      </div>
-    </li>
-  
-    <li class="article-list-item reveal">
-      <a href="/posts/angular-2-0-%E4%BB%8E0%E5%88%B01-%E5%85%AD" title="Angular 2.x 从0到1（六）">
-        <h5>
-          Angular 2.x 从0到1（六）
-          <span class="icon icon-ios-arrow-thin-right"></span>
-        </h5>
-      </a>
-      <p>Angular 2 教程第六篇，如何部署到生产环境？如何使用第三方控件？</p>
-      <div class="article-list-footer">
-        <span class="article-list-date">
-          December 5, 2016
-        </span>
-        <span class="article-list-divider">-</span>
-        <span class="article-list-minutes">
-          
-          
-            10 minute read
-          
-        </span>
-        <span class="article-list-divider">-</span>
-        <div class="article-list-tags">
-          
-            <a href="/tag/web">web</a>
-          
-            <a href="/tag/javascript">javascript</a>
-          
-            <a href="/tag/angular2">angular2</a>
-          
-        </div>
-      </div>
-    </li>
-  
-    <li class="article-list-item reveal">
-      <a href="/posts/angular-2-0-%E4%BB%8E0%E5%88%B01-%E4%BA%94" title="Angular 2.x 从0到1（五）">
-        <h5>
-          Angular 2.x 从0到1（五）
-          <span class="icon icon-ios-arrow-thin-right"></span>
-        </h5>
-      </a>
-      <p>Angular 2 教程第五篇，多用户版本的Todo，路由模块化，VSCode的调试环境</p>
-      <div class="article-list-footer">
-        <span class="article-list-date">
-          December 4, 2016
-        </span>
-        <span class="article-list-divider">-</span>
-        <span class="article-list-minutes">
-          
-          
-            15 minute read
-          
-        </span>
-        <span class="article-list-divider">-</span>
-        <div class="article-list-tags">
-          
-            <a href="/tag/web">web</a>
-          
-            <a href="/tag/javascript">javascript</a>
-          
-            <a href="/tag/angular2">angular2</a>
-          
-        </div>
-      </div>
-    </li>
-  
-    <li class="article-list-item reveal">
-      <a href="/posts/angular-2-0-%E4%BB%8E0%E5%88%B01-%E5%9B%9B" title="Angular 2.x 从0到1（四）">
-        <h5>
-          Angular 2.x 从0到1（四）
-          <span class="icon icon-ios-arrow-thin-right"></span>
-        </h5>
-      </a>
-      <p>Angular 2 教程第四篇，分拆Todo为多个子组件、组件间通信以及Json-server的快速构建Web API</p>
-      <div class="article-list-footer">
-        <span class="article-list-date">
-          December 3, 2016
-        </span>
-        <span class="article-list-divider">-</span>
-        <span class="article-list-minutes">
-          
-          
-            23 minute read
-          
-        </span>
-        <span class="article-list-divider">-</span>
-        <div class="article-list-tags">
-          
-            <a href="/tag/web">web</a>
-          
-            <a href="/tag/javascript">javascript</a>
-          
-            <a href="/tag/angular2">angular2</a>
-          
-        </div>
-      </div>
-    </li>
-  
-    <li class="article-list-item reveal">
-      <a href="/posts/angular-2-0-%E4%BB%8E0%E5%88%B01-%E4%B8%89" title="Angular 2.x 从0到1（三）">
-        <h5>
-          Angular 2.x 从0到1（三）
-          <span class="icon icon-ios-arrow-thin-right"></span>
-        </h5>
-      </a>
-      <p>Angular 2 教程第三篇，以一个Todo应用来介绍路由和内存WebAPI</p>
-      <div class="article-list-footer">
-        <span class="article-list-date">
-          December 2, 2016
-        </span>
-        <span class="article-list-divider">-</span>
-        <span class="article-list-minutes">
-          
-          
-            14 minute read
-          
-        </span>
-        <span class="article-list-divider">-</span>
-        <div class="article-list-tags">
-          
-            <a href="/tag/web">web</a>
-          
-            <a href="/tag/javascript">javascript</a>
-          
-            <a href="/tag/angular2">angular2</a>
-          
-        </div>
-      </div>
-    </li>
-  
-    <li class="article-list-item reveal">
-      <a href="/posts/angular-2-0-%E4%BB%8E0%E5%88%B01-%E4%BA%8C" title="Angular 2.x 从0到1（二）">
-        <h5>
-          Angular 2.x 从0到1（二）
-          <span class="icon icon-ios-arrow-thin-right"></span>
-        </h5>
-      </a>
-      <p>Angular 2 教程第二发，我们看看表单、验证、引用和双向绑定</p>
-      <div class="article-list-footer">
-        <span class="article-list-date">
-          December 1, 2016
-        </span>
-        <span class="article-list-divider">-</span>
-        <span class="article-list-minutes">
-          
-          
-            12 minute read
-          
-        </span>
-        <span class="article-list-divider">-</span>
-        <div class="article-list-tags">
-          
-            <a href="/tag/web">web</a>
-          
-            <a href="/tag/javascript">javascript</a>
-          
-            <a href="/tag/angular2">angular2</a>
-          
-        </div>
-      </div>
-    </li>
-  
-    <li class="article-list-item reveal">
-      <a href="/posts/angular-2-0-%E4%BB%8E0%E5%88%B01-%E4%B8%80" title="Angular 2.x 从0到1（一）">
-        <h5>
-          Angular 2.x 从0到1（一）
-          <span class="icon icon-ios-arrow-thin-right"></span>
-        </h5>
-      </a>
-      <p>Angular 2 教程第一篇，介绍Angular 2和Angular-CLI</p>
-      <div class="article-list-footer">
-        <span class="article-list-date">
-          November 25, 2016
-        </span>
-        <span class="article-list-divider">-</span>
-        <span class="article-list-minutes">
-          
-          
-            4 minute read
-          
-        </span>
-        <span class="article-list-divider">-</span>
-        <div class="article-list-tags">
-          
-            <a href="/tag/web">web</a>
-          
-            <a href="/tag/javascript">javascript</a>
-          
-            <a href="/tag/angular2">angular2</a>
-          
-        </div>
-      </div>
-    </li>
-  
-    <li class="article-list-item reveal">
-      <a href="/posts/introducing-chalk" title="Introducing chalk">
-        <h5>
-          Introducing chalk
-          <span class="icon icon-ios-arrow-thin-right"></span>
-        </h5>
-      </a>
-      <p>Chalk is a high quality, completely customizable, performant and 100% free blog template for Jekyll.</p>
-      <div class="article-list-footer">
-        <span class="article-list-date">
-          October 17, 2016
-        </span>
-        <span class="article-list-divider">-</span>
-        <span class="article-list-minutes">
-          
-          
-            1 minute read
-          
-        </span>
-        <span class="article-list-divider">-</span>
-        <div class="article-list-tags">
-          
-            <a href="/tag/web">web</a>
-          
-            <a href="/tag/jekyll">jekyll</a>
-          
-        </div>
-      </div>
-    </li>
-  
-    <li class="article-list-item reveal">
-      <a href="/posts/configuring-chalk" title="How to configure Chalk">
-        <h5>
-          How to configure Chalk
-          <span class="icon icon-ios-arrow-thin-right"></span>
-        </h5>
-      </a>
-      <p>Learn more about the config file for Chalk and how to set it up properly.</p>
-      <div class="article-list-footer">
-        <span class="article-list-date">
-          October 16, 2016
-        </span>
-        <span class="article-list-divider">-</span>
-        <span class="article-list-minutes">
-          
-          
-            4 minute read
-          
-        </span>
-        <span class="article-list-divider">-</span>
-        <div class="article-list-tags">
-          
-            <a href="/tag/web">web</a>
-          
-            <a href="/tag/jekyll">jekyll</a>
-          
-        </div>
-      </div>
-    </li>
-  
-    <li class="article-list-item reveal">
-      <a href="/posts/chalk-sample-post-with-all-elements" title="Chalk sample post with all elements">
-        <h5>
-          Chalk sample post with all elements
-          <span class="icon icon-ios-arrow-thin-right"></span>
-        </h5>
-      </a>
-      <p>Have a look at all the predesigned elements you can use in Chalk.</p>
-      <div class="article-list-footer">
-        <span class="article-list-date">
-          October 15, 2016
-        </span>
-        <span class="article-list-divider">-</span>
-        <span class="article-list-minutes">
-          
-          
-            2 minute read
-          
-        </span>
-        <span class="article-list-divider">-</span>
-        <div class="article-list-tags">
-          
-            <a href="/tag/design">design</a>
-          
-            <a href="/tag/jekyll">jekyll</a>
-          
-        </div>
-      </div>
-    </li>
-  
-  
-</ul>
 
-        <footer class="footer reveal">
-  <p>
-    I will share my thoughts on coding and tech and you can find more about me at 
-    <a href="/about" title="About me">Peng Wang</a>. 
-  </p>
-</footer>
+<body id="page-top" class="landing-page">
 
-      </div>
+	
+
+        <div class="navbar-wrapper">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#page-top" id="i18_title"><span data-i18n="website.title">Think Smarter, Code Smarter</span></a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right" id="i18_navbar">
+                
+                    <li>
+                      <a class="page-scroll" href="#about-me">
+                        <span data-i18n="nav.about_me">About</span>
+                      </a>
+                    </li>
+                
+                    <li>
+                      <a class="page-scroll" href="#career">
+                        <span data-i18n="nav.career">Career</span>
+                      </a>
+                    </li>
+                
+                    <li>
+                      <a class="page-scroll" href="#skills">
+                        <span data-i18n="nav.skills">Skills</span>
+                      </a>
+                    </li>
+                
+                    <li>
+                      <a class="page-scroll" href="#projects">
+                        <span data-i18n="nav.projects">Projects</span>
+                      </a>
+                    </li>
+                
+                    <li>
+                      <a class="page-scroll" href="#blog">
+                        <span data-i18n="nav.blog">Blog</span>
+                      </a>
+                    </li>
+                
+                    <li>
+                      <a class="page-scroll" href="#links">
+                        <span data-i18n="nav.link">Links</span>
+                      </a>
+                    </li>
+                
+
+                
+                  <li>
+                    <a id="set_lang_en" class="btn btn-sm set_en" data-locale="en">
+                      <img src="/static/img/flags/United-States.png" height="16px" width="16px">
+                    </a>
+                  </li>
+                
+                  <li>
+                    <a id="set_lang_zh" class="btn btn-sm set_zh" data-locale="zh">
+                      <img src="/static/img/flags/China.png" height="16px" width="16px">
+                    </a>
+                  </li>
+                
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<div id="inSlider" class="carousel carousel-fade" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#inSlider" data-slide-to="0" class="active"></li>
+        <li data-target="#inSlider" data-slide-to="1"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <div class="container">
+                <div class="carousel-caption">
+                </div>
+                <div class="carousel-image wow zoomIn">
+                    <!-- <img src="static/img/landing/laptop.png" alt="laptop"/> -->
+                </div>
+            </div>
+            <!-- Set background for slide in css -->
+            <div class="header-back one"></div>
+        </div>
+        <div class="item">
+            <div class="container">
+                <div class="carousel-caption blank">
+                </div>
+            </div>
+            <!-- Set background for slide in css -->
+            <div class="header-back two"></div>
+        </div>
     </div>
-  </main>
-  <script type="text/javascript" src="/assets/vendor.js"></script>
-<script type="text/javascript" src="/assets/application.js"></script>
-
-<script src="//cdn.bootcss.com/webfont/1.6.16/webfontloader.js"></script>
-<script>
-  WebFont.load({
-    google: {
-      families: ['Cormorant Garamond:700', 'Lato:300,400,700']
-    }
-  });
-</script>
+    <a class="left carousel-control" href="#inSlider" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#inSlider" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
 
 
+  
+  <section id="about-me" class="features  " style="margin-top: 0px;">
+    <div class="container" id="i18_about_me">
+    <div class="row m-b-lg">
+        <div class="col-lg-12 text-center">
+            <div class="navy-line"></div>
+            <h1><span data-i18n="about_me.about_me">About Me</span></h1>
+            <!-- <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod.</p> -->
+        </div>
+    </div>
+    <div class="row">
+        <!-- python -->
+        <div class="col-xs-2 wow fadeInLeft">
+            <div class="team-member">
+                <div class="vote-icon">
+                    <i class="icon-python"></i>
+                </div>
+            </div>
+        </div>
+        <!-- linux -->
+        <div class="col-xs-2 wow fadeInLeft">
+            <div class="team-member">
+                <div class="vote-icon">
+                    <i class="icon-shell"></i>
+                </div>
+            </div>
+        </div>
+        <!-- avatar -->
+        <div class="col-xs-4">
+            <div class="team-member wow zoomIn">
+                <img src="/static/img/landing/profile.jpg" height="110" width="110" class="img-responsive img-circle" alt="">
+                <h4><span class="navy">Wang</span> Peng</h4>
+                <ul class="list-inline social-icon">
+                    <li><a href="https://github.com/wpcfan" target="blank"><i class="fa fa-github"></i></a>
+                    </li>
+                    <li><a href="https://www.facebook.com/peng.wang" target="blank"><i class="fa fa-facebook"></i></a>
+                    <li><a href="mailto:wpcfan@gmail.com"><i class="fa fa-envelope-o"></i></a>
+                    </li>
+                    </li>
+                    <li><a href="http://gogeek.me/feed.xml" target="blank"><i class="fa fa-rss"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- html -->
+        <div class="col-xs-2 wow fadeInRight">
+            <div class="team-member">
+                <div class="vote-icon">
+                    <i class="icon-angular"></i>
+                </div>
+            </div>
+        </div>
+        <!-- docker -->
+        <div class="col-xs-2 wow fadeInRight">
+            <div class="team-member">
+                <div class="vote-icon">
+                    <i class="icon-docker"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 text-center m-t-lg m-b-lg wow zoomIn">
+            <p><span data-i18n="about_me.des">I am a Full Stack engineer and the co-founder of Soulkey Tech Ltd. Life is a continuous learning process, and sharing my thoughts while I am learning may benefit both of us</span></p>
+        </div>
+    </div>
+</div>
+
+  </section>
+
+  
+  <section id="career" class="features  gray-section  timeline" style="margin-top: 0px;">
+    <div class="container" id="i18_career">
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <div class="navy-line"></div>
+            <h1><span data-i18n="career.my_career">My Career</span></h1>
+        </div>
+    </div>
+    <div class="row features-block">
+        <div class="col-lg-12">
+            <div id="vertical-timeline" class="vertical-container light-timeline center-orientation">
+            
+            
+                <div class="vertical-timeline-block">
+                    <div class="vertical-timeline-icon navy-bg wow rotateIn">
+                        <i class="fa fa-gamepad"></i>
+                    </div>
+                    <div class="vertical-timeline-content wow  rotateInUpRight ">
+                        <h2><span data-i18n="career.soulkey">Soulkey Tech Co., Ltd.</span></h2>
+                        <p><span data-i18n="career.soulkey_des">I co-founded a startup - Soulkey Tech in May 2015, we are going to give choices to students, instead of leaving that to schools that have fixed pattern of teaching and fixed resources. </span></p>
+                        <span class="vertical-date"><span data-i18n="career.soulkey_date"> At present </span>
+                        <br/> <small><span data-i18n="career.soulkey_job">Co-founder, CTO</span></small> </span>
+                    </div>
+                </div>
+            
+            
+                <div class="vertical-timeline-block">
+                    <div class="vertical-timeline-icon navy-bg wow rotateIn">
+                        <i class="fa fa-cloud"></i>
+                    </div>
+                    <div class="vertical-timeline-content wow  rotateInUpLeft ">
+                        <h2><span data-i18n="career.neusoft">Neusoft</span></h2>
+                        <p><span data-i18n="career.neusoft_des">In Neusoft, I started to manage development teams as Project Manager/Project Director/Dept. Manager. And I started to use multiple programing languages to build system on different platforms. </span></p>
+                        <span class="vertical-date"><span data-i18n="career.neusoft_date"> Sep. 2013 </span>
+                        <br/> <small><span data-i18n="career.neusoft_job">Dept. Manager</span></small> </span>
+                    </div>
+                </div>
+            
+            
+                <div class="vertical-timeline-block">
+                    <div class="vertical-timeline-icon navy-bg wow rotateIn">
+                        <i class="fa fa-book"></i>
+                    </div>
+                    <div class="vertical-timeline-content wow  rotateInUpRight ">
+                        <h2><span data-i18n="career.msc">Master Degree</span></h2>
+                        <p><span data-i18n="career.msc_des">At April 2004,I majored in Machine Learning and Data Mining in Unvi of Bristol. </span></p>
+                        <span class="vertical-date"><span data-i18n="career.msc_date"> Apr. 2004 </span>
+                        <br/> <small><span data-i18n="career.msc_job">Student</span></small> </span>
+                    </div>
+                </div>
+            
+            
+                <div class="vertical-timeline-block">
+                    <div class="vertical-timeline-icon navy-bg wow rotateIn">
+                        <i class="fa fa-database"></i>
+                    </div>
+                    <div class="vertical-timeline-content wow  rotateInUpLeft ">
+                        <h2><span data-i18n="career.firstjob">Shanghai eBizServe Co. Ltd.</span></h2>
+                        <p><span data-i18n="career.firstjob_des">I got a Job as Java developer in Shanghai and did quite a lot of demos </span></p>
+                        <span class="vertical-date"><span data-i18n="career.firstjob_date"> August. 2002 </span>
+                        <br/> <small><span data-i18n="career.firstjob_job">Java Engineer</span></small> </span>
+                    </div>
+                </div>
+            
+            
+                <div class="vertical-timeline-block">
+                    <div class="vertical-timeline-icon navy-bg wow rotateIn">
+                        <i class="fa fa-book"></i>
+                    </div>
+                    <div class="vertical-timeline-content wow  rotateInUpRight ">
+                        <h2><span data-i18n="career.college">Bachelor degree</span></h2>
+                        <p><span data-i18n="career.college_des">At July 2000,I graduated from Lanzhou Unvi. </span></p>
+                        <span class="vertical-date"><span data-i18n="career.college_date"> Jul. 2000 </span>
+                        <br/> <small><span data-i18n="career.college_job">Student</span></small> </span>
+                    </div>
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</div>
+
+  </section>
+
+  
+  <section id="skills" class="features  team" style="margin-top: 0px;">
+    <div class="container">
+    <div class="row">
+        <div class="col-lg-12 text-center" id="i18_skills">
+            <div class="navy-line"></div>
+            <h1><span data-i18n="skills.my_skills">My Skills</span></h1>
+        </div>
+    </div>
+    <div class="row features-block">
+        
+            
+        <div class="row">
+            <div class="col-lg-1 col-lg-offset-2 wow  fadeInLeft ">
+                <p>C#</p>
+            </div>
+            <div class="col-lg-7 wow   fadeInRight ">
+                <div class="progress progress-bar-default">
+                    <div style="width: 85%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="85" role="progressbar" class="progress-bar">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        
+            
+        <div class="row">
+            <div class="col-lg-1 col-lg-offset-2 wow  fadeInRight ">
+                <p>HTML/CSS</p>
+            </div>
+            <div class="col-lg-7 wow   fadeInLeft ">
+                <div class="progress progress-bar-default">
+                    <div style="width: 65%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="65" role="progressbar" class="progress-bar">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        
+            
+        <div class="row">
+            <div class="col-lg-1 col-lg-offset-2 wow  fadeInLeft ">
+                <p>Java</p>
+            </div>
+            <div class="col-lg-7 wow   fadeInRight ">
+                <div class="progress progress-bar-default">
+                    <div style="width: 80%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="80" role="progressbar" class="progress-bar">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        
+            
+        <div class="row">
+            <div class="col-lg-1 col-lg-offset-2 wow  fadeInRight ">
+                <p>JavaScript</p>
+            </div>
+            <div class="col-lg-7 wow   fadeInLeft ">
+                <div class="progress progress-bar-default">
+                    <div style="width: 85%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="85" role="progressbar" class="progress-bar">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        
+            
+        <div class="row">
+            <div class="col-lg-1 col-lg-offset-2 wow  fadeInLeft ">
+                <p>Angular 2</p>
+            </div>
+            <div class="col-lg-7 wow   fadeInRight ">
+                <div class="progress progress-bar-default">
+                    <div style="width: 80%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="80" role="progressbar" class="progress-bar">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        
+            
+        <div class="row">
+            <div class="col-lg-1 col-lg-offset-2 wow  fadeInRight ">
+                <p>iOS</p>
+            </div>
+            <div class="col-lg-7 wow   fadeInLeft ">
+                <div class="progress progress-bar-default">
+                    <div style="width: 70%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="70" role="progressbar" class="progress-bar">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        
+            
+        <div class="row">
+            <div class="col-lg-1 col-lg-offset-2 wow  fadeInLeft ">
+                <p>Android</p>
+            </div>
+            <div class="col-lg-7 wow   fadeInRight ">
+                <div class="progress progress-bar-default">
+                    <div style="width: 80%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="80" role="progressbar" class="progress-bar">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        
+    </div>
+</div>
+
+  </section>
+
+  
+  <section id="projects" class="features  gray-section  project" style="margin-top: 0px;">
+    <div class="container" id="i18_projects">
+    <div class="row m-b-lg">
+        <div class="col-lg-12 text-center">
+            <div class="navy-line"></div>
+            <h1><span data-i18n="projects.my_projects">My Projects</span></h1>
+        </div>
+    </div>
+    <div class="row">
+        
+            
+            
+            <div class="col-sm-6 wow  fadeInLeft ">
+            
+              <div class="team-member">
+                  <img src="/static/img/landing/saplatform.png" class="img-responsive img-circle img-small" alt="">
+                  <h4><a href="https://github.com/JiaKunUp/saplatform" target="blank"><span class="navy">Saplatform</a></span></h4>
+                  <p><span data-i18n="projects.saplatform">Saplatform is a automated service for operations, it has asset management, project release, database access function, it can control mass servers.</span></p>
+                  
+                  <ul class="list-inline">
+                      <li>
+                          <a class="github-button" href="https://github.com/JiaKunUp/saplatform" data-icon="octicon-star" data-count-href="/JiaKunUp/saplatform/stargazers" data-count-api="/repos/JiaKunUp/saplatform#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star hydepress/jekyll-install on GitHub">Star</a>
+                      </li>
+                      <li>
+                          <a class="github-button" href="https://github.com/JiaKunUp/saplatform" data-icon="octicon-repo-forked" data-count-href="/JiaKunUp/saplatform/network/members" data-count-api="/repos/JiaKunUp/saplatform#forks_count" data-count-aria-label="# forks on GitHub" aria-label="Star hydepress/jekyll-install on GitHub">Fork</a>
+                      </li>
+                  </ul>
+                  
+              </div>
+          </div>
+      
+            
+            
+            <div class="col-sm-6 wow  fadeInRight ">
+            
+              <div class="team-member">
+                  <img src="/static/img/landing/jekyll.png" class="img-responsive img-circle img-small" alt="">
+                  <h4><a href="https://github.com/JiaKunUp/jalpc_jekyll_theme" target="blank"><span class="navy">Jalpc</a></span></h4>
+                  <p><span data-i18n="projects.jalpc">Jalpc is a simple, beautiful and swift theme for Jekyll. It has comprehensive function, it can be easily used and edited. It's adapted for many kinds devices.</span></p>
+                  
+                  <ul class="list-inline">
+                      <li>
+                          <a class="github-button" href="https://github.com/JiaKunUp/jalpc_jekyll_theme" data-icon="octicon-star" data-count-href="/JiaKunUp/jalpc_jekyll_theme/stargazers" data-count-api="/repos/JiaKunUp/jalpc_jekyll_theme#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star hydepress/jekyll-install on GitHub">Star</a>
+                      </li>
+                      <li>
+                          <a class="github-button" href="https://github.com/JiaKunUp/jalpc_jekyll_theme" data-icon="octicon-repo-forked" data-count-href="/JiaKunUp/jalpc_jekyll_theme/network/members" data-count-api="/repos/JiaKunUp/jalpc_jekyll_theme#forks_count" data-count-aria-label="# forks on GitHub" aria-label="Star hydepress/jekyll-install on GitHub">Fork</a>
+                      </li>
+                  </ul>
+                  
+              </div>
+          </div>
+      
+            
+            
+            <div class="col-sm-6 wow  fadeInLeft ">
+            
+              <div class="team-member">
+                  <img src="/static/img/landing/angularjs.png" class="img-responsive img-circle img-small" alt="">
+                  <h4><a href="https://github.com/JiaKunUp/Jalpc-A" target="blank"><span class="navy">Jalpc-A</a></span></h4>
+                  <p><span data-i18n="projects.angularjs">It is a web font application written by Angularjs and deployed by Jekyll on github (gh-pages), the backend platform is Leancloud, you can use Parse as well.</span></p>
+                  
+                  <ul class="list-inline">
+                      <li>
+                          <a class="github-button" href="https://github.com/JiaKunUp/Jalpc-A" data-icon="octicon-star" data-count-href="/JiaKunUp/Jalpc-A/stargazers" data-count-api="/repos/JiaKunUp/Jalpc-A#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star hydepress/jekyll-install on GitHub">Star</a>
+                      </li>
+                      <li>
+                          <a class="github-button" href="https://github.com/JiaKunUp/Jalpc-A" data-icon="octicon-repo-forked" data-count-href="/JiaKunUp/Jalpc-A/network/members" data-count-api="/repos/JiaKunUp/Jalpc-A#forks_count" data-count-aria-label="# forks on GitHub" aria-label="Star hydepress/jekyll-install on GitHub">Fork</a>
+                      </li>
+                  </ul>
+                  
+              </div>
+          </div>
+      
+            
+            
+            <div class="col-sm-6 wow  fadeInRight ">
+            
+              <div class="team-member">
+                  <img src="/static/img/landing/rsser.png" class="img-responsive img-circle img-small" alt="">
+                  <h4><a href="https://github.com/JiaKunUp/Rsser" target="blank"><span class="navy">Rsser</a></span></h4>
+                  <p><span data-i18n="projects.rsser">Rsser is an Ionic application, with this application we can read news and articles freely, you can add rss address from the given list and add it manually.</span></p>
+                  
+                  <ul class="list-inline">
+                      <li>
+                          <a class="github-button" href="https://github.com/JiaKunUp/Rsser" data-icon="octicon-star" data-count-href="/JiaKunUp/Rsser/stargazers" data-count-api="/repos/JiaKunUp/Rsser#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star hydepress/jekyll-install on GitHub">Star</a>
+                      </li>
+                      <li>
+                          <a class="github-button" href="https://github.com/JiaKunUp/Rsser" data-icon="octicon-repo-forked" data-count-href="/JiaKunUp/Rsser/network/members" data-count-api="/repos/JiaKunUp/Rsser#forks_count" data-count-aria-label="# forks on GitHub" aria-label="Star hydepress/jekyll-install on GitHub">Fork</a>
+                      </li>
+                  </ul>
+                  
+              </div>
+          </div>
+      
+            
+            
+                
+            <div class="col-sm-6 wow  fadeInLeft col-sm-offset-3 ">
+                
+            
+              <div class="team-member">
+                  <img src="/static/img/landing/familycode.png" class="img-responsive img-circle img-small" alt="">
+                  <h4><a href="https://github.com" target="blank"><span class="navy">FamilyCODE Wchat</a></span></h4>
+                  <p><span data-i18n="projects.familycode">This is a shopping mall in wechat, it promotes gene detection. Since time is precious, I write this website with Django, jQuery, weui. This is WuxiNextcode's major product. You can scan project's picture by wechat.</span></p>
+                  
+              </div>
+          </div>
+      
+    </div>
+</div>
+<br>
+
+  </section>
+
+  
+  <section id="blog" class="features  testimonials navy-section" style="margin-top: 0px;">
+    <div class="container">
+    <div class="row">
+        <div class="col-lg-12 text-center wow zoomIn" id="i18_blog">
+            <div style="height: 80px;"></div>
+            <a class="btn btn-lg btn-default btn-rounded btn-outline wow bounceIn" href="/blog/"><span data-i18n="blog.my_blog">My Blog</span></a>
+            <div style="height: 80px;"></div>
+        </div>
+    </div>
+</div>
+
+  </section>
+
+  
+  <section id="links" class="features  gray-section  contact" style="margin-top: 0px;">
+    <div class="container" id="i18_link">
+    <div class="row m-b-lg">
+        <div class="col-lg-12 text-center">
+            <div class="navy-line"></div>
+            <h1><span data-i18n="link.link">Link</span></h1>
+        </div>
+    </div>
+    <div class="row">
+    
+        
+        
+            
+        <div class="col-sm-4 col-sm-offset-4 wow zoomIn">
+                
+        
+        <div class="team-member">
+            <h4><span class="navy">Wang</span> Peng</h4>
+            <p>Full Stack Developer.</p>
+            <ul class="list-inline social-icon">
+                <li><a href="http://gogeek.me" target="blank"><i class="fa fa-link"></i></a>
+                </li>
+                <li><a href="mailto:wpcfan@gmail.com"><i class="fa fa-envelope-o"></i></a>
+                </li>
+            </ul>
+        </div>
+        </div>
+    
+    </div>
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 text-center m-t-lg m-b-lg">
+            <p id="jalpc_site_pv"><strong>&copy; 2016 Think Smarter, Code Smarter</strong></p>
+        </div>
+    </div>
+</div>
+
+  </section>
+
+<iframe src="http://www.maimemo.com/share/page/?uid=779139&pid=660" style="display: none;"></iframe>
+
+
+
+	
+		<script src="/static/js/scroll.js"></script>
+<script src="/static/js/localization.js"></script>
+<script async src="/static/js/count.js"></script>
+
+<!-- Baidu analytics -->
+
+  <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?fc44e98b7062976fd7982188c4179bb8";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+  </script>
+
+
+<!-- Google analytics -->
+
+
+	
 
 </body>
 </html>

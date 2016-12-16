@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html>
+
+	
+	    <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <meta content="Angular 2 教程最后一篇，RxJS的介绍和在Angular2 中的使用" name="description">
+  
+  
+    <meta name="keywords" content="web, javascript, angular2,rxjs">
+  
+  <meta name="author" content="Peng">
+
+  <title>
+    
+        Think Smarter, Code Smarter|Angular 2.x 从0到1（八）
+    
+  </title>
+  <!-- favicon -->
+  <link rel="shortcut icon" href="/static/img/favicon.ico">
+
+  <!-- Third-party CSS -->
+  <link href="/bower_components/normalize-css/normalize.min.css" rel="stylesheet">
+  <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/bower_components/animate.css/animate.min.css" rel="stylesheet">
+  <link href="/bower_components/components-font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/static/font-mfizz/font-mfizz.css" rel="stylesheet">
+  <!-- <link href="/bower_components/toastr/toastr.min.css" rel="stylesheet"> -->
+  <link href="/bower_components/jquery.gritter/css/jquery.gritter.css" rel="stylesheet">
+  <link rel="stylesheet" href="/search/css/cb-search.css">
+
+  <!-- Custom styles for this template -->
+  <link href="/static/css/style.min.css" rel="stylesheet">
+  <link href="/static/css/pygments.css" rel="stylesheet">
+
+  <!-- Scripts -->
+  <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="/search/js/bootstrap3-typeahead.min.js"></script>
+
+  <!-- cb-search -->
+  <script src="/search/js/cb-search.js"></script>
+  <script>
+    $(function(){
+        $("pre").css('display','block');
+    });
+  </script>
+  <!-- Mainly scripts -->
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/bower_components/metisMenu/dist/metisMenu.min.js"></script>
+  <script src="/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+
+  <!-- Peity -->
+  <script src="/bower_components/peity/jquery.peity.min.js"></script>
+
+  <script src="/bower_components/PACE/pace.min.js"></script>
+  <script src="/bower_components/wow/dist/wow.min.js"></script>
+  <!-- Custom and plugin javascript -->
+  <script src="/static/js/inspinia.js"></script>
+
+  <!-- Rickshaw -->
+  <script src="/bower_components/rickshaw/vendor/d3.v3.js"></script>
+  <script src="/bower_components/rickshaw/rickshaw.min.js"></script>
+
+
+  <!-- jPages -->
+  <script src="/static/js/jPages.js"></script>
+  <script src="/static/js/js.js"></script>
+  
+  <script type="text/javascript">
+        $(function(){
+          /* initiate the plugin */
+          $("div.pag-holder").jPages({
+              containerID  : "pag-itemContainer",
+              perPage      : 5,  /* num of items per page */
+              startPage    : 1,
+              startRange   : 1,
+              midRange     : 3,
+              endRange     : 1
+          });
+      });
+  </script>
+  <script src="//cdn.bootcss.com/highlight.js/9.9.0/highlight.min.js"></script>
+<!-- GrowingIO -->
+
+
+</head>
+
+	
+
+
+<body id="page-top" class="landing-page">
+
+	
+	    <div class="search-tool"
+      style="position: fixed; top: 0px ; bottom: 0px; left: 0px; right:  0px; opacity: 0.95; background-color: #111111; z-index: 9999; display: none;">
+    <input type="text" class="form-control search-content" id="search-content" style="position: fixed; top: 60px" placeholder="Search Blog">
+
+    <div style="position: fixed; top: 16px; right: 16px; z-index: 9999;">
+        <img src="/search/img/cb-close.png" id="close-btn"/>
+    </div>
+</div>
+
+<div style="position: fixed; right: 16px; bottom: 20px; z-index: 9999;">
+    <img src="/search/img/cb-search.png"  id="search-btn"  title="Double click Ctrl"/>
+</div>
+
+<div class="navbar-wrapper">
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header page-scroll">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">Think Smarter, Code Smarter</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a class="page-scroll" href="/blog/"></a></li>
+                        
+                            
+                            <li>
+                            
+                            <a class="page-scroll" href="/blog/">Blog</a></li>
+                        
+                            
+                            <li>
+                            
+                            <a class="page-scroll" href="/python/">Python</a></li>
+                        
+                            
+                            <li>
+                            
+                            <a class="page-scroll" href="/javascript/">JavaScript</a></li>
+                        
+                            
+                            <li>
+                            
+                            <a class="page-scroll" href="/html/">HTML</a></li>
+                        
+                            
+                            <li>
+                            
+                            <a class="page-scroll" href="/database/">Database</a></li>
+                        
+                            
+                            <li>
+                            
+                            <a class="page-scroll" href="/mac/">Mac</a></li>
+                        
+                            
+                            <li>
+                            
+                            <a class="page-scroll" href="/android/">Android</a></li>
+                        
+                            
+                            <li>
+                            
+                            <a class="page-scroll" href="/iOS/">iOS</a></li>
+                        
+                            
+                            <li>
+                            
+                            <a class="page-scroll" href="/life/">Life</a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </nav>
+</div>
+<div id="inSlider" class="carousel carousel-fade" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#inSlider" data-slide-to="0" class="active"></li>
+        <li data-target="#inSlider" data-slide-to="1"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <div class="container">
+                <div class="carousel-caption">
+                </div>
+                <div class="carousel-image wow zoomIn">
+                    <!-- <img src="static/img/landing/laptop.png" alt="laptop"/> -->
+                </div>
+            </div>
+            <!-- Set background for slide in css -->
+            <div class="header-back one"></div>
+
+        </div>
+        <div class="item">
+            <div class="container">
+                <div class="carousel-caption blank">
+                </div>
+            </div>
+            <!-- Set background for slide in css -->
+            <div class="header-back two"></div>
+        </div>
+    </div>
+    <a class="left carousel-control" href="#inSlider" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#inSlider" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+	
+
+    <div class="wrapper wrapper-content  animated fadeInRight article">
+    <div class="row">
+        <div class="col-lg-10 col-lg-offset-1">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <div class="pull-right">
+                    	
+                        	<button class="btn btn-white btn-xs" type="button">JavaScript</button>
+                        
+                    </div>
+                    <div class="text-center article-title">
+                    <span class="text-muted"><i class="fa fa-clock-o"></i> 14 Dec 2016</span>
+                        <h1>
+                            Angular 2.x 从0到1（八）
+                        </h1>
+                    </div>
+                    	<ul id="markdown-toc">
+  <li><a href="#番外rx隐藏在angular-2x中利剑" id="markdown-toc-番外rx隐藏在angular-2x中利剑">番外：Rx–隐藏在Angular 2.x中利剑</a>    <ul>
+      <li><a href="#rx再体验" id="markdown-toc-rx再体验">Rx再体验</a></li>
+      <li><a href="#常见操作" id="markdown-toc-常见操作">常见操作</a>        <ul>
+          <li><a href="#合并类操作符" id="markdown-toc-合并类操作符">合并类操作符</a>            <ul>
+              <li><a href="#combinelatest操作符" id="markdown-toc-combinelatest操作符">combineLatest操作符</a></li>
+              <li><a href="#zip操作符" id="markdown-toc-zip操作符">zip操作符</a></li>
+            </ul>
+          </li>
+          <li><a href="#创建类操作符" id="markdown-toc-创建类操作符">创建类操作符</a>            <ul>
+              <li><a href="#from操作符" id="markdown-toc-from操作符">from操作符</a></li>
+              <li><a href="#fromevent操作符" id="markdown-toc-fromevent操作符">fromEvent操作符</a></li>
+              <li><a href="#fromeventpattern" id="markdown-toc-fromeventpattern">fromEventPattern</a></li>
+              <li><a href="#defer操作符" id="markdown-toc-defer操作符">defer操作符</a></li>
+              <li><a href="#interval" id="markdown-toc-interval">Interval</a></li>
+              <li><a href="#timer" id="markdown-toc-timer">Timer</a></li>
+            </ul>
+          </li>
+          <li><a href="#过滤类操作符" id="markdown-toc-过滤类操作符">过滤类操作符</a>            <ul>
+              <li><a href="#filter" id="markdown-toc-filter">filter</a></li>
+              <li><a href="#debouncetime" id="markdown-toc-debouncetime">debounceTime</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a href="#angular2中的内建支持" id="markdown-toc-angular2中的内建支持">Angular2中的内建支持</a>        <ul>
+          <li><a href="#async管道" id="markdown-toc-async管道">Async管道</a></li>
+          <li><a href="#rx版本的todo" id="markdown-toc-rx版本的todo">Rx版本的Todo</a></li>
+        </ul>
+      </li>
+      <li><a href="#小结" id="markdown-toc-小结">小结</a></li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h1 id="番外rx隐藏在angular-2x中利剑">番外：Rx–隐藏在Angular 2.x中利剑</h1>
+
+<p>Rx（Reactive Extension – 响应式扩展 http://reactivex.io ）最近在各个领域都非常火。其实Rx这个货是微软在好多年前针对C#写的一个开源类库，但好多年都不温不火，一直到Netflix针对Java平台做出了RxJava版本后才在开源社区热度飞速蹿升。</p>
+
+<p>这里还有个小故事，Netflix之所以做RxJava完全是一个偶然。个中缘由是由于Netflix的系统越做越复杂，大家都绞尽脑汁琢磨怎么才能从这些复杂逻辑的地狱中把系统拯救出来。一天，一个从微软跳槽过来的员工和主管说，我们原来在微软做的一个叫Rx的东东挺好的，可以非常简单的处理这些逻辑。主管理都没理，心想微软那套东西肯定又臃肿又不好用，从来没听说过微软有什么好的开源产品。但那位前微软的哥们锲而不舍，非常执着，不断和组内员工和主管游说，宣传这个Rx思想有多牛X。终于有一天，大家受不了了，说，这么着吧，给你个机会，你给大家仔细讲讲这个Rx，我们讨论看看到底适不适合。于是这哥们一顿喷，把大家都惊住了，微软竟然有这么好的东西。但是这东西是.Net的，怎么办呢，那就写一个吧（此处略去高山仰止的3000字）。</p>
+
+<p>八卦讲完，进入正题，那么什么叫响应式编程呢？这里引用一下Wikipedia的解释：</p>
+
+<blockquote>
+  <p>英文原文：In computing, reactive programming is a programming paradigm oriented around data flows and the propagation of change. This means that it should be possible to express static or dynamic data flows with ease in the programming languages used, and that the underlying execution model will automatically propagate changes through the data flow.</p>
+
+  <p>我的翻译：在计算领域，响应式编程一种面向数据流和变化传播的编程范式。这意味着可以在编程语言中很方便地表达静态或动态的数据流，而相关的计算模型会自动将变化的值通过数据流进行传播。</p>
+</blockquote>
+
+<p>这都说的什么啊？没关系，概念永远是抽象的，我们来举几个例子。比如说在传统的编程中 <code class="highlighter-rouge">a=b+c</code>，表示将表达式的结果赋给a，而之后改变b或c 的值不会影响a。但在响应式编程中，a的值会随着b或c的更新而更新。</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/7paaruzx7t2qawk9jw8qzqb0/image_1b3evrm0rk1c1kb11mh9st6kao1g.png" alt="传统编程中b,c的变化不会影响a" /></p>
+
+<p>那么用响应式编程方法写出来就是这个样子，可以看到随着b和c的变化a也会随之变化。</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/0sy27j23jkyqw7gbazdf5v95/image_1b3f17o21b9o16f1dr21nur12nq2n.png" alt="响应式编程版本的a=b+c" /></p>
+
+<p>看出来一些不一样的思维方式了吗？响应式编程需要描述数据流，而不是单个点的数据变量，我们需要把数据的每个变化汇聚成一个数据流。如果说传统编程方式是基于离散的点，那么响应式编程就是线。</p>
+
+<p>上面的代码虽然很短，但体现出Rx的一些特点</p>
+
+<ol>
+  <li>Lamda表达式，对，就是那个看上去像箭头的东西 <code class="highlighter-rouge">=&gt;</code> 。你可以把它想象成一个数据流的指向，我们从箭头左方取得数据流，在右方做一系列处理后或者输出成另一个数据流或者做一些其他对于数据的操作。</li>
+  <li>操作符：这个例子中的 <code class="highlighter-rouge">from</code>, <code class="highlighter-rouge">zip</code> 都是操作符。Rx中有太多的操作符，从大类上讲分为：创建类操作符、变换类操作符、过滤类操作符、合并类操作符、错误处理类操作符、工具类操作符、条件型操作符、数学和聚集类操作符、连接型操作符等等。</li>
+</ol>
+
+<h2 id="rx再体验">Rx再体验</h2>
+
+<p>还是从例子开始，我们逐渐的来熟悉Rx。
+为了更直观的看到Rx的效果，推荐大家去JSBin这个在线Javascript IDE http://jsbin.com 去实验我们下面的练习。这个IDE非常方便，一共有5个功能窗口：HTML、CSS、Javascript、Console和Output</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/8md686e6awhplbn27wyktc1r/image_1b3fa3qmrrbj14hhl9af241555m.png" alt="JSBin在线IDE" /></p>
+
+<p>首先在HTML中引入Rx类库，然后定义一个id为todo的文本输入框：</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;title&gt;</span>JS Bin<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://unpkg.com/@reactivex/rxjs@5.0.0-beta.7/dist/global/Rx.umd.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"todo"</span> <span class="na">type=</span><span class="s">"text"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre>
+</div>
+
+<p>在Javascript标签中选择 <code class="highlighter-rouge">ES6/Babel</code>，因为这样可以直接使用ES6的语法，在文本框中输入以下javascript。在RxJS领域一般在Observable类型的变量后面加上<code class="highlighter-rouge">$</code>标识这是一个“流变量”（由英文Stream得来，Observable就是一个Stream，所以用<code class="highlighter-rouge">$</code>标识），不是必须的，但是属于约定俗成。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">todo</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'todo'</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">input$</span> <span class="o">=</span> <span class="nx">Rx</span><span class="p">.</span><span class="nx">Observable</span><span class="p">.</span><span class="nx">fromEvent</span><span class="p">(</span><span class="nx">todo</span><span class="p">,</span> <span class="s1">'keyup'</span><span class="p">);</span>
+<span class="nx">input$</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">input</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">));</span>
+</code></pre>
+</div>
+
+<p>如果Console窗口默认没有打开的话，请点击 <code class="highlighter-rouge">Console</code> 标签，然后选中右侧的 <code class="highlighter-rouge">Run with JS</code> 旁边的Auto-run js复选框。在Output窗口中应该可以看到一个文本输入框，在这个输入框中输入任意你要试验的字符，观察Console</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/t6n4jjppb7i27s3gd3k0n54d/image_1b3faklqvbjc1p4sdhr1bhu9vt13.png" alt="Console和Output窗口" /></p>
+
+<p>这几行代码很简单：首先我们得到HTML中id为todo的输入框对象，然后定义一个观察者对象将todo这个输入框的keyup事件转换成一个数据流，最后订阅这个数据流并在console中输出我们接收到的input事件的值。我们从这个例子中可以观察到几个现象：</p>
+
+<ol>
+  <li>数据流：你每次在输入框中输入时都会有新的数据被推送过来。本例中，你会发现连续输入“1，2，3，4”，在console的输出是“1，12，123，1234”，也就是说每次keyup事件我们都得到了完整的输入框中的值。而且这个数据流是无限的，只要我们不停止订阅，它就会一直在那里待命。</li>
+  <li>我们观察的是todo上发生的keyup这个事件，那如果我一直按着某个键不放会怎么样呢？你的猜测是对的，一直按着的时候，数据流没有更新，直到你抬起按键为止（你看到截图里面有2条一模一样的含有多个5的数据是因为我用的Surface Pro截图时的快捷键也被截获了，但由于是控制键所以文字内容没有改变）</li>
+</ol>
+
+<p><img src="http://static.zybuluo.com/wpcfan/0t8qcbb4jxnyyhzkbe1ngerk/image_1b3fglc3vgonb9d1ieagt71sq59.png" alt="一直按着5不放几秒之后的输出" /></p>
+
+<p>如果观察的足够仔细的话，你会发现console中输出的值其实是 <code class="highlighter-rouge">input.target.value</code>，我们观察的对象其实是id为todo的这个对象上发生的keyup事件（<code class="highlighter-rouge">Rx.Observable.fromEvent(todo, 'keyup')</code>）。那么其实在订阅的代码段中的input其实是keyup事件才对。好，我们看看到底是什么，将 <code class="highlighter-rouge">console.log(input.target.value)</code> 改写成 <code class="highlighter-rouge">console.log(input)</code>，看看会怎样呢？是的，我们得到的确实是KeyboardEvent</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/wvzuefr1g1hflifipzzytc36/image_1b3fh5bgtrjmfk211hvg5i17bam.png" alt="事件被输出到Console" /></p>
+
+<p>不太过瘾？那么我们再来做几个小练习，首先将代码改成下面的样子，其实不用我讲，你应该也可以猜得到，这是要过滤出 <code class="highlighter-rouge">keyCode=32</code> 的事件，keyCode是Ascii码，那么这就是要把空格滤出来</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">todo</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'todo'</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">input$</span> <span class="o">=</span> <span class="nx">Rx</span><span class="p">.</span><span class="nx">Observable</span><span class="p">.</span><span class="nx">fromEvent</span><span class="p">(</span><span class="nx">todo</span><span class="p">,</span> <span class="s1">'keyup'</span><span class="p">);</span>
+<span class="nx">input$</span>
+  <span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">ev</span><span class="o">=&gt;</span><span class="nx">ev</span><span class="p">.</span><span class="nx">keyCode</span><span class="o">===</span><span class="mi">32</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">ev</span><span class="o">=&gt;</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ev</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">));</span>
+</code></pre>
+</div>
+
+<p>结果我们看到了，按123456789都没有反应，直到按了空格</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/w5svpj9wxm00577z5h3vxgcx/image_1b3figmk91fjv60dnjdprkhei13.png" alt="只在空格键抬起时触发的数据流" /></p>
+
+<p>你可能一直在奇怪，我们最终只对输入框的值有兴趣，能不能数据流只传值过来呢？当然可以，使用map这个变换类操作符就可以完成这个转换了</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">todo</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'todo'</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">input$</span> <span class="o">=</span> <span class="nx">Rx</span><span class="p">.</span><span class="nx">Observable</span><span class="p">.</span><span class="nx">fromEvent</span><span class="p">(</span><span class="nx">todo</span><span class="p">,</span> <span class="s1">'keyup'</span><span class="p">);</span>
+<span class="nx">input$</span>
+  <span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">ev</span><span class="o">=&gt;</span><span class="nx">ev</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">value</span><span class="o">=&gt;</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">value</span><span class="p">));</span>
+</code></pre>
+</div>
+
+<p>map这个操作符做的事情就是允许你对原数据流中的每一个元素应用一个函数，然后返回并形成一个新的数据流，这个数据流中的每一个元素都是原来的数据流中的元素应用函数后的值。比如下面的例子，对于原数据流中的每个数应用一个函数10*x，也就是扩大了10倍，形成一个新的数据流。</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/nbj0pecdxxtakak50agu41op/image_1b3fk3qo612471ai71egg1i1515s31g.png" alt="map变换操作符" /></p>
+
+<h2 id="常见操作">常见操作</h2>
+
+<p>最常见的两个操作符我们上面已经了解了，我们继续再来认识新的操作符。类似 <code class="highlighter-rouge">.map(ev=&gt;ev.target.value)</code> 的场景太多了，以至于rxjs团队搞出来一个专门的操作符来应对，这个操作符就是 <code class="highlighter-rouge">pluck</code>。这个操作符专业从事从一系列嵌套的属性种把值提取出来形成新的流。比如上面的例子可以改写成下面的代码，效果是一样的。那么如果其中某个属性为空怎么办？这个操作符负责返回一个 <code class="highlighter-rouge">undefined</code> 作为值加入流中。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">todo</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'todo'</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">input$</span> <span class="o">=</span> <span class="nx">Rx</span><span class="p">.</span><span class="nx">Observable</span><span class="p">.</span><span class="nx">fromEvent</span><span class="p">(</span><span class="nx">todo</span><span class="p">,</span> <span class="s1">'keyup'</span><span class="p">);</span>
+<span class="nx">input$</span>
+  <span class="p">.</span><span class="nx">pluck</span><span class="p">(</span><span class="s1">'target'</span><span class="p">,</span> <span class="s1">'value'</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">value</span><span class="o">=&gt;</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">value</span><span class="p">));</span>
+</code></pre>
+</div>
+
+<p>下面我们稍微给我们的页面加点料，除了输入框再加一个按钮</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;title&gt;</span>JS Bin<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://unpkg.com/@reactivex/rxjs@5.0.0-beta.7/dist/global/Rx.umd.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"todo"</span> <span class="na">type=</span><span class="s">"text"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">"addBtn"</span><span class="nt">&gt;</span>Add<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre>
+</div>
+
+<p>在Javascript中我们同样方法得到按钮的DOM对象以及声明对此按钮点击事件的观察者：</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">addBtn</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'addBtn'</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">buttonClick$</span> <span class="o">=</span> <span class="nx">Rx</span><span class="p">.</span><span class="nx">Observable</span>
+                      <span class="p">.</span><span class="nx">fromEvent</span><span class="p">(</span><span class="nx">addBtn</span><span class="p">,</span> <span class="s1">'click'</span><span class="p">)</span>
+                      <span class="p">.</span><span class="nx">mapTo</span><span class="p">(</span><span class="s1">'clicked'</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p>由于点击事件没有什么可见的值，所以我们利用一个操作符叫 <code class="highlighter-rouge">mapTo</code> 把对应的每次点击转换成字符 <code class="highlighter-rouge">clicked</code>。其实它也是一个 <code class="highlighter-rouge">map</code> 的简化操作。</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/0w4nt3vkxv0yainw0wabm1bx/image_1b3hjgl1gqaklnj1qr31572j2c2a.png" alt="mapTo操作符将每次点击转换成一个" /></p>
+
+<h3 id="合并类操作符">合并类操作符</h3>
+
+<h4 id="combinelatest操作符">combineLatest操作符</h4>
+
+<p>既然现在我们已经有了两个流，应该试验一下合并类操作符了，先来试试 <code class="highlighter-rouge">combineLatest</code>，我们合并了按钮点击事件的数据流和文本框输入事件的数据流，并且返回一个对象，这个对象有两个属性，第一个是按钮事件数据流的值，第二个是文本输入事件数据流的值。也就是说应该是类似 <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="err">ev:</span><span class="w"> </span><span class="err">'clicked',</span><span class="w"> </span><span class="err">input:</span><span class="w"> </span><span class="err">'1'</span><span class="p">}</span></code> 这样的结构。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">Rx</span><span class="p">.</span><span class="nx">Observable</span><span class="p">.</span><span class="nx">combineLatest</span><span class="p">(</span><span class="nx">buttonClick$</span><span class="p">,</span> <span class="nx">input$</span><span class="p">,</span> <span class="p">(</span><span class="nx">ev</span><span class="p">,</span> <span class="nx">input</span><span class="p">)</span><span class="o">=&gt;</span><span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="na">ev</span><span class="p">:</span> <span class="nx">ev</span><span class="p">,</span>
+    <span class="na">input</span><span class="p">:</span> <span class="nx">input</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+  <span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">value</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">value</span><span class="p">))</span>
+
+</code></pre>
+</div>
+
+<p>那看看结果如何，在文本输入框输入1，没反应，再输入2，还是没反应</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/bv632opol178ghdqn79e1lee/image_1b3hk0fov1g2aeeb1310j0kjp52n.png" alt="CombineLatest实验一：先输入文本" /></p>
+
+<p>那我们点击一下按钮试试，这回有结果了，但有点没明白为什么是12，输入的数据流应该是： <code class="highlighter-rouge">1，12，...</code> 但那个1怎么丢了呢？</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/ybxd8dfsayq3oe0jurid9qqe/image_1b3hk3ori2jt1svl6km1csh70c34.png" alt="CombineLatest实验二：点击按钮" /></p>
+
+<p>再来文本框输入3，4看看，这回倒是都出来了</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/frdxvg3isp0ma0ict95ozhgv/image_1b3hka3a1rkp1n7b14ul2dlu23h.png" alt="CombineLatest实验二：再次输入" /></p>
+
+<p>我们来解释一下combineLatest的机制就会明白了，如下图所示，上面的2条线是2个源数据流（我们分别叫它们源1和源2吧），经过combineLatest操作符后产生了最下面的数据流（我们称它为结果流）。</p>
+
+<p>当源1的数据流发射时，源2没有数据，这时候结果流也不会有数据产生，当源2发射第一个数据（图中A）后，combineLatest操作符做的处理是，把A和源1的最近产生的数据（图中2）组合在一起，形成结果流的第一个数据（图中2A）。当源2产生第二个数据（图中B）时，源1这时没有新的数据产生，那么还是用源1中最新的数据（图中2）和源2中最新的数据（图中B）组合。</p>
+
+<p>也就是说 <code class="highlighter-rouge">combineLatest</code> 操作符其实是在组合2个源数据流中选择最新的2个数据进行配对，如果其中一个源之前没有任何数据产生，那么结果流也不会产生数据。</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/wk4gwatqc3edd8zks0j40lyw/image_1b3hj4e748enu99jnd1m9aa1g1t.png" alt="CombineLatest操作符" /></p>
+
+<p>讲到这里，有童鞋会问，原理是明白了，但什么样的实际需求会需要这个操作符呢？其实有很多，我这里只举一个小例子，现在健身这么热，比如说我们做一个简单的BMI计算器，BMI的计算公式是：体重（公斤）／（身高<em>身高）（米</em>米）。那么我们在页面给出两个输入框和一个用于显示结果的div：</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;title&gt;</span>JS Bin<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://unpkg.com/@reactivex/rxjs@5.0.0-beta.7/dist/global/Rx.umd.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+  Weight: <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"number"</span> <span class="na">id=</span><span class="s">"weight"</span><span class="nt">&gt;</span> kg
+  <span class="nt">&lt;br/&gt;</span>
+  Height: <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"number"</span> <span class="na">id=</span><span class="s">"height"</span><span class="nt">&gt;</span> cm
+  <span class="nt">&lt;br/&gt;</span>
+  Your BMI is <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"bmi"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre>
+</div>
+
+<p>那么在JS中，我们想要达成的结果是只有两个输入框都有值的时候才能开始计算BMI，这时你发现combineLatest的逻辑不要太顺溜啊。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">weight</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'weight'</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">height</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'height'</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">bmi</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'bmi'</span><span class="p">);</span>
+
+<span class="kd">let</span> <span class="nx">weight$</span> <span class="o">=</span> <span class="nx">Rx</span><span class="p">.</span><span class="nx">Observable</span>
+                <span class="p">.</span><span class="nx">fromEvent</span><span class="p">(</span><span class="nx">weight</span><span class="p">,</span> <span class="s1">'input'</span><span class="p">)</span>
+                <span class="p">.</span><span class="nx">pluck</span><span class="p">(</span><span class="s1">'target'</span><span class="p">,</span> <span class="s1">'value'</span><span class="p">);</span>
+
+<span class="kd">let</span> <span class="nx">height$</span> <span class="o">=</span> <span class="nx">Rx</span><span class="p">.</span><span class="nx">Observable</span>
+                <span class="p">.</span><span class="nx">fromEvent</span><span class="p">(</span><span class="nx">height</span><span class="p">,</span> <span class="s1">'input'</span><span class="p">)</span>
+                <span class="p">.</span><span class="nx">pluck</span><span class="p">(</span><span class="s1">'target'</span><span class="p">,</span> <span class="s1">'value'</span><span class="p">);</span>
+
+<span class="kd">let</span> <span class="nx">bmi$</span> <span class="o">=</span> <span class="nx">Rx</span><span class="p">.</span><span class="nx">Observable</span>
+              <span class="p">.</span><span class="nx">combineLatest</span><span class="p">(</span><span class="nx">weight$</span><span class="p">,</span> <span class="nx">height$</span><span class="p">,</span> <span class="p">(</span><span class="nx">w</span><span class="p">,</span> <span class="nx">h</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">w</span><span class="o">/</span><span class="p">(</span><span class="nx">h</span><span class="o">*</span><span class="nx">h</span><span class="o">/</span><span class="mi">100</span><span class="o">/</span><span class="mi">100</span><span class="p">));</span>
+
+<span class="nx">bmi$</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">b</span> <span class="o">=&gt;</span> <span class="nx">bmi</span><span class="p">.</span><span class="nx">innerHTML</span><span class="o">=</span><span class="nx">b</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p><img src="http://static.zybuluo.com/wpcfan/e3syscof2mrqovk8r28h4sq4/image_1b3i9947b1edq1ffa40i1vsmlj16.png" alt="简单的BMI计算器" /></p>
+
+<h4 id="zip操作符">zip操作符</h4>
+
+<p>除了 <code class="highlighter-rouge">combineLatest</code> ，Rxjs还提供了多个合并类的操作符，我们再试验一个 <code class="highlighter-rouge">zip</code> 操作符。 <code class="highlighter-rouge">zip</code> 和 <code class="highlighter-rouge">combineLatest</code> 非常像，但重要的区别点在于 <code class="highlighter-rouge">zip</code> 严格的需要多个源数据流中的每一个的相同顺序的元素配对。</p>
+
+<p>比如说还是上面的例子，<code class="highlighter-rouge">zip</code> 要求源1的第一个数据和源2的第一个数据组成一对，产生结果流的第一个数据；源1的第二个数据和源2的第二个数据组成一对，产生结果流的第二个数据。而 <code class="highlighter-rouge">combineLatest</code> 不需要等待另一个源数据流产生数据，只要有一个产生，结果流就会产生。</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/yzvihbjat2l8jbodprpsxifp/image_1b3j8dn9p1072ohjhqv1ful1cmp.png" alt="zip操作符有对齐的特性" /></p>
+
+<p><code class="highlighter-rouge">zip</code> 这个词在英文中有拉链的意思，记住这个有助于我们理解这个操作符，就像拉链一样，它需要拉链两边的齿一一对应。从效果角度上讲，这个操作符有减缓发射速度的作用，因为它会等待合并序列中最慢的那个。</p>
+
+<p>下面我们还是看个例子，在我写第七章的使用Bing Image API变换背景时，我最开始的想法是取得图片数组后，把这个数组中的元素每隔一段时间发送出去一个，这样组件端就不用关心图片变化的逻辑，只要服务发射一个地址，我就加载就行了。我就是用zip来实现的，我们在这个逻辑中有2个源数据流：基于一个数组生成的数据流以及一个时间间隔数据流。前者的发射速度非常快，后者则速度均匀，我们希望按后者的速度对齐前者，以达到每隔一段时间发射前者的数据的目的。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code>   <span class="nx">yieldByInterval</span><span class="p">(</span><span class="nx">items</span><span class="p">,</span> <span class="nx">time</span><span class="p">)</span> <span class="p">{</span>
+     <span class="k">return</span> <span class="nx">Observable</span><span class="p">.</span><span class="nx">from</span><span class="p">(</span><span class="nx">items</span><span class="p">).</span><span class="nx">zip</span><span class="p">(</span>
+       <span class="nx">Observable</span><span class="p">.</span><span class="nx">interval</span><span class="p">(</span><span class="nx">time</span><span class="p">),</span>
+       <span class="p">(</span><span class="nx">item</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">item</span>
+     <span class="p">);</span>
+   <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>为了更好的让大家体会，我改写一个纯javascript版本，可以在JSBin上面直接跑的，它的本质逻辑和上面讲的相同：</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">greetings</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Hello'</span><span class="p">,</span> <span class="s1">'How are you'</span><span class="p">,</span> <span class="s1">'How are you doing'</span><span class="p">];</span>
+<span class="kd">let</span> <span class="nx">time</span> <span class="o">=</span> <span class="mi">3000</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">item$</span> <span class="o">=</span> <span class="nx">Rx</span><span class="p">.</span><span class="nx">Observable</span><span class="p">.</span><span class="nx">from</span><span class="p">(</span><span class="nx">greetings</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">interval$</span> <span class="o">=</span> <span class="nx">Rx</span><span class="p">.</span><span class="nx">Observable</span><span class="p">.</span><span class="nx">interval</span><span class="p">(</span><span class="nx">time</span><span class="p">);</span>
+
+<span class="nx">Rx</span><span class="p">.</span><span class="nx">Observable</span><span class="p">.</span><span class="nx">zip</span><span class="p">(</span>
+    <span class="nx">item$</span><span class="p">,</span>
+    <span class="nx">interval$</span><span class="p">,</span>
+    <span class="p">(</span><span class="nx">item</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="p">{</span>
+        <span class="na">item</span><span class="p">:</span> <span class="nx">item</span><span class="p">,</span>
+        <span class="na">index</span><span class="p">:</span> <span class="nx">index</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">)</span>
+  <span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">result</span> <span class="o">=&gt;</span> 
+             <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span>
+              <span class="s1">'item: '</span> <span class="o">+</span> <span class="nx">result</span><span class="p">.</span><span class="nx">item</span> <span class="o">+</span> 
+              <span class="s1">' index: '</span> <span class="o">+</span> <span class="nx">result</span><span class="p">.</span><span class="nx">index</span> <span class="o">+</span> 
+              <span class="s1">' at '</span> <span class="o">+</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">()));</span>
+
+</code></pre>
+</div>
+
+<p>我们看到结果如下图所示，每隔3000毫秒，数组中的欢迎文字被输出一次。</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/kgggh41asqvfqp6flxnzxs6d/image_1b3n526sd1vgp12df13s7ihj2b1j.png" alt="zip操作符示例" /></p>
+
+<p>这两个操作符应该是Rx中最常用的2个合并类操作符了。其他的操作符大家可以去 http://reactivex.io/documentation/operators.html 查看，注意不是所有的操作符RxJS都有。而且RxJS 5.0 目前整体的趋势是减少不必要的以及冗余的操作符，所以我们只介绍最常用的一些操作符。</p>
+
+<h3 id="创建类操作符">创建类操作符</h3>
+
+<p>通常来讲，Rx团队不鼓励新手自己从0开始创建Observable，因为状态太复杂，会遗漏一些问题。Rx鼓励的是通过已有的大量创建类转换操作符来去建立Observable。我们其实之前已经见过一些了，包括 <code class="highlighter-rouge">from</code> 和 <code class="highlighter-rouge">fromEvent</code>。</p>
+
+<h4 id="from操作符">from操作符</h4>
+
+<p><code class="highlighter-rouge">from</code> 可以支持从数组、类似数组的对象、Promise、iterable 对象或类似Observable的对象（其实这个主要指ES2015中的Observable）来创建一个Observable。</p>
+
+<p>这个操作符应该是可以创建Observable的操作符中最常使用的一个，因为它几乎可以把任何对象转换成Observable。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">array</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">];</span>
+<span class="kd">var</span> <span class="nx">result$</span> <span class="o">=</span> <span class="nx">Rx</span><span class="p">.</span><span class="nx">Observable</span><span class="p">.</span><span class="nx">from</span><span class="p">(</span><span class="nx">array</span><span class="p">);</span>
+<span class="nx">result$</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">x</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">));</span>
+</code></pre>
+</div>
+
+<p><img src="http://static.zybuluo.com/wpcfan/vr3mn0ltkpzqbxbzets82b0w/image_1b3n7jn3t16tp1jej14ve8qh1gfe20.png" alt="from转换一个数组为Observable" /></p>
+
+<h4 id="fromevent操作符">fromEvent操作符</h4>
+
+<p>这个操作符是专门为事件转换成Observable而制作的，非常强大且方便。对于前端来说，这个方法用于处理各种DOM中的事件再方便不过了。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">click$</span> <span class="o">=</span> <span class="nx">Rx</span><span class="p">.</span><span class="nx">Observable</span><span class="p">.</span><span class="nx">fromEvent</span><span class="p">(</span><span class="nb">document</span><span class="p">,</span> <span class="s1">'click'</span><span class="p">);</span>
+<span class="nx">click$</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">x</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">));</span>
+</code></pre>
+</div>
+
+<p><img src="http://static.zybuluo.com/wpcfan/hiqajty1tlq4xkr5enst340n/image_1b3n7sopd1fmceco10ud1is1ub2d.png" alt="fromEvent转换事件为Observable" /></p>
+
+<h4 id="fromeventpattern">fromEventPattern</h4>
+
+<p>我们经常会遇到一些已有的代码，这些代码和类库往往不受我们的控制，无法重构或代价太大。我们需要在这种情况下可以利用Rx的话，就需要大量的可以从原有的代码中可以转换的方法。addXXXHandler和removeXXXHandler就是大家以前经常使用的一种模式，那么在Rx中也提供了对应的方法可以转换，那就是</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">addClickHandler</span><span class="p">(</span><span class="nx">handler</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="nx">handler</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">removeClickHandler</span><span class="p">(</span><span class="nx">handler</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nb">document</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="nx">handler</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">click$</span> <span class="o">=</span> <span class="nx">Rx</span><span class="p">.</span><span class="nx">Observable</span><span class="p">.</span><span class="nx">fromEventPattern</span><span class="p">(</span>
+  <span class="nx">addClickHandler</span><span class="p">,</span>
+  <span class="nx">removeClickHandler</span>
+<span class="p">);</span>
+<span class="nx">click$</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">x</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">));</span>
+</code></pre>
+</div>
+
+<p><img src="http://static.zybuluo.com/wpcfan/walv43zw68z0mzxl5qkeyubi/image_1b3n7vtqc1jat2861f8k1e8i1r1d2q.png" alt="fromEventPattern专门处理addHandler/removeHandler" /></p>
+
+<h4 id="defer操作符">defer操作符</h4>
+
+<p><code class="highlighter-rouge">defer</code> 是直到有订阅者之后才创建Observable，而且它为每个订阅者都会这样做，也就是说其实每个订阅者都是接收到自己的单独数据流序列。</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/3p780opb45pm3obvgrsew2jr/image_1b3ogpb371mli7ccdii4ebdhc9.png" alt="defer操作符为每个订阅者单纯创建序列" /></p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">Rx</span><span class="p">.</span><span class="nx">Observable</span><span class="p">.</span><span class="nx">defer</span><span class="p">(()</span><span class="o">=&gt;</span><span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">doHeavyJob</span><span class="p">();</span>
+  <span class="k">return</span> <span class="nx">result</span><span class="p">?</span><span class="s1">'success'</span><span class="p">:</span><span class="s1">'failed'</span><span class="p">;</span>
+<span class="p">})</span>
+  <span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">x</span><span class="o">=&gt;</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">))</span>
+
+<span class="kd">function</span> <span class="nx">doHeavyJob</span><span class="p">(){</span>
+  <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'doing something'</span><span class="p">);},</span> <span class="mi">2000</span><span class="p">);</span>
+  <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><img src="http://static.zybuluo.com/wpcfan/ftcnqjgl43l36teutf39x10k/image_1b3ocltsq16br1ec19d72mbbsl37.png" alt="defer惰性创建Observable" /></p>
+
+<h4 id="interval">Interval</h4>
+
+<p>Rx提供内建的可以创建和计时器相关的Observable方法，第一个是Interval，它可以在指定时间间隔发送整数的自增长序列。</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/jpku44htoy1zjjiy7eu77dju/image_1b3oib0fgf4p1ns1u7j1cm2pi7m.png" alt="Interval在指定时间间隔发送整数序列" /></p>
+
+<p>例如下面代码，我们每隔500毫秒发送一个整数，这个数列是无穷的，我们取前三个好了：</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">source</span> <span class="o">=</span> <span class="nx">Rx</span><span class="p">.</span><span class="nx">Observable</span>
+    <span class="p">.</span><span class="nx">interval</span><span class="p">(</span><span class="mi">500</span> <span class="cm">/* ms */</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">take</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+
+<span class="kd">let</span> <span class="nx">subscription</span> <span class="o">=</span> <span class="nx">source</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span>
+    <span class="kd">function</span> <span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Next: '</span> <span class="o">+</span> <span class="nx">x</span><span class="p">);</span>
+    <span class="p">},</span>
+    <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Error: '</span> <span class="o">+</span> <span class="nx">err</span><span class="p">);</span>
+    <span class="p">},</span>
+    <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Completed'</span><span class="p">);</span>
+    <span class="p">});</span>
+</code></pre>
+</div>
+
+<p>那么输出是</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/oxkyh4fd6h05rduw1b2fatwu/image_1b3oj0vlmh2s1hlr1nslj908a31j.png" alt="Interval每隔500毫秒发送一个整数，取前三个的结果" /></p>
+
+<p>这里大家可能注意到我们没有采用箭头的方式，而是用传统的写法，写了 <code class="highlighter-rouge">function(x){...}</code> ，哪种方式其实都可以，箭头方式会更简单。</p>
+
+<p>另一个需要注意的地方是，在subscribe方法中我们多了2个参数：一个处理异常，一个处理完成。Rx认为所有的数据流会有三个状态：next，error和completed。这三个函数就是分别处理这三种状态的，当然如果我们不写某个状态的处理，也就意味着我们认为此状态不需要特别处理。而且有些序列是没有completed状态的，因为是无限序列。本例中，如果我们去掉 <code class="highlighter-rouge">.take(3)</code> 那么completed是永远无法触发的。</p>
+
+<h4 id="timer">Timer</h4>
+
+<p>下面我们来看看Timer，一共有2种形式的Timer，一种是指定时间后返回一个序列中只有一个元素（值为0）的Observable。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="c1">//这里指定一开始的delay时间</span>
+<span class="c1">//也可以输入一个Date，比如“2016-12-31 20:00:00”</span>
+<span class="c1">//这样变成了在指定的时间触发</span>
+<span class="kd">let</span> <span class="nx">source</span> <span class="o">=</span> <span class="nx">Rx</span><span class="p">.</span><span class="nx">Observable</span><span class="p">.</span><span class="nx">timer</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span>
+
+<span class="kd">let</span> <span class="nx">subscription</span> <span class="o">=</span> <span class="nx">source</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span>
+    <span class="nx">x</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Next: '</span> <span class="o">+</span> <span class="nx">x</span><span class="p">),</span>
+    <span class="nx">err</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Error: '</span> <span class="o">+</span> <span class="nx">err</span><span class="p">),</span>
+    <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Completed'</span><span class="p">));</span>
+</code></pre>
+</div>
+
+<p><img src="http://static.zybuluo.com/wpcfan/0hmmxq9lbrggivbovf7mb2ae/image_1b3okg3fkh6l1t9bsum1kukor42d.png" alt="不指定间隔时间时，Timer只发射1个元素" /></p>
+
+<p>第二种Timer很类似于Interval。除了第一个参数是一开始的延迟时间，第二个参数是间隔时间，也就是说，在一开始的延迟时间后，每隔一段时间就会返回一个整数序列。这个和Interval基本一样除了Timer可以指定什么时间开始（延迟时间）。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">source</span> <span class="o">=</span> <span class="nx">Rx</span><span class="p">.</span><span class="nx">Observable</span><span class="p">.</span><span class="nx">timer</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">take</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+    
+<span class="kd">var</span> <span class="nx">subscription</span> <span class="o">=</span> <span class="nx">source</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span>
+    <span class="nx">x</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Next: '</span> <span class="o">+</span> <span class="nx">x</span><span class="p">),</span>
+    <span class="nx">err</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Error: '</span> <span class="o">+</span> <span class="nx">err</span><span class="p">),</span>
+    <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Completed'</span><span class="p">));</span>
+</code></pre>
+</div>
+
+<p><img src="http://static.zybuluo.com/wpcfan/m0b23nq3nft68wp929gnnwwz/image_1b3ok3b1f1r0vlku1sq7k6413p620.png" alt="第二种Timer和Interval很类似" /></p>
+
+<p>当然还有其他创建类的操作符，大家可以去 http://reactivex.io/documentation/operators 查阅自行试验一下。</p>
+
+<h3 id="过滤类操作符">过滤类操作符</h3>
+
+<p>之前我们见过好几个过滤类操作符：filter，distinct，take和debounce。</p>
+
+<h4 id="filter">filter</h4>
+
+<p>Filter操作只允许数据流中满足其predicate测试的元素发射出去，这个predicate函数接受3个参数：</p>
+
+<ol>
+  <li>原始数据流元素</li>
+  <li>索引，这个是指该元素在源数据流中的位置（从0开始）</li>
+  <li>源Observable对象</li>
+</ol>
+
+<p>如下的代码将0-5中偶数过滤出来：</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">source</span> <span class="o">=</span> <span class="nx">Rx</span><span class="p">.</span><span class="nx">Observable</span><span class="p">.</span><span class="nx">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">idx</span><span class="p">,</span> <span class="nx">obs</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">===</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="p">});</span>
+
+<span class="kd">let</span> <span class="nx">subscription</span> <span class="o">=</span> <span class="nx">source</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span>
+    <span class="nx">x</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Next: '</span> <span class="o">+</span> <span class="nx">x</span><span class="p">),</span>
+    <span class="nx">err</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Error: '</span> <span class="o">+</span> <span class="nx">err</span><span class="p">),</span>
+    <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Completed'</span><span class="p">));</span>
+</code></pre>
+</div>
+
+<p><img src="http://static.zybuluo.com/wpcfan/tgoo0p0u6t4gbrxgo272o2na/image_1b3p0ng7lhbh1vdnq1a10up6f52q.png" alt="Filter是可以依据一个函数来过滤数据流" /></p>
+
+<h4 id="debouncetime">debounceTime</h4>
+
+<p>对于一些发射频率比较高的数据流，我们有时会想给它安个“整流器”。比如在一个搜索框中，输入一些字符后希望出现一些搜索建议，这是个非常好的功能，很多时候可以减少用户的输入。</p>
+
+<p>但是由于这些搜索建议需要联网完成数据的传递，如果太频繁操作的话，对于用户的数据流量和服务器的性能承载都是有副作用的。所以我们一般希望在用户连续快速输入时不去搜索，而是等待有相对较长的间隔时再去搜索。</p>
+
+<p>下面的代码从输入上做了这样的一个“整流器”，滤掉了间隔时间小于400毫米的输入事件（输入本身不受影响），只有用户出现较明显的停顿时才把输入值发射出来。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">todo</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'todo'</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">input$</span> <span class="o">=</span> <span class="nx">Rx</span><span class="p">.</span><span class="nx">Observable</span><span class="p">.</span><span class="nx">fromEvent</span><span class="p">(</span><span class="nx">todo</span><span class="p">,</span> <span class="s1">'keyup'</span><span class="p">);</span>
+<span class="nx">input$</span>
+  <span class="p">.</span><span class="nx">debounceTime</span><span class="p">(</span><span class="mi">400</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">input</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">));</span>
+</code></pre>
+</div>
+
+<p>快速输入“12345”，在这种情况下得到的是一条数据</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/yuueok3tniz06zj5lptidztr/image_1b3p6ldg019851kgn1fa7fls146q37.png" alt="快速输入12345得到一条数据" /></p>
+
+<p>但如果不应用debounceTime，我们得到5条记录</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/iv36fzqpjfsco3wy6wt2akwk/image_1b3p6ntv310o0rifqj91kv41htb3k.png" alt="不应用debounceTime的结果" /></p>
+
+<p>其他的过滤类操作符也很有趣，比如Distinct就是可以把重复的元素过滤掉，skip就可以跳过几个元素等等，可以自行研究，这里就不一一举例了。</p>
+
+<p>Rx的操作符实在太多了，我只能列举一些较常见的给大家介绍一下，其他的建议大家去官方文档学习。</p>
+
+<h2 id="angular2中的内建支持">Angular2中的内建支持</h2>
+
+<p>Angular2中对于Rx的支持是怎么样的呢？先试验一下吧，简单粗暴的一个组件模版页面</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;p&gt;</span>
+  
+<span class="nt">&lt;/p&gt;</span>
+</code></pre>
+</div>
+
+<p>和在组件中定义一个简单粗暴的成员变量</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">Component</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Observable</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'rxjs/Observable'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'rxjs/add/observable/interval'</span><span class="p">;</span>
+
+<span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
+  <span class="na">selector</span><span class="p">:</span> <span class="s1">'app-playground'</span><span class="p">,</span>
+  <span class="na">templateUrl</span><span class="p">:</span> <span class="s1">'./playground.component.html'</span><span class="p">,</span>
+  <span class="na">styleUrls</span><span class="p">:</span> <span class="p">[</span><span class="s1">'./playground.component.css'</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">PlaygroundComponent</span><span class="p">{</span>
+  <span class="nx">clock</span> <span class="o">=</span> <span class="nx">Observable</span><span class="p">.</span><span class="nx">interval</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+
+  <span class="nx">constructor</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span>
+
+<span class="p">}</span>
+
+</code></pre>
+</div>
+
+<p>搞定！打开浏览器，显示了一个 <code class="highlighter-rouge">[object Object]</code>，晕倒。</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/rtgm2jlj5duf76pa1xyqy71o/image_1b3ppc1i216qj1707phb1kr672t9.png" alt="直接把Observable对象显示在页面中的效果：啥也没有" /></p>
+
+<p>当然经过前面的学习，我们知道Observable是个异步数据流，我们可以把代码改写一下，在订阅方法中去赋值就一切ok了。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">Component</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Observable</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'rxjs/Observable'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'rxjs/add/observable/interval'</span><span class="p">;</span>
+
+<span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
+  <span class="na">selector</span><span class="p">:</span> <span class="s1">'app-playground'</span><span class="p">,</span>
+  <span class="na">templateUrl</span><span class="p">:</span> <span class="s1">'./playground.component.html'</span><span class="p">,</span>
+  <span class="na">styleUrls</span><span class="p">:</span> <span class="p">[</span><span class="s1">'./playground.component.css'</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">PlaygroundComponent</span><span class="p">{</span>
+  <span class="nl">clock</span><span class="p">:</span> <span class="nx">number</span><span class="p">;</span>
+
+  <span class="nx">constructor</span><span class="p">()</span> <span class="p">{</span> 
+    <span class="nx">Observable</span><span class="p">.</span><span class="nx">interval</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">value</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">clock</span><span class="o">=</span> <span class="nx">value</span><span class="p">)</span>
+  <span class="p">}</span>
+
+<span class="p">}</span>
+
+</code></pre>
+</div>
+
+<p><img src="http://static.zybuluo.com/wpcfan/glham35rwcyatdtvshljwpcl/image_1b3prc8sc6u51pj61qrm1tk3hbvm.png" alt="利用subscribe赋值成功显示的效果" /></p>
+
+<p>但是这样做还是有一个问题，我们加入一个do操作符，在每次订阅前去记录就会发现一些问题。当我们离开页面再回来，每次进入都会创建一个新的订阅，，但原有的没有释放。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">Observable</span><span class="p">.</span><span class="nx">interval</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+      <span class="p">.</span><span class="k">do</span><span class="p">(</span><span class="nx">_</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'observable created'</span><span class="p">))</span>
+      <span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">value</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">clock</span><span class="o">=</span> <span class="nx">value</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p>观察console中在‘observable created’之前的数字和页面显示的数字，大概是页面每增加1，console的数字增加2，这说明我们后面运行着2个订阅。</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/k10mmbl9co5o7l9tffwm11mi/image_1b3psun3cjcpkrg13rp1knh1trk2a.png" alt="原有的订阅没有释放掉" /></p>
+
+<p>原因是我们没有在页面销毁时取消订阅，那么我们利用生命周期的onDestroy来完成这一步：</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">Component</span><span class="p">,</span> <span class="nx">OnDestroy</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Observable</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'rxjs/Observable'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Subscription</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'rxjs/Subscription'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'rxjs/add/observable/interval'</span><span class="p">;</span>
+
+<span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
+  <span class="na">selector</span><span class="p">:</span> <span class="s1">'app-playground'</span><span class="p">,</span>
+  <span class="na">templateUrl</span><span class="p">:</span> <span class="s1">'./playground.component.html'</span><span class="p">,</span>
+  <span class="na">styleUrls</span><span class="p">:</span> <span class="p">[</span><span class="s1">'./playground.component.css'</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">PlaygroundComponent</span> <span class="kr">implements</span> <span class="nx">OnDestroy</span><span class="p">{</span>
+  <span class="nl">clock</span><span class="p">:</span> <span class="nx">number</span><span class="p">;</span>
+  <span class="nl">subscription</span><span class="p">:</span> <span class="nx">Subscription</span><span class="p">;</span>
+
+  <span class="nx">constructor</span><span class="p">()</span> <span class="p">{</span> 
+    <span class="k">this</span><span class="p">.</span><span class="nx">subscription</span> <span class="o">=</span> <span class="nx">Observable</span><span class="p">.</span><span class="nx">interval</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+      <span class="p">.</span><span class="k">do</span><span class="p">(</span><span class="nx">_</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'observable created'</span><span class="p">))</span>
+      <span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">value</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">clock</span><span class="o">=</span> <span class="nx">value</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">ngOnDestroy</span><span class="p">(){</span>
+    <span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">subscription</span> <span class="o">!==</span> <span class="kc">undefined</span><span class="p">)</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">subscription</span><span class="p">.</span><span class="nx">unsubscribe</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre>
+</div>
+
+<p>现在再来观察，同样进入并离开再进入页面后，页面每增加1，console也会增加1。</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/2u8j3y5ewuqu55smx2ek25gi/image_1b3psq94lc031b5111mhgqc1ltu1g.png" alt="通过onDestory中unsubscribe来防止内存泄露" /></p>
+
+<h3 id="async管道">Async管道</h3>
+
+<p>现在看起来还是挺麻烦的，有没有更简单的方法呢？答案当然是肯定的：Angular2提供一个管道叫：async，有了这个管道，我们无需管理琐碎的取消订阅，以及订阅了。</p>
+
+<p>让我们回到最开始的简单粗暴版本，模版文件稍微改写一下</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;p&gt;</span>
+  
+<span class="nt">&lt;/p&gt;</span>
+</code></pre>
+</div>
+
+<p>这个 <code class="highlighter-rouge">| async</code> 是什么东东？async是Angular2提供的一种转换器，叫管道（Pipe）。</p>
+
+<p>每个应用开始的时候差不多都是一些简单任务：获取数据、转换它们，然后把它们显示给用户。一旦取到数据，我们可以把它们原始值的结果直接显示。 但这种做法很少能有好的用户体验。比如，几乎每个人都更喜欢简单的日期格式，几月几号星期几，而不是原始字符串格式 —— Fri Apr 15 1988 00:00:00 GMT-0700 (Pacific Daylight Time)。通过管道我们可以把不友好的值转换成友好的值显示在页面中。</p>
+
+<p>Angular内置了一些管道，比如DatePipe、UpperCasePipe、LowerCasePipe、CurrencyPipe和PercentPipe。它们全都可以直接用在任何模板中。Async管道也是内置管道之一。</p>
+
+<p>当然这样在页面写完管道后，我们的组件版本也回归了简单粗暴版本:</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">Component</span><span class="p">,</span> <span class="nx">OnDestroy</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Observable</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'rxjs/Observable'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'rxjs/add/observable/interval'</span><span class="p">;</span>
+
+<span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
+  <span class="na">selector</span><span class="p">:</span> <span class="s1">'app-playground'</span><span class="p">,</span>
+  <span class="na">templateUrl</span><span class="p">:</span> <span class="s1">'./playground.component.html'</span><span class="p">,</span>
+  <span class="na">styleUrls</span><span class="p">:</span> <span class="p">[</span><span class="s1">'./playground.component.css'</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">PlaygroundComponent</span> <span class="p">{</span>
+  <span class="nx">clock</span> <span class="o">=</span> <span class="nx">Observable</span><span class="p">.</span><span class="nx">interval</span><span class="p">(</span><span class="mi">1000</span><span class="p">).</span><span class="k">do</span><span class="p">(</span><span class="nx">_</span><span class="o">=&gt;</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'observable created'</span><span class="p">));</span>
+
+  <span class="nx">constructor</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span>
+
+<span class="p">}</span>
+
+</code></pre>
+</div>
+
+<p>现在打开浏览器，看一下页面的效果</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/zw7jylvaagfo2a50jnwb2owf/image_1b3pug0tr18oeotp172p1pgqr4s2n.png" alt="使用async pipe的版本" /></p>
+
+<p>你做这个试验时很可能会遭遇一个错误，说async pipe无法找到</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/xhjkqdq5pazdds7iarrbwwc3/image_1b3pun648fsd1u2d5nu1nv21bf3h.png" alt="aync pipe无法找到的错误" /></p>
+
+<p>这种情况一般是由于CommonModule没有导入造成的，遇到这种错误，请导入CommonModule。</p>
+
+<h3 id="rx版本的todo">Rx版本的Todo</h3>
+
+<p>这一节我们通过改造我们的待办事项应用来进一步体会Rx的威力。首先我们把TodoService中原来采用的Promise方式都替换成Observable的方式。</p>
+
+<p>在进行改动之前，我们来重新分析一下逻辑：我们原有的实现方式中，组件中保留了一个todos数组的本地拷贝，服务器API逻辑在Service中完成。其实组件最好不关心逻辑，即使是本地拷贝的逻辑，也不应该放到组件中。组件本身的数据都是监听Service中的数据变化而得到的。</p>
+
+<p>那么我们应该在Service中建立本地的内存“数据库”，我们叫它 <code class="highlighter-rouge">dataStore</code> 吧。这个“数据库”中只有一个“表”：todos。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="c1">//TodoService.ts</span>
+  <span class="kr">private</span> <span class="nx">dataStore</span><span class="err">:</span> <span class="p">{</span>  <span class="c1">// todos的内存“数据库”</span>
+    <span class="nl">todos</span><span class="p">:</span> <span class="nx">Todo</span><span class="p">[]</span>
+  <span class="p">};</span>
+</code></pre>
+</div>
+
+<p>为了让组件可以监听到这个数据的变化，我们需要一个Observable，但是在Service中我们还需要写入变化，这样的话，我们选择一个既是Observable又是Observer的对象，在Rx中，Subject就是这样的对象：</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="c1">//TodoService.ts</span>
+<span class="p">...</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">BehaviorSubject</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'rxjs/BehaviorSubject'</span><span class="p">;</span>
+<span class="err">@</span><span class="nx">Injectable</span><span class="p">()</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">TodoService</span> <span class="p">{</span>
+    <span class="p">...</span>
+    <span class="kr">private</span> <span class="nx">_todos</span><span class="err">:</span> <span class="nx">BehaviorSubject</span><span class="o">&lt;</span><span class="nx">Todo</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">;</span> 
+    <span class="nx">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">http</span><span class="err">:</span> <span class="nx">Http</span><span class="p">,</span> <span class="err">@</span><span class="nx">Inject</span><span class="p">(</span><span class="s1">'auth'</span><span class="p">)</span> <span class="kr">private</span> <span class="nx">authService</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">dataStore</span> <span class="o">=</span> <span class="p">{</span> <span class="na">todos</span><span class="p">:</span> <span class="p">[]</span> <span class="p">};</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">_todos</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">BehaviorSubject</span><span class="o">&lt;</span><span class="nx">Todo</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">([]);</span>
+    <span class="p">}</span>
+    <span class="p">...</span>
+  <span class="nx">get</span> <span class="nx">todos</span><span class="p">(){</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_todos</span><span class="p">.</span><span class="nx">asObservable</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="p">...</span>
+</code></pre>
+</div>
+
+<p>我们使用了一个BehaviorSubject，它的一个特点是存储了发射的最新的值，这样无论什么订阅者订阅时都会得到“当前值”。我们之前通过ReplaySubject也实现过类似功能，但Replay是可以缓存多个值的。</p>
+
+<p>我们在构造中分别初始化了 <code class="highlighter-rouge">dataStore</code> 和 <code class="highlighter-rouge">_todos</code>，然后提供了一个get的属性方法让其他订阅者可以订阅todos的变化。在这个属性方法中，我们把Subject转成了Observable（通过<code class="highlighter-rouge">.asObservable()</code>）。</p>
+
+<p>那么我们如何写入变化呢？拿增加一个代办事项（ <code class="highlighter-rouge">addTodo(desc:string)</code> ）的逻辑来看一下吧。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code>  <span class="nx">addTodo</span><span class="p">(</span><span class="nx">desc</span><span class="err">:</span><span class="nx">string</span><span class="p">){</span>
+    <span class="kd">let</span> <span class="nx">todoToAdd</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">id</span><span class="p">:</span> <span class="nx">UUID</span><span class="p">.</span><span class="nx">UUID</span><span class="p">(),</span>
+      <span class="na">desc</span><span class="p">:</span> <span class="nx">desc</span><span class="p">,</span>
+      <span class="na">completed</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="na">userId</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">userId</span>
+    <span class="p">};</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">http</span>
+      <span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">api_url</span><span class="p">,</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">todoToAdd</span><span class="p">),</span> <span class="p">{</span><span class="na">headers</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">headers</span><span class="p">})</span>
+      <span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">res</span> <span class="o">=&gt;</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">()</span> <span class="nx">as</span> <span class="nx">Todo</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">todo</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">dataStore</span><span class="p">.</span><span class="nx">todos</span> <span class="o">=</span> <span class="p">[...</span><span class="k">this</span><span class="p">.</span><span class="nx">dataStore</span><span class="p">.</span><span class="nx">todos</span><span class="p">,</span> <span class="nx">todo</span><span class="p">];</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">_todos</span><span class="p">.</span><span class="nx">next</span><span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">({},</span> <span class="k">this</span><span class="p">.</span><span class="nx">dataStore</span><span class="p">).</span><span class="nx">todos</span><span class="p">);</span>
+      <span class="p">});</span>
+  <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>由于 <code class="highlighter-rouge">this.http.post</code> 返回的本身就是Observable，所以我们不再需要 <code class="highlighter-rouge">.toPromise()</code> 这个方法了。直接用 <code class="highlighter-rouge">map</code> 将response的数据流转换成Todo的数据流，然后更新本地数据，然后使用Subject的 <code class="highlighter-rouge">next</code> 方法（<code class="highlighter-rouge">this._todos.next</code>）把本地数据写入数据流。这个next的含义就是让推送一个新元素到数据流。</p>
+
+<p>按照这种逻辑，我们把整个 <code class="highlighter-rouge">TodoService</code> 改造成下面的样子。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">Injectable</span><span class="p">,</span> <span class="nx">Inject</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Http</span><span class="p">,</span> <span class="nx">Headers</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/http'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">UUID</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'angular2-uuid'</span><span class="p">;</span>
+
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Observable</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'rxjs/Observable'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">BehaviorSubject</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'rxjs/BehaviorSubject'</span><span class="p">;</span>
+
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Todo</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'../domain/entities'</span><span class="p">;</span>
+
+<span class="err">@</span><span class="nx">Injectable</span><span class="p">()</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">TodoService</span> <span class="p">{</span>
+
+  <span class="kr">private</span> <span class="nx">api_url</span> <span class="o">=</span> <span class="s1">'http://localhost:3000/todos'</span><span class="p">;</span>
+  <span class="kr">private</span> <span class="nx">headers</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Headers</span><span class="p">({</span><span class="s1">'Content-Type'</span><span class="p">:</span> <span class="s1">'application/json'</span><span class="p">});</span>
+  <span class="kr">private</span> <span class="nx">userId</span><span class="err">:</span> <span class="nx">string</span><span class="p">;</span>
+  <span class="kr">private</span> <span class="nx">_todos</span><span class="err">:</span> <span class="nx">BehaviorSubject</span><span class="o">&lt;</span><span class="nx">Todo</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">;</span> 
+  <span class="kr">private</span> <span class="nx">dataStore</span><span class="err">:</span> <span class="p">{</span>  <span class="c1">// todos的内存“数据库”</span>
+    <span class="nl">todos</span><span class="p">:</span> <span class="nx">Todo</span><span class="p">[]</span>
+  <span class="p">};</span>
+
+  <span class="nx">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">http</span><span class="err">:</span> <span class="nx">Http</span><span class="p">,</span> <span class="err">@</span><span class="nx">Inject</span><span class="p">(</span><span class="s1">'auth'</span><span class="p">)</span> <span class="kr">private</span> <span class="nx">authService</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">authService</span><span class="p">.</span><span class="nx">getAuth</span><span class="p">()</span>
+      <span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">auth</span> <span class="o">=&gt;</span> <span class="nx">auth</span><span class="p">.</span><span class="nx">user</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">auth</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">userId</span> <span class="o">=</span> <span class="nx">auth</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">dataStore</span> <span class="o">=</span> <span class="p">{</span> <span class="na">todos</span><span class="p">:</span> <span class="p">[]</span> <span class="p">};</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">_todos</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">BehaviorSubject</span><span class="o">&lt;</span><span class="nx">Todo</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">([]);</span>
+  <span class="p">}</span>
+
+  <span class="nx">get</span> <span class="nx">todos</span><span class="p">(){</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_todos</span><span class="p">.</span><span class="nx">asObservable</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="c1">// POST /todos</span>
+  <span class="nx">addTodo</span><span class="p">(</span><span class="nx">desc</span><span class="err">:</span><span class="nx">string</span><span class="p">){</span>
+    <span class="kd">let</span> <span class="nx">todoToAdd</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">id</span><span class="p">:</span> <span class="nx">UUID</span><span class="p">.</span><span class="nx">UUID</span><span class="p">(),</span>
+      <span class="na">desc</span><span class="p">:</span> <span class="nx">desc</span><span class="p">,</span>
+      <span class="na">completed</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="na">userId</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">userId</span>
+    <span class="p">};</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">http</span>
+      <span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">api_url</span><span class="p">,</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">todoToAdd</span><span class="p">),</span> <span class="p">{</span><span class="na">headers</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">headers</span><span class="p">})</span>
+      <span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">res</span> <span class="o">=&gt;</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">()</span> <span class="nx">as</span> <span class="nx">Todo</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">todo</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">dataStore</span><span class="p">.</span><span class="nx">todos</span> <span class="o">=</span> <span class="p">[...</span><span class="k">this</span><span class="p">.</span><span class="nx">dataStore</span><span class="p">.</span><span class="nx">todos</span><span class="p">,</span> <span class="nx">todo</span><span class="p">];</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">_todos</span><span class="p">.</span><span class="nx">next</span><span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">({},</span> <span class="k">this</span><span class="p">.</span><span class="nx">dataStore</span><span class="p">).</span><span class="nx">todos</span><span class="p">);</span>
+      <span class="p">});</span>
+  <span class="p">}</span>
+  <span class="c1">// PATCH /todos/:id </span>
+  <span class="nx">toggleTodo</span><span class="p">(</span><span class="na">todo</span><span class="p">:</span> <span class="nx">Todo</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="err">`</span><span class="nx">$</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">api_url</span><span class="p">}</span><span class="sr">/${todo.id}`</span><span class="err">;
+</span>    <span class="kr">const</span> <span class="nx">i</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">dataStore</span><span class="p">.</span><span class="nx">todos</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">todo</span><span class="p">);</span>
+    <span class="kd">let</span> <span class="nx">updatedTodo</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">({},</span> <span class="nx">todo</span><span class="p">,</span> <span class="p">{</span><span class="na">completed</span><span class="p">:</span> <span class="o">!</span><span class="nx">todo</span><span class="p">.</span><span class="nx">completed</span><span class="p">});</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">http</span>
+      <span class="p">.</span><span class="nx">patch</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="na">completed</span><span class="p">:</span> <span class="o">!</span><span class="nx">todo</span><span class="p">.</span><span class="nx">completed</span><span class="p">}),</span> <span class="p">{</span><span class="na">headers</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">headers</span><span class="p">})</span>
+      <span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">_</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">dataStore</span><span class="p">.</span><span class="nx">todos</span> <span class="o">=</span> <span class="p">[</span>
+          <span class="p">...</span><span class="k">this</span><span class="p">.</span><span class="nx">dataStore</span><span class="p">.</span><span class="nx">todos</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nx">i</span><span class="p">),</span>
+          <span class="nx">updatedTodo</span><span class="p">,</span>
+          <span class="p">...</span><span class="k">this</span><span class="p">.</span><span class="nx">dataStore</span><span class="p">.</span><span class="nx">todos</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="p">];</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">_todos</span><span class="p">.</span><span class="nx">next</span><span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">({},</span> <span class="k">this</span><span class="p">.</span><span class="nx">dataStore</span><span class="p">).</span><span class="nx">todos</span><span class="p">);</span>
+      <span class="p">});</span>
+  <span class="p">}</span>
+  <span class="c1">// DELETE /todos/:id</span>
+  <span class="nx">deleteTodo</span><span class="p">(</span><span class="na">todo</span><span class="p">:</span> <span class="nx">Todo</span><span class="p">){</span>
+    <span class="kr">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="err">`</span><span class="nx">$</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">api_url</span><span class="p">}</span><span class="sr">/${todo.id}`</span><span class="err">;
+</span>    <span class="kr">const</span> <span class="nx">i</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">dataStore</span><span class="p">.</span><span class="nx">todos</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">todo</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">http</span>
+      <span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="p">{</span><span class="na">headers</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">headers</span><span class="p">})</span>
+      <span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">_</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">dataStore</span><span class="p">.</span><span class="nx">todos</span> <span class="o">=</span> <span class="p">[</span>
+          <span class="p">...</span><span class="k">this</span><span class="p">.</span><span class="nx">dataStore</span><span class="p">.</span><span class="nx">todos</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nx">i</span><span class="p">),</span>
+          <span class="p">...</span><span class="k">this</span><span class="p">.</span><span class="nx">dataStore</span><span class="p">.</span><span class="nx">todos</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="p">];</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">_todos</span><span class="p">.</span><span class="nx">next</span><span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">({},</span> <span class="k">this</span><span class="p">.</span><span class="nx">dataStore</span><span class="p">).</span><span class="nx">todos</span><span class="p">);</span>
+      <span class="p">});</span>
+  <span class="p">}</span>
+  <span class="c1">// GET /todos</span>
+  <span class="nx">getTodos</span><span class="p">(){</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="err">`</span><span class="nx">$</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">api_url</span><span class="p">}?</span><span class="nx">userId</span><span class="o">=</span><span class="nx">$</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">userId</span><span class="p">}</span><span class="err">`</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">res</span> <span class="o">=&gt;</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">()</span> <span class="nx">as</span> <span class="nx">Todo</span><span class="p">[])</span>
+      <span class="p">.</span><span class="k">do</span><span class="p">(</span><span class="nx">t</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">t</span><span class="p">))</span>
+      <span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">todos</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">updateStoreAndSubject</span><span class="p">(</span><span class="nx">todos</span><span class="p">));</span>
+  <span class="p">}</span>
+  <span class="c1">// GET /todos?completed=true/false</span>
+  <span class="nx">filterTodos</span><span class="p">(</span><span class="nx">filter</span><span class="p">:</span> <span class="nx">string</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">switch</span><span class="p">(</span><span class="nx">filter</span><span class="p">){</span>
+      <span class="k">case</span> <span class="s1">'ACTIVE'</span><span class="p">:</span> 
+        <span class="k">this</span><span class="p">.</span><span class="nx">http</span>
+          <span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="err">`</span><span class="nx">$</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">api_url</span><span class="p">}?</span><span class="nx">completed</span><span class="o">=</span><span class="kc">false</span><span class="o">&amp;</span><span class="nx">userId</span><span class="o">=</span><span class="nx">$</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">userId</span><span class="p">}</span><span class="err">`</span><span class="p">)</span>
+          <span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">res</span> <span class="o">=&gt;</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">()</span> <span class="nx">as</span> <span class="nx">Todo</span><span class="p">[])</span>
+          <span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">todos</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">updateStoreAndSubject</span><span class="p">(</span><span class="nx">todos</span><span class="p">));</span>
+          <span class="k">break</span><span class="p">;</span>
+      <span class="k">case</span> <span class="s1">'COMPLETED'</span><span class="p">:</span> 
+        <span class="k">this</span><span class="p">.</span><span class="nx">http</span>
+          <span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="err">`</span><span class="nx">$</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">api_url</span><span class="p">}?</span><span class="nx">completed</span><span class="o">=</span><span class="kc">true</span><span class="o">&amp;</span><span class="nx">userId</span><span class="o">=</span><span class="nx">$</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">userId</span><span class="p">}</span><span class="err">`</span><span class="p">)</span>
+          <span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">res</span> <span class="o">=&gt;</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">()</span> <span class="nx">as</span> <span class="nx">Todo</span><span class="p">[])</span>
+          <span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">todos</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">updateStoreAndSubject</span><span class="p">(</span><span class="nx">todos</span><span class="p">));</span>
+          <span class="k">break</span><span class="p">;</span>
+      <span class="nl">default</span><span class="p">:</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">getTodos</span><span class="p">();</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="nx">toggleAll</span><span class="p">(){</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">dataStore</span><span class="p">.</span><span class="nx">todos</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">todo</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">toggleTodo</span><span class="p">(</span><span class="nx">todo</span><span class="p">));</span>
+  <span class="p">}</span>
+  <span class="nx">clearCompleted</span><span class="p">(){</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">dataStore</span><span class="p">.</span><span class="nx">todos</span>
+      <span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">todo</span> <span class="o">=&gt;</span> <span class="nx">todo</span><span class="p">.</span><span class="nx">completed</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">todo</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">deleteTodo</span><span class="p">(</span><span class="nx">todo</span><span class="p">));</span>
+  <span class="p">}</span>
+  <span class="kr">private</span> <span class="nx">updateStoreAndSubject</span><span class="p">(</span><span class="nx">todos</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">dataStore</span><span class="p">.</span><span class="nx">todos</span> <span class="o">=</span> <span class="p">[...</span><span class="nx">todos</span><span class="p">];</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">_todos</span><span class="p">.</span><span class="nx">next</span><span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">({},</span> <span class="k">this</span><span class="p">.</span><span class="nx">dataStore</span><span class="p">).</span><span class="nx">todos</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre>
+</div>
+
+<p>接下来我们看一下 <code class="highlighter-rouge">src/app/todo/todo.component.ts</code>，由于大部分逻辑已经在 <code class="highlighter-rouge">TodoService</code> 中实现了，我们可以删除客户端的逻辑代码：</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">Component</span><span class="p">,</span> <span class="nx">OnInit</span><span class="p">,</span> <span class="nx">Inject</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Router</span><span class="p">,</span> <span class="nx">ActivatedRoute</span><span class="p">,</span> <span class="nx">Params</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/router'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">TodoService</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'./todo.service'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Todo</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'../domain/entities'</span><span class="p">;</span>
+
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Observable</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'rxjs/Observable'</span><span class="p">;</span>
+
+<span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
+  <span class="na">templateUrl</span><span class="p">:</span> <span class="s1">'./todo.component.html'</span><span class="p">,</span>
+  <span class="na">styleUrls</span><span class="p">:</span> <span class="p">[</span><span class="s1">'./todo.component.css'</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">TodoComponent</span> <span class="kr">implements</span> <span class="nx">OnInit</span> <span class="p">{</span>
+
+  <span class="nl">todos</span> <span class="p">:</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">Todo</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">;</span>
+
+  <span class="nx">constructor</span><span class="p">(</span>
+    <span class="err">@</span><span class="nx">Inject</span><span class="p">(</span><span class="s1">'todoService'</span><span class="p">)</span> <span class="kr">private</span> <span class="nx">service</span><span class="p">,</span>
+    <span class="kr">private</span> <span class="nx">route</span><span class="err">:</span> <span class="nx">ActivatedRoute</span><span class="p">,</span>
+    <span class="kr">private</span> <span class="nx">router</span><span class="err">:</span> <span class="nx">Router</span><span class="p">)</span> <span class="p">{}</span>
+
+  <span class="nx">ngOnInit</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">route</span><span class="p">.</span><span class="nx">params</span>
+      <span class="p">.</span><span class="nx">pluck</span><span class="p">(</span><span class="s1">'filter'</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">filter</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">service</span><span class="p">.</span><span class="nx">filterTodos</span><span class="p">(</span><span class="nx">filter</span><span class="p">);</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">todos</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">service</span><span class="p">.</span><span class="nx">todos</span><span class="p">;</span>
+      <span class="p">})</span>
+  <span class="p">}</span>
+  <span class="nx">addTodo</span><span class="p">(</span><span class="nx">desc</span><span class="err">:</span> <span class="nx">string</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">service</span><span class="p">.</span><span class="nx">addTodo</span><span class="p">(</span><span class="nx">desc</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="nx">toggleTodo</span><span class="p">(</span><span class="nx">todo</span><span class="err">:</span> <span class="nx">Todo</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">service</span><span class="p">.</span><span class="nx">toggleTodo</span><span class="p">(</span><span class="nx">todo</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="nx">removeTodo</span><span class="p">(</span><span class="nx">todo</span><span class="err">:</span> <span class="nx">Todo</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">service</span><span class="p">.</span><span class="nx">deleteTodo</span><span class="p">(</span><span class="nx">todo</span><span class="p">);</span>
+  <span class="p">}</span> 
+  <span class="nx">toggleAll</span><span class="p">(){</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">service</span><span class="p">.</span><span class="nx">toggleAll</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="nx">clearCompleted</span><span class="p">(){</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">service</span><span class="p">.</span><span class="nx">clearCompleted</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre>
+</div>
+
+<p>可以看到 <code class="highlighter-rouge">addTodo</code> 、 <code class="highlighter-rouge">toggleTodo</code> 、 <code class="highlighter-rouge">removeTodo</code> 、<code class="highlighter-rouge">toggleAll</code> 和 <code class="highlighter-rouge">clearCompleted</code> 基本上已经没有业务逻辑代码了，只是简单调用service的方法而已。</p>
+
+<p>还有一个比较明显的变化是，我们接收路由参数的方式也变成了Rx的方式，之前我们提过，像Angular2这种深度嵌合Rx的平台框架，几乎处处都有Rx的影子。</p>
+
+<p>当然，我们的组件中的todos变成了一个Observable，在构造时直接把Service的属性方法todos赋值上去了。这样改造后，我们只需改动模版的两行代码就大功告成了，那就是替换原有的<code class="highlighter-rouge">="todos..."</code>为 <code class="highlighter-rouge">= " todos | async"</code>。</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;div&gt;</span>
+  <span class="nt">&lt;app-todo-header</span>
+    <span class="na">placeholder=</span><span class="s">"What do you want"</span>
+    <span class="err">(</span><span class="na">onEnterUp</span><span class="err">)="</span><span class="na">addTodo</span><span class="err">($</span><span class="na">event</span><span class="err">)"</span> <span class="nt">&gt;</span>
+  <span class="nt">&lt;/app-todo-header&gt;</span>
+  <span class="nt">&lt;app-todo-list</span>
+    <span class="err">[</span><span class="na">todos</span><span class="err">]="</span><span class="na">todos</span> <span class="err">|</span> <span class="na">async</span><span class="err">"</span>
+    <span class="err">(</span><span class="na">onToggleAll</span><span class="err">)="</span><span class="na">toggleAll</span><span class="err">()"</span>
+    <span class="err">(</span><span class="na">onRemoveTodo</span><span class="err">)="</span><span class="na">removeTodo</span><span class="err">($</span><span class="na">event</span><span class="err">)"</span>
+    <span class="err">(</span><span class="na">onToggleTodo</span><span class="err">)="</span><span class="na">toggleTodo</span><span class="err">($</span><span class="na">event</span><span class="err">)"</span>
+    <span class="nt">&gt;</span>
+  <span class="nt">&lt;/app-todo-list&gt;</span>
+  <span class="nt">&lt;app-todo-footer</span>
+    <span class="err">[</span><span class="na">itemCount</span><span class="err">]="</span><span class="na">todos</span><span class="err">?.</span><span class="na">length</span> <span class="err">|</span> <span class="na">async</span><span class="err">"</span>
+    <span class="err">(</span><span class="na">onClear</span><span class="err">)="</span><span class="na">clearCompleted</span><span class="err">()"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/app-todo-footer&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+</code></pre>
+</div>
+
+<p>启动浏览器看看吧，一切功能正常，代码更加简洁，逻辑更加清楚。</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/zivgv8dk2uobpk36rc5nan6l/image_1b3rggpls1ah5tdb1hlm13804op3u.png" alt="改造成的响应式Todo，所有功能一切正常" /></p>
+
+<h2 id="小结">小结</h2>
+
+<p>我们的Angular学习之旅从零开始到现在，完整的搭建了一个小应用。相信大家现在应该对Angular2有一个大概的认识了，而且也可以参与到正式的开发项目中去了。但Angular2作为一个完整框架，有很多细节我们是没有提到的，大家可以到官方文档 https://angular.cn/ 去查找和学习。</p>
+
+
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                                <h5 style="display: inline;">Tags:</h5>
+                                
+                                    <button class="btn btn-white btn-xs" type="button">blog</button>
+                                
+                                    <button class="btn btn-white btn-xs" type="button">javascript</button>
+                                
+                                    <button class="btn btn-white btn-xs" type="button">angular2</button>
+                                
+                                    <button class="btn btn-white btn-xs" type="button">rxjs</button>
+                                
+                        </div>
+                        <div class="col-md-6">
+                            <div class="small text-right">
+                                <h5>Stats:</h5>
+                                <div> 
+                                
+                                    <i class="fa fa-comments-o"> </i> <span id = "url::/javascript/2016/12/14/angular-2.0-%E4%BB%8E0%E5%88%B01-%E5%85%AB.html" class = "cy_cmt_count" ></span> comments
+                                
+                                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <!-- donate -->
+                            
+                                <div class="text-center">
+<button class="btn btn-warning  dim btn-large-dim btn-outline" type="button" data-toggle="modal" data-target="#myModal2"><i class="fa fa-smile-o"></i></button>
+</div>
+<div class="modal inmodal" id="myModal2" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated flipInY">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">Donate Me</h4>
+                <small class="font-bold">If you like this article and want to help me, please give me little fee.</small><br>
+                <small class="font-bold">Thanks for your support!</small>
+            </div>
+            <div class="modal-body text-center">
+                <img src="/static/img/pay/w1.jpeg" width="250">
+                &emsp;
+                <img src="/static/img/pay/w5.jpeg" width="250">
+            </div>
+        </div>
+    </div>
+</div>
+
+                            
+                            <br>
+                            <!-- share -->
+                            
+                                <h2>Share:</h2>
+
+<div class="bshare-custom">
+	<a title="分享到微信" class="bshare-weixin"></a>
+	<a title="分享到QQ空间" class="bshare-qzone"></a>
+	<a title="分享到新浪微博" class="bshare-sinaminiblog"></a>
+	<a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a>
+</div>
+<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=59fd3d05-03d3-43ad-9650-ef46f9487bb8&amp;pophcol=1&amp;lang=zh"></script>
+<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+                            
+                            <br>
+                            <!-- comment -->
+                            
+<h2>Comments:</h2>
+<div id="SOHUCS"></div>
+<script charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/changyan.js" ></script>
+<script type="text/javascript">
+    window.changyan.api.config({
+        appid: 'cysKvjNmC',
+        conf: '14195e6733a549bb2f800fb931489c56'
+    });
+</script>
+
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+	
+	    <script src="/static/js/scroll.js"></script>
+
+<!-- Baidu analytics -->
+
+  <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?fc44e98b7062976fd7982188c4179bb8";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+  </script>
+
+
+<!-- Google analytics -->
+
+
+
+
+
+  <script id="cy_cmt_num" src="http://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cysfY7ULn"></script>
+
+
+
+	
+
+</body>
+</html>

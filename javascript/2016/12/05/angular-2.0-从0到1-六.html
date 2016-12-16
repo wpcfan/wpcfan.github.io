@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html>
+
+	
+	    <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <meta content="Angular 2 教程第六篇，如何部署到生产环境？如何使用第三方控件？" name="description">
+  
+  
+    <meta name="keywords" content="web, javascript, angular2">
+  
+  <meta name="author" content="Peng">
+
+  <title>
+    
+        Think Smarter, Code Smarter|Angular 2.x 从0到1（六）
+    
+  </title>
+  <!-- favicon -->
+  <link rel="shortcut icon" href="/static/img/favicon.ico">
+
+  <!-- Third-party CSS -->
+  <link href="/bower_components/normalize-css/normalize.min.css" rel="stylesheet">
+  <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/bower_components/animate.css/animate.min.css" rel="stylesheet">
+  <link href="/bower_components/components-font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/static/font-mfizz/font-mfizz.css" rel="stylesheet">
+  <!-- <link href="/bower_components/toastr/toastr.min.css" rel="stylesheet"> -->
+  <link href="/bower_components/jquery.gritter/css/jquery.gritter.css" rel="stylesheet">
+  <link rel="stylesheet" href="/search/css/cb-search.css">
+
+  <!-- Custom styles for this template -->
+  <link href="/static/css/style.min.css" rel="stylesheet">
+  <link href="/static/css/pygments.css" rel="stylesheet">
+
+  <!-- Scripts -->
+  <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="/search/js/bootstrap3-typeahead.min.js"></script>
+
+  <!-- cb-search -->
+  <script src="/search/js/cb-search.js"></script>
+  <script>
+    $(function(){
+        $("pre").css('display','block');
+    });
+  </script>
+  <!-- Mainly scripts -->
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/bower_components/metisMenu/dist/metisMenu.min.js"></script>
+  <script src="/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+
+  <!-- Peity -->
+  <script src="/bower_components/peity/jquery.peity.min.js"></script>
+
+  <script src="/bower_components/PACE/pace.min.js"></script>
+  <script src="/bower_components/wow/dist/wow.min.js"></script>
+  <!-- Custom and plugin javascript -->
+  <script src="/static/js/inspinia.js"></script>
+
+  <!-- Rickshaw -->
+  <script src="/bower_components/rickshaw/vendor/d3.v3.js"></script>
+  <script src="/bower_components/rickshaw/rickshaw.min.js"></script>
+
+
+  <!-- jPages -->
+  <script src="/static/js/jPages.js"></script>
+  <script src="/static/js/js.js"></script>
+  
+  <script type="text/javascript">
+        $(function(){
+          /* initiate the plugin */
+          $("div.pag-holder").jPages({
+              containerID  : "pag-itemContainer",
+              perPage      : 5,  /* num of items per page */
+              startPage    : 1,
+              startRange   : 1,
+              midRange     : 3,
+              endRange     : 1
+          });
+      });
+  </script>
+  <script src="//cdn.bootcss.com/highlight.js/9.9.0/highlight.min.js"></script>
+<!-- GrowingIO -->
+
+
+</head>
+
+	
+
+
+<body id="page-top" class="landing-page">
+
+	
+	    <div class="search-tool"
+      style="position: fixed; top: 0px ; bottom: 0px; left: 0px; right:  0px; opacity: 0.95; background-color: #111111; z-index: 9999; display: none;">
+    <input type="text" class="form-control search-content" id="search-content" style="position: fixed; top: 60px" placeholder="Search Blog">
+
+    <div style="position: fixed; top: 16px; right: 16px; z-index: 9999;">
+        <img src="/search/img/cb-close.png" id="close-btn"/>
+    </div>
+</div>
+
+<div style="position: fixed; right: 16px; bottom: 20px; z-index: 9999;">
+    <img src="/search/img/cb-search.png"  id="search-btn"  title="Double click Ctrl"/>
+</div>
+
+<div class="navbar-wrapper">
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header page-scroll">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">Think Smarter, Code Smarter</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a class="page-scroll" href="/blog/"></a></li>
+                        
+                            
+                            <li>
+                            
+                            <a class="page-scroll" href="/blog/">Blog</a></li>
+                        
+                            
+                            <li>
+                            
+                            <a class="page-scroll" href="/python/">Python</a></li>
+                        
+                            
+                            <li>
+                            
+                            <a class="page-scroll" href="/javascript/">JavaScript</a></li>
+                        
+                            
+                            <li>
+                            
+                            <a class="page-scroll" href="/html/">HTML</a></li>
+                        
+                            
+                            <li>
+                            
+                            <a class="page-scroll" href="/database/">Database</a></li>
+                        
+                            
+                            <li>
+                            
+                            <a class="page-scroll" href="/mac/">Mac</a></li>
+                        
+                            
+                            <li>
+                            
+                            <a class="page-scroll" href="/android/">Android</a></li>
+                        
+                            
+                            <li>
+                            
+                            <a class="page-scroll" href="/iOS/">iOS</a></li>
+                        
+                            
+                            <li>
+                            
+                            <a class="page-scroll" href="/life/">Life</a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </nav>
+</div>
+<div id="inSlider" class="carousel carousel-fade" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#inSlider" data-slide-to="0" class="active"></li>
+        <li data-target="#inSlider" data-slide-to="1"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <div class="container">
+                <div class="carousel-caption">
+                </div>
+                <div class="carousel-image wow zoomIn">
+                    <!-- <img src="static/img/landing/laptop.png" alt="laptop"/> -->
+                </div>
+            </div>
+            <!-- Set background for slide in css -->
+            <div class="header-back one"></div>
+
+        </div>
+        <div class="item">
+            <div class="container">
+                <div class="carousel-caption blank">
+                </div>
+            </div>
+            <!-- Set background for slide in css -->
+            <div class="header-back two"></div>
+        </div>
+    </div>
+    <a class="left carousel-control" href="#inSlider" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#inSlider" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+	
+
+    <div class="wrapper wrapper-content  animated fadeInRight article">
+    <div class="row">
+        <div class="col-lg-10 col-lg-offset-1">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <div class="pull-right">
+                    	
+                        	<button class="btn btn-white btn-xs" type="button">JavaScript</button>
+                        
+                    </div>
+                    <div class="text-center article-title">
+                    <span class="text-muted"><i class="fa fa-clock-o"></i> 5 Dec 2016</span>
+                        <h1>
+                            Angular 2.x 从0到1（六）
+                        </h1>
+                    </div>
+                    	<ul id="markdown-toc">
+  <li><a href="#第六章使用第三方样式库及模块优化" id="markdown-toc-第六章使用第三方样式库及模块优化">第六章：使用第三方样式库及模块优化</a>    <ul>
+      <li><a href="#生产环境初体验" id="markdown-toc-生产环境初体验">生产环境初体验</a></li>
+      <li><a href="#第三方样式库" id="markdown-toc-第三方样式库">第三方样式库</a></li>
+      <li><a href="#模块优化" id="markdown-toc-模块优化">模块优化</a>        <ul>
+          <li><a href="#关于模块的最佳实践" id="markdown-toc-关于模块的最佳实践">关于模块的最佳实践</a></li>
+        </ul>
+      </li>
+      <li><a href="#多个不同组件间的通信" id="markdown-toc-多个不同组件间的通信">多个不同组件间的通信</a></li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h1 id="第六章使用第三方样式库及模块优化">第六章：使用第三方样式库及模块优化</h1>
+
+<h2 id="生产环境初体验">生产环境初体验</h2>
+
+<p>用angular-cli建立生产环境是非常简单的，只需输入<code class="highlighter-rouge">ng build --prod --aot</code>即可。–prod会使用生产环境的配置文件，–aot会使用AOT替代JIT进行编译。现在实验一下</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/enoypw8hkt4rs5qpwby7fey3/image_1b2m0102o1d721c438jr18r9f889.png" alt="执行生产环境编译" /></p>
+
+<p>仔细看一下命令行输出，我们应该可以猜到angular移除了一些没有用到的类库（Google称之为Shaking过程），对js和css等进行了压缩等优化工作。angular在我们的项目根目录下建立了一个<code class="highlighter-rouge">dist</code>文件夹，用于生产环境的文件就输出在这个文件夹了。</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/km6fx7cleicpzpuqn681my0m/image_1b2m07bdvqk91aaodsd16pd2kuv.png" alt="生产环境输出的文件" /></p>
+
+<p>我们安装一个http-server，<code class="highlighter-rouge">npm i -g http-server</code>，然后在dist目录键入<code class="highlighter-rouge">http-server .</code>。打开浏览器进入<code class="highlighter-rouge">http://localhost:8080</code>，我们会看到网页打开了。但如果打开console，或者试着登录一下，你会发现存在很多错误。</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/df0pajt5bei3pbw0b854a2n1/image_1b2m0l4teqja2f016s61g5o14261c.png" alt="由于未配置Hash造成的错误" /></p>
+
+<p>这是由于angular-cli当前的bug产生的，目前需要对路由做hash处理。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="p">...</span>
+<span class="err">@</span><span class="nx">NgModule</span><span class="p">({</span>
+  <span class="na">imports</span><span class="p">:</span> <span class="p">[</span>
+    <span class="nx">RouterModule</span><span class="p">.</span><span class="nx">forRoot</span><span class="p">(</span><span class="nx">routes</span><span class="p">,</span> <span class="p">{</span> <span class="na">useHash</span><span class="p">:</span> <span class="kc">true</span> <span class="p">})</span>
+  <span class="p">],</span>
+  <span class="na">exports</span><span class="p">:</span> <span class="p">[</span>
+    <span class="nx">RouterModule</span>
+  <span class="p">]</span>
+<span class="p">})</span>
+<span class="p">...</span>
+</code></pre>
+</div>
+
+<p>只需在<code class="highlighter-rouge">app-routing.module.ts</code>中为RouterModule配置<code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="err">useHash:</span><span class="w"> </span><span class="err">true</span><span class="w"> </span><span class="p">}</span></code>的属性即可。这样的话angular会在url上加上一个<code class="highlighter-rouge">#</code>，比如login的url现在是<code class="highlighter-rouge">http://localhost:8080/#/login</code>。这样改动后，功能又好用了。以后我们项目如果需要发布到生产环境的，大家利用angular-cli可以很方便的处理了。然后下面我们回到开发环境，请关掉8080端口的http服务器，并删掉dist。</p>
+
+<h2 id="第三方样式库">第三方样式库</h2>
+
+<p>之前我们使用的是自己为各个组件写样式，其实angular团队有一套官方的符合Material Design的内建组件库：<a href="https://github.com/angular/material2" title="Material 2">https://github.com/angular/material2</a>（这个库还属于早期阶段，很多控件不可用，所以大家可以关注，但现阶段不建议在生产环境中使用）。</p>
+
+<p>除了官方之外，目前有大量的比较成熟的样式库，比如bootstrap，material-design-lite等。我们这节课以material-design-lite来看一下怎么使用。<a href="https://getmdl.io">Material Desing Lite</a>是Google为web开发的一套基于Material Design的样式库。由于是Google开发的，所以你要去访问之前要科学上网。</p>
+
+<p>我们当然可以直接使用官方的css样式库，但是有好心人已经帮我们封装成了比较好用的<a href="https://github.com/mseemann/angular2-mdl">组件模块</a>了，组件模块的好处是可以使模板写起来更简洁，而且易于扩展。现在打开一个terminal输入<code class="highlighter-rouge">npm install --save angular2-mdl</code>。然后在你需要使用MDL组件的模块中引入MdlModule。我们首先希望改造一下我们的AppComponent，目前它只有一句简陋的文字输出。</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;mdl-layout</span> <span class="na">mdl-layout-fixed-header</span> <span class="na">mdl-layout-header-seamed</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;mdl-layout-header&gt;</span>
+    <span class="nt">&lt;mdl-layout-header-row&gt;</span>
+      <span class="nt">&lt;mdl-layout-title&gt;</span>Awesome Todos<span class="nt">&lt;/mdl-layout-title&gt;</span>
+      <span class="nt">&lt;mdl-layout-spacer&gt;&lt;/mdl-layout-spacer&gt;</span>
+      <span class="c">&lt;!-- Navigation. We hide it in small screens. --&gt;</span>
+      <span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"mdl-navigation"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"mdl-navigation__link"</span><span class="nt">&gt;</span>Logout<span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;/nav&gt;</span>
+    <span class="nt">&lt;/mdl-layout-header-row&gt;</span>
+  <span class="nt">&lt;/mdl-layout-header&gt;</span>
+  <span class="nt">&lt;mdl-layout-drawer&gt;</span>
+    <span class="nt">&lt;mdl-layout-title&gt;</span>Title<span class="nt">&lt;/mdl-layout-title&gt;</span>
+    <span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"mdl-navigation"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"mdl-navigation__link"</span><span class="nt">&gt;</span>Link<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/nav&gt;</span>
+  <span class="nt">&lt;/mdl-layout-drawer&gt;</span>
+  <span class="nt">&lt;mdl-layout-content</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;router-outlet&gt;&lt;/router-outlet&gt;</span>
+  <span class="nt">&lt;/mdl-layout-content&gt;</span>
+<span class="nt">&lt;/mdl-layout&gt;</span>
+</code></pre>
+</div>
+
+<p>这段代码里面mdl开头的标签都是我们刚引入的组件库封装的组件，具体的用法可以去 http://mseemann.io/angular2-mdl/ 和 https://getmdl.io  参考文档资料。</p>
+
+<p><code class="highlighter-rouge">&lt;mdl-layout&gt;&lt;/mdl-layout&gt;</code>是一个布局组件，<code class="highlighter-rouge">mdl-layout-fixed-header</code>是一个可以让header固定在页面顶部的属性，<code class="highlighter-rouge">mdl-layout-header-seamed</code>是要header没有阴影。<code class="highlighter-rouge">mdl-layout-header</code>是一个顶部组件，<code class="highlighter-rouge">mdl-layout-header-row</code>是在顶部组件中形成一行的容器。<code class="highlighter-rouge">mdl-layout-spacer</code>是一个占位的组件，它会把组件剩余位置占满，防止出现错位。<code class="highlighter-rouge">mdl-layout-drawer</code>是一个抽屉组件，和Android的标准应用类似，点击顶部菜单图标会从侧面滑出一个菜单。别忘了在AppModule中引入</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="p">...</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">MdlModule</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'angular2-mdl'</span><span class="p">;</span>
+<span class="p">...</span>
+<span class="err">@</span><span class="nx">NgModule</span><span class="p">({</span>
+  <span class="p">...</span>
+  <span class="na">imports</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">...</span>
+    <span class="nx">MdlModule</span><span class="p">,</span>
+    <span class="p">...</span>
+  <span class="p">],</span>
+  <span class="na">bootstrap</span><span class="p">:</span> <span class="p">[</span><span class="nx">AppComponent</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">AppModule</span> <span class="p">{</span> <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>我们为了使用，还需要对颜色做个定制，这个定制需要使用一种CSS的预编译技术叫<a href="http://sass-lang.com/">SASS</a>，需要建立一个<code class="highlighter-rouge">src\styles.scss</code>，然后定义Material Design的颜色，具体颜色名字的定义是在Google调色板类中定义的，可以去  <a href="http://mseemann.io/angular2-mdl/theme">http://mseemann.io/angular2-mdl/theme</a> 查看。</p>
+
+<div class="language-css highlighter-rouge"><pre class="highlight"><code><span class="k">@import</span> <span class="s1">"~angular2-mdl/scss/color-definitions"</span><span class="p">;</span>
+
+<span class="err">$</span><span class="nt">color-primary</span><span class="o">:</span> <span class="err">$</span><span class="nt">palette-blue-500</span><span class="o">;</span>
+<span class="err">$</span><span class="nt">color-primary-dark</span><span class="o">:</span> <span class="err">$</span><span class="nt">palette-blue-700</span><span class="o">;</span>
+<span class="err">$</span><span class="nt">color-accent</span><span class="o">:</span> <span class="err">$</span><span class="nt">palette-amber-A200</span><span class="o">;</span>
+<span class="err">$</span><span class="nt">color-primary-contrast</span><span class="o">:</span> <span class="err">$</span><span class="nt">color-dark-contrast</span><span class="o">;</span>
+<span class="err">$</span><span class="nt">color-accent-contrast</span><span class="o">:</span> <span class="err">$</span><span class="nt">color-dark-contrast</span><span class="o">;</span>
+
+<span class="k">@import</span> <span class="s2">'~angular2-mdl/scss/material-design-lite'</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p><img src="http://static.zybuluo.com/wpcfan/8hpn0dypdubf83zftj7rcqoz/image_1b3eq6qhv1kfo14ug1osh1nb5h3e9.png" alt="Material Design 调色板" /></p>
+
+<p>Material Design中区分主色（Primary）和配色（Accent），比如像图中的颜色搭配，主色是blue，在scss中我们可以让 <code class="highlighter-rouge">$color-primary: $palette-blue-500;</code>，<code class="highlighter-rouge">500</code> 是指的颜色深度，如果想更深一些就指定成600，900等，可以自己实验一下。类似的配色pink，就可以让 <code class="highlighter-rouge">$color-accent: $palette-pink-300;</code>。那么 <code class="highlighter-rouge">$color-primary-dark</code> 是什么意思呢，顾名思义是更深的主色的意思，Material Design的主要设计目标也是以色彩和动画的变化来给用户不同的体验，所以主色尽量不要过深，因为还有更深的主色需要定义。</p>
+
+<p>由于我们使用的CLI并不知道我们采用了预编译的css，所以需要改一下<code class="highlighter-rouge">angular-cli.json</code>，把styles改写成下面的样子</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="s2">"styles"</span><span class="err">:</span> <span class="p">[</span>
+        <span class="s2">"styles.scss"</span>
+      <span class="p">],</span>
+</code></pre>
+</div>
+
+<p>保存后打开浏览器看一下效果：</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/d01y1qp5ke1mvm56b4s7db7m/image_1b2g0jju71mdsnd3k2v174k7129.png" alt="image_1b2g0jju71mdsnd3k2v174k7129.png-11.5kB" /></p>
+
+<p>我们接下来改造一下login的模板</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;div&gt;</span>
+  <span class="nt">&lt;form</span> <span class="err">(</span><span class="na">ngSubmit</span><span class="err">)="</span><span class="na">onSubmit</span><span class="err">()"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;mdl-textfield</span>
+      <span class="na">type=</span><span class="s">"text"</span>
+      <span class="na">label=</span><span class="s">"Username..."</span>
+      <span class="na">name=</span><span class="s">"username"</span>
+      <span class="na">floating-label</span>
+      <span class="na">required</span>
+      <span class="err">[(</span><span class="na">ngModel</span><span class="err">)]="</span><span class="na">username</span><span class="err">"</span>
+      <span class="err">#</span><span class="na">usernameRef=</span><span class="s">"ngModel"</span>
+      <span class="nt">&gt;</span>
+    <span class="nt">&lt;/mdl-textfield&gt;</span>
+    <span class="nt">&lt;div</span> <span class="err">*</span><span class="na">ngIf=</span><span class="s">"auth?.hasError"</span> <span class="nt">&gt;</span>
+      
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;mdl-textfield</span>
+      <span class="na">type=</span><span class="s">"password"</span>
+      <span class="na">label=</span><span class="s">"Password..."</span>
+      <span class="na">name=</span><span class="s">"password"</span>
+      <span class="na">floating-label</span>
+      <span class="na">required</span>
+      <span class="err">[(</span><span class="na">ngModel</span><span class="err">)]="</span><span class="na">password</span><span class="err">"</span>
+      <span class="err">#</span><span class="na">passwordRef=</span><span class="s">"ngModel"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/mdl-textfield&gt;</span>
+    <span class="nt">&lt;button</span> 
+      <span class="na">mdl-button</span> <span class="na">mdl-button-type=</span><span class="s">"raised"</span> 
+      <span class="na">mdl-colored=</span><span class="s">"primary"</span> 
+      <span class="na">mdl-ripple</span> <span class="na">type=</span><span class="s">"submit"</span><span class="nt">&gt;</span>
+      Login
+    <span class="nt">&lt;/button&gt;</span>
+  <span class="nt">&lt;/form&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre>
+</div>
+
+<p>由于采用了符合Material Design的组件，我们就不需要原来的用于验证的<code class="highlighter-rouge">div</code>了。</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/c8s2lzrgia8kc0iouy3gcuwu/image_1b2g1csop1684jfghpphffui9m.png" alt="采用Material Design风格的表单控件" /></p>
+
+<p>下面看一下Todo，原来我们在css中用了svg来改写复选框的样子，现在我们试试用mdl来做。在<code class="highlighter-rouge">todo-list.component.html</code>中把ToggleAll改写成下面的样子</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;mdl-icon-toggle</span> <span class="na">class=</span><span class="s">"toggle-all"</span> <span class="err">[</span><span class="na">mdl-ripple</span><span class="err">]="</span><span class="na">true</span><span class="err">"</span> <span class="err">(</span><span class="na">click</span><span class="err">)="</span><span class="na">onToggleAllTriggered</span><span class="err">()"</span><span class="nt">&gt;</span>expand_more<span class="nt">&lt;/mdl-icon-toggle&gt;</span>
+</code></pre>
+</div>
+
+<p>这个标签是把一个图标做成可复选框的效果，这里用到了Google的icon font，所以需要在<code class="highlighter-rouge">index.html</code>中引入</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;!doctype html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+  ...
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"https://fonts.lug.ustc.edu.cn/icon?family=Material+Icons"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;app-root&gt;</span>Loading...<span class="nt">&lt;/app-root&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre>
+</div>
+
+<p>我们用了科大的镜像，因为Google的产品，你懂的。
+当然TodoItem模板中的checkbox也需要改造成</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;mdl-icon-toggle</span> <span class="err">(</span><span class="na">click</span><span class="err">)="</span><span class="na">toggle</span><span class="err">()"</span> <span class="err">[(</span><span class="na">ngModel</span><span class="err">)]="</span><span class="na">isChecked</span><span class="err">"</span><span class="nt">&gt;</span>check_circle<span class="nt">&lt;/mdl-icon-toggle&gt;</span>
+</code></pre>
+</div>
+<p>Todo变成下面的样子，也还不错啊~~</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/tu60u4nrupshfjhmz8xnvr8o/image_1b2g1e0261mkmtp61kjm6f94g513.png" alt="清爽的TodoList" /></p>
+
+<h2 id="模块优化">模块优化</h2>
+
+<p>现在仔细看一下我们的各个模块定义，发现我们不断地重复引入了<code class="highlighter-rouge">CommonModule</code>、<code class="highlighter-rouge">FormsModule</code>、<code class="highlighter-rouge">MdlModule</code>，这些如果在大部分的组件中都会用到话，我们不妨建立一个SharedModule （<code class="highlighter-rouge">src\app\shared\shared.module.ts</code>）</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">NgModule</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">CommonModule</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/common'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">FormsModule</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/forms'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">MdlModule</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'angular2-mdl'</span><span class="p">;</span>
+
+<span class="err">@</span><span class="nx">NgModule</span><span class="p">({</span>
+  <span class="na">imports</span><span class="p">:</span> <span class="p">[</span>
+    <span class="nx">CommonModule</span><span class="p">,</span>
+    <span class="nx">FormsModule</span><span class="p">,</span>
+    <span class="nx">MdlModule</span>
+  <span class="p">],</span>
+  <span class="na">exports</span><span class="p">:</span> <span class="p">[</span>
+    <span class="nx">CommonModule</span><span class="p">,</span>
+    <span class="nx">FormsModule</span><span class="p">,</span>
+    <span class="nx">MdlModule</span>
+  <span class="p">]</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">SharedModule</span> <span class="p">{</span> <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>这个模块的作用是把常用的组件和模块打包起来（虽然现在没有组件，只是把常用的模块导入又导出），这样在其他模块中只需引入这个模块即可，比如TodoModule现在看起来是下面的样子：</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="p">...</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">SharedModule</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'../shared/shared.module'</span><span class="p">;</span>
+<span class="p">...</span>
+<span class="err">@</span><span class="nx">NgModule</span><span class="p">({</span>
+  <span class="na">imports</span><span class="p">:</span> <span class="p">[</span>
+    <span class="nx">SharedModule</span><span class="p">,</span>
+    <span class="p">...</span>
+  <span class="p">],</span>
+  <span class="na">declarations</span><span class="p">:</span> <span class="p">[</span>
+    <span class="nx">TodoComponent</span><span class="p">,</span>
+    <span class="p">...</span>
+  <span class="p">],</span>
+  <span class="na">providers</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span><span class="na">provide</span><span class="p">:</span> <span class="s1">'todoService'</span><span class="p">,</span> <span class="na">useClass</span><span class="p">:</span> <span class="nx">TodoService</span><span class="p">}</span>
+    <span class="p">],</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">TodoModule</span> <span class="p">{}</span>
+</code></pre>
+</div>
+
+<h3 id="关于模块的最佳实践">关于模块的最佳实践</h3>
+
+<p>Angular团队对于共享特性模块有如下建议</p>
+
+<ul>
+  <li>坚持在shared目录中创建名叫SharedModule的特性模块（例如在app/shared/shared.module.ts中定义SharedModule）。</li>
+  <li>坚持把可能被应用其它特性模块使用的公共组件、指令和管道放在SharedModule中，这些资产倾向于共享自己的新实例（而不是单例）。</li>
+  <li>坚持在SharedModule中导入所有模块都需要的资产（例如CommonModule和FormsModule）。</li>
+  <li>坚持在SharedModule中声明所有组件、指令和管道。</li>
+  <li>坚持从SharedModule中导出其它特性模块所需的全部符号。</li>
+  <li><strong>避免</strong>在SharedModule中指定应用级的单例服务提供商。但如果是故意设计的单例也可以，不过还是要小心。</li>
+</ul>
+
+<p>很显然，我们的共享模块还没有全部做到，大家可以作为练习自己试验一下。</p>
+
+<p>同样的对于核心特性模块，官方的建议是</p>
+
+<ul>
+  <li>坚持把那些“只用一次”的类收集到CoreModule中，并对外隐藏它们的实现细节。简化的AppModule会导入CoreModule，并且把它作为整个应用的总指挥。</li>
+  <li>坚持在core目录下创建一个名叫CoreModule的特性模块（例如在app/core/core.module.ts中定义CoreModule）。</li>
+  <li>坚持把一个要共享给整个应用的单例服务放进CoreModule中（例如ExceptionService和LoggerService）。</li>
+  <li>坚持导入CoreModule中的资产所需要的全部模块（例如CommonModule和FormsModule）。</li>
+  <li>坚持把应用级、只用一次的组件收集到CoreModule中。 只在应用启动时从AppModule中导入它一次，以后再也不要导入它（例如NavComponent和SpinnerComponent等）。</li>
+  <li>坚持从CoreModule中导出AppModule需导入的所有符号，使它们在所有特性模块中可用。</li>
+  <li>坚持防范多次导入CoreModule，并通过添加守卫逻辑来尽快失败。</li>
+  <li><strong>避免</strong>在AppModule之外的任何地方导入CoreModule</li>
+</ul>
+
+<h2 id="多个不同组件间的通信">多个不同组件间的通信</h2>
+
+<p>下面我们要实现这样一个功能：在用户未登录时，顶部菜单中只有Login一个链接可见，用户登录后，顶部菜单中有三个链接，一个是Todo，一个是用户个人信息，另一个是Logout。按这个需求将顶部菜单改造成如下：</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="c">&lt;!--src\app\app.component.html--&gt;</span>
+<span class="nt">&lt;mdl-layout</span> <span class="na">mdl-layout-fixed-header</span> <span class="na">mdl-layout-header-seamed</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;mdl-layout-header&gt;</span>
+    <span class="nt">&lt;mdl-layout-header-row&gt;</span>
+      <span class="nt">&lt;mdl-layout-title&gt;&lt;/mdl-layout-title&gt;</span>
+      <span class="nt">&lt;mdl-layout-spacer&gt;&lt;/mdl-layout-spacer&gt;</span>
+      <span class="c">&lt;!-- Navigation. We hide it in small screens. --&gt;</span>
+      <span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"mdl-navigation"</span> <span class="err">*</span><span class="na">ngIf=</span><span class="s">"auth?.user?.username !== null"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"mdl-navigation__link"</span> <span class="na">routerLink=</span><span class="s">"todo"</span><span class="nt">&gt;</span>Todos<span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;/nav&gt;</span>
+      <span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"mdl-navigation"</span> <span class="err">*</span><span class="na">ngIf=</span><span class="s">"auth?.user?.username !== null"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"mdl-navigation__link"</span> <span class="na">routerLink=</span><span class="s">"profile"</span><span class="nt">&gt;&lt;/a&gt;</span>
+      <span class="nt">&lt;/nav&gt;</span>
+      <span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"mdl-navigation"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"mdl-navigation__link"</span> <span class="err">*</span><span class="na">ngIf=</span><span class="s">"auth?.user?.username === null"</span> <span class="err">(</span><span class="na">click</span><span class="err">)="</span><span class="na">login</span><span class="err">()"</span><span class="nt">&gt;</span>
+          Login
+        <span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"mdl-navigation__link"</span> <span class="err">*</span><span class="na">ngIf=</span><span class="s">"auth?.user?.username !== null"</span> <span class="err">(</span><span class="na">click</span><span class="err">)="</span><span class="na">logout</span><span class="err">()"</span><span class="nt">&gt;</span>
+          Logout
+        <span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;/nav&gt;</span>
+    <span class="nt">&lt;/mdl-layout-header-row&gt;</span>
+  <span class="nt">&lt;/mdl-layout-header&gt;</span>
+  <span class="nt">&lt;mdl-layout-drawer&gt;</span>
+    <span class="nt">&lt;mdl-layout-title&gt;&lt;/mdl-layout-title&gt;</span>
+    <span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"mdl-navigation"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"mdl-navigation__link"</span><span class="nt">&gt;</span>Link<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/nav&gt;</span>
+  <span class="nt">&lt;/mdl-layout-drawer&gt;</span>
+  <span class="nt">&lt;mdl-layout-content</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;router-outlet&gt;&lt;/router-outlet&gt;</span>
+  <span class="nt">&lt;/mdl-layout-content&gt;</span>
+<span class="nt">&lt;/mdl-layout&gt;</span>
+</code></pre>
+</div>
+
+<p>这样改造完后的页面结构是顶部菜单只加载一次，底下的内容随着不同路由显示不同内容。但如果我们要在login后顶部菜单也随之改变的话，我们一定要实现某种通信机制。前面我们讲过EventEmiiter，当然我们可以将整个页面当成父控件，顶部菜单是子控件的形式，但这时你发现由于我们是用路由插座（<code class="highlighter-rouge">&lt;router-outlet&gt;&lt;/router-outlet&gt;</code>） l来显示内容的，所以无法采用子控件的形式传递信息。</p>
+
+<p>这种情况就要引入Rx了，rx的学习门槛较高，也不是本教程的重点，但我还是这里尝试着解释一下。Rx是响应式编程的利器，它的学习门槛来自于思维方式的转变，从传统的编程思维转成流式思维：Rx总体来看是一个数据流或信号流，所有的操作符都是为了对这个流进行控制。写Rx时要对系统数据或信号的完整逻辑流程先想清楚，然后就比较好写了。</p>
+
+<p>其实在Angular2中，Rx是无处不在的，还记得我们之前总用到toPromise()这个方法吗？其实这个方法是给不太熟悉Rx的同学用的，Angular本身返回的就是Observable。我们现在把UserService改成Rx版本</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">Injectable</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Http</span><span class="p">,</span> <span class="nx">Headers</span><span class="p">,</span> <span class="nx">Response</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/http'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Observable</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'rxjs/Rx'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'rxjs/add/operator/map'</span><span class="p">;</span>
+
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">User</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'../domain/entities'</span><span class="p">;</span>
+
+<span class="err">@</span><span class="nx">Injectable</span><span class="p">()</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">UserService</span> <span class="p">{</span>
+
+  <span class="kr">private</span> <span class="nx">api_url</span> <span class="o">=</span> <span class="s1">'http://localhost:3000/users'</span><span class="p">;</span>
+
+  <span class="nx">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">http</span><span class="err">:</span> <span class="nx">Http</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+
+  <span class="nx">getUser</span><span class="p">(</span><span class="nx">userId</span><span class="err">:</span> <span class="nx">number</span><span class="p">)</span><span class="err">:</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="err">`</span><span class="nx">$</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">api_url</span><span class="p">}</span><span class="sr">/${userId}`</span><span class="err">;
+</span>    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
+              <span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">res</span> <span class="o">=&gt;</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">()</span> <span class="nx">as</span> <span class="nx">User</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="nx">findUser</span><span class="p">(</span><span class="na">username</span><span class="p">:</span> <span class="nx">string</span><span class="p">):</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="err">`</span><span class="nx">$</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">api_url</span><span class="p">}</span><span class="sr">/</span><span class="se">?</span><span class="sr">username=${username}`</span><span class="err">;
+</span>    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
+              <span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">res</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="kd">let</span> <span class="nx">users</span> <span class="o">=</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">()</span> <span class="nx">as</span> <span class="nx">User</span><span class="p">[];</span>
+                <span class="k">return</span> <span class="p">(</span><span class="nx">users</span><span class="p">.</span><span class="nx">length</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span> <span class="p">?</span> <span class="nx">users</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">:</span> <span class="kc">null</span><span class="p">;</span>
+              <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>大家可能注意到了，其实有没有Promise都无所谓，大概的写法也是类似的，只不过返回的是Observable。这里改了之后，相关调用的地方都要改一下，比如LoginComponent：</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">Component</span><span class="p">,</span> <span class="nx">Inject</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Router</span><span class="p">,</span> <span class="nx">ActivatedRoute</span><span class="p">,</span> <span class="nx">Params</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/router'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Auth</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'../domain/entities'</span><span class="p">;</span>
+<span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
+  <span class="na">selector</span><span class="p">:</span> <span class="s1">'app-login'</span><span class="p">,</span>
+  <span class="na">templateUrl</span><span class="p">:</span> <span class="s1">'./login.component.html'</span><span class="p">,</span>
+  <span class="na">styleUrls</span><span class="p">:</span> <span class="p">[</span><span class="s1">'./login.component.css'</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">LoginComponent</span> <span class="p">{</span>
+
+  <span class="nx">username</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+  <span class="nx">password</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+  <span class="nl">auth</span><span class="p">:</span> <span class="nx">Auth</span><span class="p">;</span>
+  <span class="nx">constructor</span><span class="p">(</span><span class="err">@</span><span class="nx">Inject</span><span class="p">(</span><span class="s1">'auth'</span><span class="p">)</span> <span class="kr">private</span> <span class="nx">service</span><span class="p">,</span> <span class="kr">private</span> <span class="nx">router</span><span class="err">:</span> <span class="nx">Router</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+
+  <span class="nx">onSubmit</span><span class="p">(){</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">service</span>
+      <span class="p">.</span><span class="nx">loginWithCredentials</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">username</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">password</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">auth</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">auth</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">({},</span> <span class="nx">auth</span><span class="p">);</span>
+        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">auth</span><span class="p">.</span><span class="nx">hasError</span><span class="p">){</span>
+          <span class="k">this</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">navigate</span><span class="p">([</span><span class="s1">'todo'</span><span class="p">]);</span>
+        <span class="p">}</span>
+      <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>AuthService也需要改写成下面的样子。这里注意到我们引入了一个新概念：Subject。Subject 既是Observer（观察者）也是Observable（被观察对象）。这里采用Subject的原因是我们在Login时改变了Auth的属性，但由于这个Login方法是Login页面显性调用的，其他需要观察Auth变化的地方调用的是getAuth()方法。这样的话，我们需要在Auth发生变化时推送变化出去，我们在loginWithCredentials方法中以<code class="highlighter-rouge">this.subject.next(this.auth);</code>写入其变化，在getAuth()中用<code class="highlighter-rouge">return this.subject.asObservable();</code>将Subject转换成Observable。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">Injectable</span><span class="p">,</span> <span class="nx">Inject</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Http</span><span class="p">,</span> <span class="nx">Headers</span><span class="p">,</span> <span class="nx">Response</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/http'</span><span class="p">;</span>
+
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">ReplaySubject</span><span class="p">,</span> <span class="nx">Observable</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'rxjs/Rx'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'rxjs/add/operator/map'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Auth</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'../domain/entities'</span><span class="p">;</span>
+
+<span class="err">@</span><span class="nx">Injectable</span><span class="p">()</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">AuthService</span> <span class="p">{</span>
+  <span class="nl">auth</span><span class="p">:</span> <span class="nx">Auth</span> <span class="o">=</span> <span class="p">{</span><span class="na">hasError</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="na">redirectUrl</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span> <span class="na">errMsg</span><span class="p">:</span> <span class="s1">'not logged in'</span><span class="p">};</span>
+  <span class="nl">subject</span><span class="p">:</span> <span class="nx">ReplaySubject</span><span class="o">&lt;</span><span class="nx">Auth</span><span class="o">&gt;</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ReplaySubject</span><span class="o">&lt;</span><span class="nx">Auth</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+  <span class="nx">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">http</span><span class="err">:</span> <span class="nx">Http</span><span class="p">,</span> <span class="err">@</span><span class="nx">Inject</span><span class="p">(</span><span class="s1">'user'</span><span class="p">)</span> <span class="kr">private</span> <span class="nx">userService</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">}</span>
+  <span class="nx">getAuth</span><span class="p">()</span><span class="err">:</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">Auth</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">subject</span><span class="p">.</span><span class="nx">asObservable</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="nx">unAuth</span><span class="p">():</span> <span class="k">void</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">auth</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">(</span>
+      <span class="p">{},</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">auth</span><span class="p">,</span>
+      <span class="p">{</span><span class="na">user</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> <span class="na">hasError</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="na">redirectUrl</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span> <span class="na">errMsg</span><span class="p">:</span> <span class="s1">'not logged in'</span><span class="p">});</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">subject</span><span class="p">.</span><span class="nx">next</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">auth</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="nx">loginWithCredentials</span><span class="p">(</span><span class="na">username</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span> <span class="na">password</span><span class="p">:</span> <span class="nx">string</span><span class="p">):</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">Auth</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">userService</span>
+      <span class="p">.</span><span class="nx">findUser</span><span class="p">(</span><span class="nx">username</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">user</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">auth</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Auth</span><span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="kc">null</span> <span class="o">===</span> <span class="nx">user</span><span class="p">){</span>
+          <span class="nx">auth</span><span class="p">.</span><span class="nx">user</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+          <span class="nx">auth</span><span class="p">.</span><span class="nx">hasError</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+          <span class="nx">auth</span><span class="p">.</span><span class="nx">errMsg</span> <span class="o">=</span> <span class="s1">'user not found'</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">password</span> <span class="o">===</span> <span class="nx">user</span><span class="p">.</span><span class="nx">password</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">auth</span><span class="p">.</span><span class="nx">user</span> <span class="o">=</span> <span class="nx">user</span><span class="p">;</span>
+          <span class="nx">auth</span><span class="p">.</span><span class="nx">hasError</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+          <span class="nx">auth</span><span class="p">.</span><span class="nx">errMsg</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+          <span class="nx">auth</span><span class="p">.</span><span class="nx">user</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+          <span class="nx">auth</span><span class="p">.</span><span class="nx">hasError</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+          <span class="nx">auth</span><span class="p">.</span><span class="nx">errMsg</span> <span class="o">=</span> <span class="s1">'password not match'</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">auth</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">({},</span> <span class="nx">auth</span><span class="p">);</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">subject</span><span class="p">.</span><span class="nx">next</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">auth</span><span class="p">);</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">auth</span><span class="p">;</span>
+      <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>但为什么是ReplaySubject呢？我们共有2处需要监听Auth的变化：一处是导航栏，导航栏会依据不同的Auth值来显示/隐藏不同菜单；另一处是todo的路由守卫，它会依据Auth是否有错误来判断是否允许进入该路由url。我们来以时间维度分析一下流程：我们在执行登录时，如果鉴权成功，会导航到某个路由（这里是todo），这时会引发CanActivate的检查，而此时最新的Auth已经发射完毕（因为我们在loginWithCredentials中写入了变化值），CanActivate检查时会发现没有Auth数据。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>getAuth() Auth:{}  Auth{user: {id: 1...}} getAuth()-没有Auth数据发射了
+|==========|==============|===========================|=====
+导航栏    登录前          登录后              todo路由守卫激活
+</code></pre>
+</div>
+
+<p>这种情况下我们需要缓存最近的一份Auth数据，无论谁，什么时间订阅，只要没有更新的数据，我们就推送最近的一份给它，这就是ReplaySubject的意义所在。</p>
+
+<p>下面我们改写路由守卫</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">Injectable</span><span class="p">,</span> <span class="nx">Inject</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span>
+  <span class="nx">CanActivate</span><span class="p">,</span>
+  <span class="nx">CanLoad</span><span class="p">,</span>
+  <span class="nx">Router</span><span class="p">,</span>
+  <span class="nx">Route</span><span class="p">,</span>
+  <span class="nx">ActivatedRouteSnapshot</span><span class="p">,</span>
+  <span class="nx">RouterStateSnapshot</span> <span class="p">}</span>    <span class="nx">from</span> <span class="s1">'@angular/router'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Observable</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'rxjs/Rx'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'rxjs/add/operator/map'</span><span class="p">;</span>
+
+<span class="err">@</span><span class="nx">Injectable</span><span class="p">()</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">AuthGuardService</span> <span class="kr">implements</span> <span class="nx">CanActivate</span><span class="p">,</span> <span class="nx">CanLoad</span> <span class="p">{</span>
+
+  <span class="nx">constructor</span><span class="p">(</span>
+    <span class="kr">private</span> <span class="nx">router</span><span class="err">:</span> <span class="nx">Router</span><span class="p">,</span>
+    <span class="err">@</span><span class="nx">Inject</span><span class="p">(</span><span class="s1">'auth'</span><span class="p">)</span> <span class="kr">private</span> <span class="nx">authService</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+
+  <span class="nx">canActivate</span><span class="p">(</span><span class="nx">route</span><span class="err">:</span> <span class="nx">ActivatedRouteSnapshot</span><span class="p">,</span> <span class="nx">state</span><span class="err">:</span> <span class="nx">RouterStateSnapshot</span><span class="p">)</span><span class="err">:</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="kr">boolean</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="na">url</span><span class="p">:</span> <span class="nx">string</span> <span class="o">=</span> <span class="nx">state</span><span class="p">.</span><span class="nx">url</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">authService</span><span class="p">.</span><span class="nx">getAuth</span><span class="p">()</span>
+      <span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">auth</span> <span class="o">=&gt;</span> <span class="o">!</span><span class="nx">auth</span><span class="p">.</span><span class="nx">hasError</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="nx">canLoad</span><span class="p">(</span><span class="na">route</span><span class="p">:</span> <span class="nx">Route</span><span class="p">):</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="kr">boolean</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">url</span> <span class="o">=</span> <span class="err">`</span><span class="o">/</span><span class="nx">$</span><span class="p">{</span><span class="nx">route</span><span class="p">.</span><span class="nx">path</span><span class="p">}</span><span class="err">`</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">authService</span><span class="p">.</span><span class="nx">getAuth</span><span class="p">()</span>
+      <span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">auth</span> <span class="o">=&gt;</span> <span class="o">!</span><span class="nx">auth</span><span class="p">.</span><span class="nx">hasError</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>这里你会发现多了一个canLoad方法，canActivate是用于是否可以进入某个url，而canLoad是决定是否加载某个url对应的模块。所以需要再改下路由</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">NgModule</span> <span class="p">}</span>     <span class="nx">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Routes</span><span class="p">,</span> <span class="nx">RouterModule</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/router'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">LoginComponent</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'./login/login.component'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">AuthGuardService</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'./core/auth-guard.service'</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">routes</span><span class="err">:</span> <span class="nx">Routes</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="na">path</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span>
+    <span class="na">redirectTo</span><span class="p">:</span> <span class="s1">'login'</span><span class="p">,</span>
+    <span class="na">pathMatch</span><span class="p">:</span> <span class="s1">'full'</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="na">path</span><span class="p">:</span> <span class="s1">'todo'</span><span class="p">,</span>
+    <span class="na">redirectTo</span><span class="p">:</span> <span class="s1">'todo/ALL'</span><span class="p">,</span>
+    <span class="na">canLoad</span><span class="p">:</span> <span class="p">[</span><span class="nx">AuthGuardService</span><span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">];</span>
+
+<span class="err">@</span><span class="nx">NgModule</span><span class="p">({</span>
+  <span class="na">imports</span><span class="p">:</span> <span class="p">[</span>
+    <span class="nx">RouterModule</span><span class="p">.</span><span class="nx">forRoot</span><span class="p">(</span><span class="nx">routes</span><span class="p">,</span> <span class="p">{</span> <span class="na">useHash</span><span class="p">:</span> <span class="kc">true</span> <span class="p">})</span>
+  <span class="p">],</span>
+  <span class="na">exports</span><span class="p">:</span> <span class="p">[</span>
+    <span class="nx">RouterModule</span>
+  <span class="p">]</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">AppRoutingModule</span> <span class="p">{}</span>
+</code></pre>
+</div>
+<p>现在打开浏览器欣赏一下我们的成果。</p>
+
+<p><img src="http://static.zybuluo.com/wpcfan/nks5h5wn6cf3mcjmxem301mm/image_1b2o9tso51ald1u0e1nr59gi119i9.png" alt="改造后的首页登录后效果图" /></p>
+
+<p>本节代码：https://github.com/wpcfan/awesome-tutorials/tree/chap06/angular2/ng2-tut</p>
+
+
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                                <h5 style="display: inline;">Tags:</h5>
+                                
+                                    <button class="btn btn-white btn-xs" type="button">blog</button>
+                                
+                                    <button class="btn btn-white btn-xs" type="button">javascript</button>
+                                
+                                    <button class="btn btn-white btn-xs" type="button">angular2</button>
+                                
+                        </div>
+                        <div class="col-md-6">
+                            <div class="small text-right">
+                                <h5>Stats:</h5>
+                                <div> 
+                                
+                                    <i class="fa fa-comments-o"> </i> <span id = "url::/javascript/2016/12/05/angular-2.0-%E4%BB%8E0%E5%88%B01-%E5%85%AD.html" class = "cy_cmt_count" ></span> comments
+                                
+                                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <!-- donate -->
+                            
+                                <div class="text-center">
+<button class="btn btn-warning  dim btn-large-dim btn-outline" type="button" data-toggle="modal" data-target="#myModal2"><i class="fa fa-smile-o"></i></button>
+</div>
+<div class="modal inmodal" id="myModal2" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated flipInY">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">Donate Me</h4>
+                <small class="font-bold">If you like this article and want to help me, please give me little fee.</small><br>
+                <small class="font-bold">Thanks for your support!</small>
+            </div>
+            <div class="modal-body text-center">
+                <img src="/static/img/pay/w1.jpeg" width="250">
+                &emsp;
+                <img src="/static/img/pay/w5.jpeg" width="250">
+            </div>
+        </div>
+    </div>
+</div>
+
+                            
+                            <br>
+                            <!-- share -->
+                            
+                                <h2>Share:</h2>
+
+<div class="bshare-custom">
+	<a title="分享到微信" class="bshare-weixin"></a>
+	<a title="分享到QQ空间" class="bshare-qzone"></a>
+	<a title="分享到新浪微博" class="bshare-sinaminiblog"></a>
+	<a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a>
+</div>
+<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=59fd3d05-03d3-43ad-9650-ef46f9487bb8&amp;pophcol=1&amp;lang=zh"></script>
+<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+                            
+                            <br>
+                            <!-- comment -->
+                            
+<h2>Comments:</h2>
+<div id="SOHUCS"></div>
+<script charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/changyan.js" ></script>
+<script type="text/javascript">
+    window.changyan.api.config({
+        appid: 'cysKvjNmC',
+        conf: '14195e6733a549bb2f800fb931489c56'
+    });
+</script>
+
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+	
+	    <script src="/static/js/scroll.js"></script>
+
+<!-- Baidu analytics -->
+
+  <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?fc44e98b7062976fd7982188c4179bb8";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+  </script>
+
+
+<!-- Google analytics -->
+
+
+
+
+
+  <script id="cy_cmt_num" src="http://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cysfY7ULn"></script>
+
+
+
+	
+
+</body>
+</html>

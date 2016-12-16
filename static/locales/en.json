@@ -1,0 +1,59 @@
+{
+  "website":{
+    "title": "Peng's blog"
+  },
+  "nav":{
+    "home": "Home",
+    "about_me": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "career": "Career",
+    "blog": "Blog",
+    "link": "Link"
+  },
+  "about_me":{
+    "about_me": "About Me",
+    "des": "I am an early adopter for Chinese internet, one of long-time silence of majority, a full-stack aged engineer and a fan of cool electronic stuff."
+  },
+  "skills":{
+    "my_skills": "My Skills"
+  },
+  "projects":{
+    "my_projects": "My Projects",
+    "saplatform": "Saplatform is a automated service for operations, it has asset management, project release, database access function, it can control mass servers.",
+    "jalpc": "Jalpc is a simple, beautiful and swift theme for Jekyll. It has comprehensive function, it can be easily used and edited. It's adapted for many kinds devices.",
+    "angularjs": "It is a web font application written by Angularjs and deployed by Jekyll on github (gh-pages), the backend platform is Leancloud, you can use Parse as well.",
+    "rsser": "Rsser is an Ionic application, with this application we can read news and articles freely, you can add rss address from the given list and add it manually."
+  },
+  "career":{
+    "my_career": "My Career",
+    "soulkey": "Soulkey Tech Co., Ltd.",
+    "soulkey_des": "I co-founded a startup - Soulkey Tech in May 2015, we are going to give choices to students, instead of leaving that to schools that have fixed pattern of teaching and fixed resources.",
+    "soulkey_date": "At present",
+    "soulkey_job": "Co-founder, CTO",
+    "neusoft": "Neusoft",
+    "neusoft_des": "In Neusoft, where I spent 12 years there,  I started to manage development teams as Project Manager/Project Director/Dept. Manager. And I started to use multiple programing languages to build system on different platforms.",
+    "neusoft_date": "May. 2015",
+    "neusoft_job": "Dept. Manager",
+    "msc": "Master Degree",
+    "msc_des": "April 2004，I got my MSc degree in Univ of Bristol after spending 2 years studying Machine Learning and Data Mining in there",
+    "msc_date": "Apr. 2004",
+    "msc_job": "Studuent",
+    "firstjob": "Shanghai eBizServe Co. Ltd.",
+    "firstjob_des": "I got a Job as Java developer in Shanghai and did quite a lot of demos",
+    "firstjob_date": "Aug. 2002",
+    "firstjob_job": "Java Engineer",
+    "college": "Graduation",
+    "college_des": "At July 2000,I graduated from Lanzhou Unvi.",
+    "college_date": "Jul. 2000",
+    "college_job": "Student"
+  },
+  "blog":{
+    "my_blog": "My Blog"
+  },
+  "link":{
+    "link": "Link",
+    "view": "views"
+  }
+
+}
